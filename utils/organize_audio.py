@@ -14,7 +14,7 @@ from mp3_tagger import MP3File
 from mp3_tagger.exceptions import MP3OpenFileError
 
 sh = logging.StreamHandler(sys.stdout)
-logger = logging.getLogger('organize_audio')
+logger = logging.getLogger(__name__)
 logger.addHandler(sh)
 
 def main(args):
@@ -39,20 +39,15 @@ def move_file(filename, target_dir):
     try:
         mp3 = MP3File(filename)
         tags = mp3.get_tags()
-    except (MP3OpenFileError, struct.error):
+    except (MP3OpenFileError, struct.error) as err:
+        logger.warn('received error {} for file {}'.format(err, filename))
         return
-    logger.debug('Tags: {}'.format(tags))
+    logger.info('Tags: {}'.format(tags))
     artist = ''
     album = ''
     song = ''
-    if mp3.album is None or mp3.artist is None:
-        print('Either artist, album, or song information for file {} is missing. Below are the tags we do have:'.format(filename))
-        for k, v in tags.items():
-            print(k, v)
-        print('Please enter in the artist, album, and song below. To skip this file (e.g. — not copy it over) simply leave each field blank')
-        artist = input('Artist name:\n').strip().lower()
-        album = input('Album name:\n').strip().lower()
-        song = input('Song name:\n').strip()
+    if mp3.album is None or mp3.artist is None or mp3.song is None:
+        artist, album, song = get_track_info_from_user(filename, tags)
         if artist == '' or album == '' or song == '':
             return
     else:
@@ -68,18 +63,32 @@ def move_file(filename, target_dir):
     artist = artist.replace('\x00', '')
     album = album.replace('\x00', '')
     song = song.replace('\x00', '')
+
     mp3 = update_id3_tags(mp3, artist, album, song)
+
     artist_directory = os.path.join(target_dir, artist)
     if not os.path.exists(artist_directory):
         os.mkdir(artist_directory)
     album_directory = os.path.join(artist_directory, album)
     if not os.path.exists(album_directory):
         os.mkdir(album_directory)
-    target_filename = os.path.join(target_dir, artist, album, song)
+
+    target_filename = os.path.join(target_dir, artist, album, '{}.mp3'.format(song))
     logger.info(filename)
     logger.info(target_filename)
     shutil.copyfile(filename, target_filename)
     return
+
+def get_track_info_from_user(filename, tags):
+    print('Either artist, album, or song information for file {} is missing. Below are the tags we do have:'.format(filename))
+    for k, v in tags.items():
+        print(k, v)
+    print('Please enter in the artist, album, and song below. To skip this file (e.g. — not copy it over) simply leave each field blank')
+    artist = input('Artist name:\n').strip().lower()
+    album = input('Album name:\n').strip().lower()
+    song = input('Song name:\n').strip()
+    print('\n')
+    return artist, album, song
 
 def update_id3_tags(mp3: MP3File, artist: str, album: str, song: str) -> MP3File:
     mp3.artist = artist
