@@ -11,3 +11,5 @@ rough outline of things to acheive with varying degrees of "I can do this":
 - create an iOS app so I can move this music to my phone
 - should iOS be successful, add chromecast support
 - try and get video on this thing too
+- try some audio fingerprinting
+- store play count data
