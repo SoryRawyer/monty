@@ -59,6 +59,10 @@ def move_file(filename, target_dir):
             album = mp3.album[0].value.lower()
         else:
             album = mp3.album.lower()
+        if isinstance(mp3.song, list):
+            song = mp3.song[0].value.lower()
+        else:
+            song = mp3.song.lower()
     song = clean_song_title(song)
     artist = artist.replace('\x00', '')
     album = album.replace('\x00', '')
@@ -72,7 +76,7 @@ def move_file(filename, target_dir):
     album_directory = os.path.join(artist_directory, album)
     if not os.path.exists(album_directory):
         os.mkdir(album_directory)
-
+    logger.debug(song)
     target_filename = os.path.join(target_dir, artist, album, '{}.mp3'.format(song))
     logger.info(filename)
     logger.info(target_filename)
