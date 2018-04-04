@@ -5,15 +5,16 @@ play_song.py : try to play a song through vlc. try to handle play/pause keystrok
 import argparse
 import logging
 import os
+import signal
 import sys
+import time
 from collections import namedtuple
 
-import vlc
 from mp3_tagger import MP3File
-from pynput import keyboard
 
 from monty.playback import Player
 from monty.tracklist import TrackList
+from monty.keyboard import MediaKeyListener
 
 MEDIA_DIR = '/Users/rorysawyer/media/audio'
 
@@ -53,34 +54,44 @@ def main(args):
     track_queue = TrackList([song_location])
     player = Player(track_queue.get_current_song())
     player.play()
-    def on_press(key):
+
+    def on_play_or_pause():
         """
-        on_press : define what happens when certain keys are pressed
+        on_play_or_pause : how to react when the play/pause media key is pressed
         """
-        logger.info(key)
-        if key == keyboard.Key.space:
-            if player.is_playing():
-                player.pause()
-            else:
-                player.play()
-        if key == keyboard.Key.left:
-            # if at first track, do nothing
-            # if position is < 1%:
-            #   return to the previous song
-            # if position is >= 1%:
-            #   restart the current song
-            try:
-                player.change_song(track_queue.get_previous_song())
-            except Exception:
-                print('You\'re already at the beginning!')
-        if key == keyboard.Key.right:
-            try:
-                player.change_song(track_queue.get_next_song())
-            except Exception:
-                print('No more songs to play!')
-    with keyboard.Listener(on_press=on_press) as listener:
-        print('Now playing: {} by {}, from the album {}'.format(args.song, args.artist, args.album))
-        listener.join()
+        if player.is_playing():
+            player.pause()
+        else:
+            player.play()
+        
+    def on_next_track():
+        """
+        on_next_track : how to react when the next track media key is pressed
+        """
+        player.change_song(track_queue.get_next_song())
+
+    def on_previous_track():
+        """
+        on_previous_track : how to react when the previous track media key is pressed
+        """
+        player.change_song(track_queue.get_previous_song())
+    
+    def stop_everything(signum, frame):
+        player.stop()
+        listener.stop()
+        sys.exit(0)
+
+    listener = MediaKeyListener()
+    listener.on('play_pause', on_play_or_pause)
+    listener.on('next_track', on_next_track)
+    listener.on('prev_track', on_previous_track)
+    listener.start()
+
+    signal.signal(signal.SIGTERM, stop_everything)
+    signal.signal(signal.SIGINT, stop_everything)
+
+    while True:
+        time.sleep(5)
     return
 
 if __name__ == '__main__':
