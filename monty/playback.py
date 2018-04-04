@@ -13,11 +13,10 @@ class Player(object):
     """
 
     def __init__(self, file_location):
-        _, extension = os.path.splitext(file_location)
-        self.song = AudioSegment.from_file(file_location, format=extension.replace('.', ''))
-        paudio = pyaudio.PyAudio()
+        self.song = Player._open_audio_file(file_location)
+        self.paudio = pyaudio.PyAudio()
         self.callback_position = 0
-        self.stream = paudio.open(format=paudio.get_format_from_width(self.song.sample_width),
+        self.stream = self.paudio.open(format=self.paudio.get_format_from_width(self.song.sample_width),
                                   channels=self.song.channels,
                                   rate=self.song.frame_rate,
                                   output=True,
@@ -50,4 +49,26 @@ class Player(object):
         self.stream.stop_stream()
         self.callback_position = 0
         self.stream.close()
-
+    
+    def change_song(self, new_song_location):
+        was_playing = self.stream.is_active()
+        self.song = Player._open_audio_file(new_song_location)
+        self.stream.stop_stream()
+        self.stream.close()
+        self.stream = self.paudio.open(format=self.paudio.get_format_from_width(self.song.sample_width),
+                                  channels=self.song.channels,
+                                  rate=self.song.frame_rate,
+                                  output=True,
+                                  stream_callback=self._pyaudio_callback)
+        self.callback_position = 0
+        if was_playing:
+            self.stream.start_stream()
+        
+    def is_playing(self):
+        return self.stream.is_active()
+    
+    @staticmethod
+    def _open_audio_file(file_location):
+        _, extension = os.path.splitext(file_location)
+        song = AudioSegment.from_file(file_location, format=extension.replace('.', ''))
+        return song

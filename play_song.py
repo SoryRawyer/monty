@@ -5,13 +5,15 @@ play_song.py : try to play a song through vlc. try to handle play/pause keystrok
 import argparse
 import logging
 import os
-import select
 import sys
-import time
-import vlc
 from collections import namedtuple
+
+import vlc
 from mp3_tagger import MP3File
 from pynput import keyboard
+
+from monty.playback import Player
+from monty.tracklist import TrackList
 
 MEDIA_DIR = '/Users/rorysawyer/media/audio'
 
@@ -19,74 +21,12 @@ sh = logging.StreamHandler(sys.stdout)
 logger = logging.getLogger(__name__)
 logger.addHandler(sh)
 
-class Player:
+def make_track_queue_from_song(artist, album, song) -> TrackList:
     """
-    Player : a list of songs and their locations
+    make_track_queue_from_song : given an artist, album, and song, create a tracklist
+    containing all the songs from the album
     """
-    def __init__(self, song_locations=[], position=0):
-        self.song_locations = song_locations
-        self.position = position
-        self.vlc_intance = vlc.Instance()
-        self.media_player = self.vlc_intance.media_player_new()
-    
-    def enqueue_song(self, song):
-        """
-        enqueue_song : add a song file to the queue
-        """
-        self.song_locations.append(song)
-    
-    def enqueue_song_at_front(self, song):
-        """
-        enqueue_song_at_front : add a song file to the queue such that it's the next
-        song returned by get_next_song
-        """
-        self.song_locations.insert(self.position, song)
-    
-    def get_next_song(self) -> str:
-        """
-        get_next_song : return the location of the next song file to play
-        If there are no more songs to play, raise an exception
-        """
-        if self.position == len(self.song_locations):
-            raise Exception('no more songs')
-        self.position += 1
-        return self.song_locations[self.position]
-    
-    def get_previous_song(self) -> str:
-        if self.position == 0:
-            raise Exception('no more songs')
-        self.position -= 1
-        return self.song_locations[self.position]
-    
-    def play(self):
-        if self.media_player.is_playing() == 0:
-            self.media_player.play()
-        return
-
-    def pause(self):
-        if self.media_player.is_playing() == 1:
-            self.media_player.pause()
-        return
-    
-    def is_playing(self):
-        if self.media_player.is_playing() == 1:
-            return True
-        return False
-    
-    def play_previous_song(self):
-        location = self.get_previous_song()
-        self.media_player = vlc.MediaPlayer(location)
-        self.media_player.play()
-        return
-    
-    def play_next_song(self):
-        location = self.get_next_song()
-        self.media_player = vlc.MediaPlayer(location)
-        self.media_player.play()
-        return
-
-def make_track_queue_from_song(artist, album, song) -> Player:
-    SongAndPosition = namedtuple('song_location', 'track_number')
+    song_and_position = namedtuple('song_location', 'track_number')
     search_dir = os.path.join(MEDIA_DIR, artist, album)
 
     songs = []
@@ -97,23 +37,32 @@ def make_track_queue_from_song(artist, album, song) -> Player:
             track_number = mp3.get_tags()['ID3TagV1']['track']
             if filename.startswith(song):
                 song_position = track_number
-            songs.append(SongAndPosition(filename, track_number))
+            songs.append(song_and_position(filename, track_number))
 
     songs.sort(lambda x: x.track_number)
     song_locations = [x.song_location for x in songs]
 
-    return Player(song_locations, song_position)
+    return TrackList(song_locations, song_position)
 
 def main(args):
-    tq = make_track_queue_from_song(args.artist, args.album, args.song)
-    tq.play()
+    """
+    main : play some songs
+    """
+    # track_queue = make_track_queue_from_song(args.artist, args.album, args.song)
+    song_location = os.path.join(MEDIA_DIR, args.artist, args.album, args.song)
+    track_queue = TrackList([song_location])
+    player = Player(track_queue.get_current_song())
+    player.play()
     def on_press(key):
+        """
+        on_press : define what happens when certain keys are pressed
+        """
         logger.info(key)
         if key == keyboard.Key.space:
-            if tq.is_playing() == 1:
-                tq.pause()
+            if player.is_playing():
+                player.pause()
             else:
-                tq.play()
+                player.play()
         if key == keyboard.Key.left:
             # if at first track, do nothing
             # if position is < 1%:
@@ -121,12 +70,12 @@ def main(args):
             # if position is >= 1%:
             #   restart the current song
             try:
-                tq.play_previous_song()
+                player.change_song(track_queue.get_previous_song())
             except Exception:
                 print('You\'re already at the beginning!')
         if key == keyboard.Key.right:
             try:
-                tq.play_next_song()
+                player.change_song(track_queue.get_next_song())
             except Exception:
                 print('No more songs to play!')
     with keyboard.Listener(on_press=on_press) as listener:

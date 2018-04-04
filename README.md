@@ -4,7 +4,7 @@ purpose: I'd like a way to play music outside of itunes. Spotify doesn't necessa
 
 rough outline of things to acheive with varying degrees of "I can do this":
 - create a cli for playing music
-  - use VLC's python library
+  - pydub + pyaudio
 - create a docker image for this so I can put this wherever and have it *just work*
 - use google cloud (or something else) to store music remotely so I don't use all my disk space
 - create an API for getting/browsing music
