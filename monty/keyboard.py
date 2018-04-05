@@ -3,10 +3,13 @@ keyboard.py : what to do when someone wants to communicate via keys
 """
 import AppKit
 import Quartz
-from pynput._util.darwin import ListenerMixin, keycode_context
+from pynput._util.darwin import ListenerMixin
 from pynput.keyboard import _base
 
 class MediaKeyListener(ListenerMixin, _base.Listener):
+    """
+    MediaKeyListener: object for registering event handlers for Mac OSX media keys
+    """
     keys_of_interest = {
         16: 'play_pause',
         19: 'next_track',
@@ -32,20 +35,27 @@ class MediaKeyListener(ListenerMixin, _base.Listener):
         self._handlers = {}
 
     def _handle(self, dummy_proxy, event_type, event, dummy_refcon):
+        """
+        _handle: handle Quartz events
+
+        decode the event given to us by looking at the data1 field of the event
+        run the registered handler (if any) based on the value of the key that was pressed
+        """
         ns_event = AppKit.NSEvent.eventWithCGEvent_(event)
         if ns_event.subtype() != 8:
             return event
         data = ns_event.data1()
-        code = (data & 0xFFFF0000) >> 16
-        state = (data & 0xFF00) >> 8
+        code = data >> 16
+        state = data >> 8
         print(ns_event)
-        try:
-            if state == AppKit.NSKeyDown and code in self.keys_of_interest:
-                if self.keys_of_interest[code] in self._handlers:
-                    self._handlers[self.keys_of_interest[code]]()
-        except Exception as err:
-            print(err)
+        if state == AppKit.NSKeyDown and code in self.keys_of_interest:
+            if self.keys_of_interest[code] in self._handlers:
+                self._handlers[self.keys_of_interest[code]]()
+        return event
 
     def on(self, event_name, func):
+        """
+        on: register an event handler for a given button
+        """
         self._handlers[event_name] = func
 

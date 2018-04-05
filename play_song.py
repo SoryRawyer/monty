@@ -63,7 +63,7 @@ def main(args):
             player.pause()
         else:
             player.play()
-        
+
     def on_next_track():
         """
         on_next_track : how to react when the next track media key is pressed
@@ -75,8 +75,11 @@ def main(args):
         on_previous_track : how to react when the previous track media key is pressed
         """
         player.change_song(track_queue.get_previous_song())
-    
+
     def stop_everything(signum, frame):
+        """
+        stop_everything: shut everything down
+        """
         player.stop()
         listener.stop()
         sys.exit(0)
