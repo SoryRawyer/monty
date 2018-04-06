@@ -45,17 +45,18 @@ class MediaKeyListener(ListenerMixin, _base.Listener):
         if ns_event.subtype() != 8:
             return event
         data = ns_event.data1()
-        code = data >> 16
-        state = data >> 8
-        print(ns_event)
-        if state == AppKit.NSKeyDown and code in self.keys_of_interest:
-            if self.keys_of_interest[code] in self._handlers:
-                self._handlers[self.keys_of_interest[code]]()
-        return event
+        code = (data & 0xFFFF0000) >> 16
+        state = (data & 0xFF00) >> 8
+        try:
+            if state == AppKit.NSKeyDown and code in self.keys_of_interest:
+                if self.keys_of_interest[code] in self._handlers:
+                    self._handlers[self.keys_of_interest[code]]()
+        except Exception as err:
+            print(err)
+        return
 
     def on(self, event_name, func):
         """
         on: register an event handler for a given button
         """
         self._handlers[event_name] = func
-

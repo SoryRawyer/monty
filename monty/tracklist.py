@@ -7,6 +7,8 @@ class TrackList(object):
     TrackList : a list of songs and their locations
     """
     def __init__(self, song_locations, position=0):
+        if position < 0 or position > len(song_locations):
+            raise Exception('position in track list cannot be greater than the list of songs')
         self.song_locations = song_locations
         self.position = position
 

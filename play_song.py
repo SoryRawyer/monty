@@ -8,9 +8,6 @@ import os
 import signal
 import sys
 import time
-from collections import namedtuple
-
-from mp3_tagger import MP3File
 
 from monty.playback import Player
 from monty.tracklist import TrackList
@@ -27,33 +24,29 @@ def make_track_queue_from_song(artist, album, song) -> TrackList:
     make_track_queue_from_song : given an artist, album, and song, create a tracklist
     containing all the songs from the album
     """
-    song_and_position = namedtuple('song_location', 'track_number')
     search_dir = os.path.join(MEDIA_DIR, artist, album)
 
     songs = []
     song_position = 0
-    for filenames in os.listdir(os.path.join(MEDIA_DIR, artist, album)):
-        for filename in filenames:
-            mp3 = MP3File(os.path.join(search_dir, filename))
-            track_number = mp3.get_tags()['ID3TagV1']['track']
-            if filename.startswith(song):
-                song_position = track_number
-            songs.append(song_and_position(filename, track_number))
+    i = 0
+    for filename in os.listdir(search_dir):
+        # for filename in filenames:
+        print(os.path.join(search_dir, filename))
+        if filename.startswith(song):
+            song_position = i
+        songs.append(os.path.join(search_dir, filename))
+        i += 1
+    print(songs)
 
-    songs.sort(lambda x: x.track_number)
-    song_locations = [x.song_location for x in songs]
-
-    return TrackList(song_locations, song_position)
+    return TrackList(songs, song_position)
 
 def main(args):
     """
     main : play some songs
     """
-    # track_queue = make_track_queue_from_song(args.artist, args.album, args.song)
-    song_location = os.path.join(MEDIA_DIR, args.artist, args.album, args.song)
-    track_queue = TrackList([song_location])
-    player = Player(track_queue.get_current_song())
-    player.play()
+    track_queue = make_track_queue_from_song(args.artist, args.album, args.song)
+    # song_location = os.path.join(MEDIA_DIR, args.artist, args.album, args.song)
+    # track_queue = TrackList([song_location])
 
     def on_play_or_pause():
         """
@@ -74,7 +67,10 @@ def main(args):
         """
         on_previous_track : how to react when the previous track media key is pressed
         """
+        start = time.time()
         player.change_song(track_queue.get_previous_song())
+        end = time.time()
+        print(end - start)
 
     def stop_everything(signum, frame):
         """
@@ -89,6 +85,8 @@ def main(args):
     listener.on('next_track', on_next_track)
     listener.on('prev_track', on_previous_track)
     listener.start()
+    player = Player(track_queue.get_current_song())
+    player.play()
 
     signal.signal(signal.SIGTERM, stop_everything)
     signal.signal(signal.SIGINT, stop_everything)

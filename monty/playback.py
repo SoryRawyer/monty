@@ -69,18 +69,13 @@ class Player(object):
         """
         change_song: create a new pyaudio stream with a new song
         """
-        was_playing = self.stream.is_active()
-        self.song = Player._open_audio_file(new_song_location)
-        self.stream.stop_stream()
-        self.stream.close()
-        self.stream = self.paudio.open(format=self.paudio.get_format_from_width(self.song.sample_width),
-                                       channels=self.song.channels,
-                                       rate=self.song.frame_rate,
-                                       output=True,
-                                       stream_callback=self._pyaudio_callback)
+        new_song = Player._open_audio_file(new_song_location)
+        new_format = self.paudio.get_format_from_width(new_song.sample_width)
+        self.stream.channels = new_song.channels
+        self.stream.frame_rate = new_song.frame_rate
+        self.stream.format = new_format
+        self.song = new_song
         self.callback_position = 0
-        if was_playing:
-            self.stream.start_stream()
 
     def is_playing(self):
         """
