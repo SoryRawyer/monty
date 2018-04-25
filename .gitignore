@@ -1,4 +1,8 @@
 *.mp3
+*.ogg
+*.m4a
+*.wav
+*.aac
 __pycache__/*
 monty/__pycache__/*
 .vscode

@@ -3,41 +3,18 @@ playback.py : take 2 at trying to play audio, this time trying to divide the aud
 parts from the cli parts
 """
 
-import os
-import pyaudio
-from pydub import AudioSegment
+import vlc
 
 class Player(object):
     """
-    Player : play a file using pydub and pyaudio
+    Player : play a file using vlc
     """
 
-    def __init__(self, file_location):
-        self.song = Player._open_audio_file(file_location)
-        self.paudio = pyaudio.PyAudio()
-        self.callback_position = 0
-        self.stream = self.paudio.open(format=self.paudio.get_format_from_width(self.song.sample_width),
-                                       channels=self.song.channels,
-                                       rate=self.song.frame_rate,
-                                       output=True,
-                                       stream_callback=self._pyaudio_callback)
-
-    def _pyaudio_callback(self, in_data, frame_count, time_info, status_flags):
-        """
-        return frame_count * channels * bytes-per-channel
-        AudioSegments are slicable using milliseconds.
-        |  for example:
-        |      a = AudioSegment.from_mp3(mp3file)
-        |      first_second = a[:1000] # get the first second of an mp3
-        |      slice = a[5000:10000] # get a slice from 5 to 10 seconds of an mp3
-        """
-        data_len = frame_count * self.song.channels * self.song.sample_width
-        flag = pyaudio.paContinue
-        if self.callback_position + data_len >= len(self.song.raw_data):
-            data_len = len(self.song.raw_data) - self.callback_position - 1
-            flag = pyaudio.paComplete
-        self.callback_position += data_len
-        return self.song.raw_data[self.callback_position:self.callback_position + data_len], flag
+    def __init__(self, file_location=''):
+        self.vlc_instance = vlc.Instance()
+        if file_location:
+            self.media = self.vlc_instance.media_new_path(file_location)
+            self.player = self.media.player_new_from_media()
 
     def play(self):
         """
@@ -45,7 +22,10 @@ class Player(object):
 
         TODO: should probably check if the stream's open first
         """
-        self.stream.start_stream()
+        if self.player:
+            self.player.play()
+        else:
+            raise NoAvailableMediaException('Tried to play but you have no media player')
 
     def pause(self):
         """
@@ -53,7 +33,10 @@ class Player(object):
 
         TODO: should probably check if the stream's open first
         """
-        self.stream.stop_stream()
+        if self.player:
+            self.player.pause()
+        else:
+            raise NoAvailableMediaException('Tried to pause but you have no media player')
 
     def stop(self):
         """
@@ -61,33 +44,31 @@ class Player(object):
 
         TODO: should probably check if the stream's open first
         """
-        self.stream.stop_stream()
-        self.callback_position = 0
-        self.stream.close()
+        if self.player:
+            self.player.stop()
+        else:
+            raise NoAvailableMediaException('Tried to stop but you have no media player')
 
     def change_song(self, new_song_location):
         """
-        change_song: create a new pyaudio stream with a new song
+        change_song: create a new vlc media player for this song
         """
-        new_song = Player._open_audio_file(new_song_location)
-        new_format = self.paudio.get_format_from_width(new_song.sample_width)
-        self.stream.channels = new_song.channels
-        self.stream.frame_rate = new_song.frame_rate
-        self.stream.format = new_format
-        self.song = new_song
-        self.callback_position = 0
+        was_playing = False
+        if self.is_playing():
+            was_playing = True
+        self.media = self.vlc_instance.media_new_path(new_song_location)
+        self.player = self.media.player_new_from_media()
+        if was_playing:
+            self.play()
 
     def is_playing(self):
         """
         is_playing: check to see if the audio stream is playing music
         """
-        return self.stream.is_active()
+        return self.player.is_playing()
 
-    @staticmethod
-    def _open_audio_file(file_location):
-        """
-        _open_audio_file: create an AudioSegment object from the input file
-        """
-        _, extension = os.path.splitext(file_location)
-        song = AudioSegment.from_file(file_location, format=extension.replace('.', ''))
-        return song
+class NoAvailableMediaException(Exception):
+    """
+    NoAvailableMediaException : an exception for when there's just no more media to play
+    """
+    pass
