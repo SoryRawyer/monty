@@ -56,6 +56,7 @@ class Player(object):
         was_playing = False
         if self.is_playing():
             was_playing = True
+        self.stop()
         self.media = self.vlc_instance.media_new_path(new_song_location)
         self.player = self.media.player_new_from_media()
         if was_playing:

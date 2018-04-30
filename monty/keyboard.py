@@ -13,7 +13,7 @@ class MediaKeyListener(ListenerMixin, _base.Listener):
     keys_of_interest = {
         16: 'play_pause',
         19: 'next_track',
-        20: 'prev_track',
+        20: 'previous_track',
         7: 'mute',
         1: 'volume_down',
         0: 'volume_up',

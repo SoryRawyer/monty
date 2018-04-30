@@ -7,11 +7,12 @@ import logging
 import os
 import signal
 import sys
-import time
+import trio
 
 from monty.playback import Player
 from monty.tracklist import TrackList
 from monty.keyboard import MediaKeyListener
+from monty.gui import PlayerGUI
 
 MEDIA_DIR = '/Users/rorysawyer/media/audio'
 
@@ -31,24 +32,20 @@ def make_track_queue_from_song(artist, album, song) -> TrackList:
     i = 0
     for filename in os.listdir(search_dir):
         # for filename in filenames:
-        print(os.path.join(search_dir, filename))
         if filename.startswith(song):
             song_position = i
         songs.append(os.path.join(search_dir, filename))
         i += 1
-    print(songs)
 
     return TrackList(songs, song_position)
 
-def main(args):
+async def main(args):
     """
     main : play some songs
     """
     track_queue = make_track_queue_from_song(args.artist, args.album, args.song)
-    # song_location = os.path.join(MEDIA_DIR, args.artist, args.album, args.song)
-    # track_queue = TrackList([song_location])
 
-    def on_play_or_pause():
+    def on_play_or_pause(event=None):
         """
         on_play_or_pause : how to react when the play/pause media key is pressed
         """
@@ -57,20 +54,17 @@ def main(args):
         else:
             player.play()
 
-    def on_next_track():
+    def on_next_track(event=None):
         """
         on_next_track : how to react when the next track media key is pressed
         """
         player.change_song(track_queue.get_next_song())
 
-    def on_previous_track():
+    def on_previous_track(event=None):
         """
         on_previous_track : how to react when the previous track media key is pressed
         """
-        start = time.time()
         player.change_song(track_queue.get_previous_song())
-        end = time.time()
-        print(end - start)
 
     def stop_everything(signum, frame):
         """
@@ -83,7 +77,7 @@ def main(args):
     listener = MediaKeyListener()
     listener.on('play_pause', on_play_or_pause)
     listener.on('next_track', on_next_track)
-    listener.on('prev_track', on_previous_track)
+    listener.on('previous_track', on_previous_track)
     listener.start()
     player = Player(track_queue.get_current_song())
     player.play()
@@ -91,8 +85,16 @@ def main(args):
     signal.signal(signal.SIGTERM, stop_everything)
     signal.signal(signal.SIGINT, stop_everything)
 
-    while True:
-        time.sleep(5)
+    gui = PlayerGUI.new()
+    gui.bind_to('play_pause', on_play_or_pause)
+    gui.bind_to('next_track', on_next_track)
+    gui.bind_to('previous_track', on_previous_track)
+
+    gui.add_tracks_to_listbox(track_queue.song_locations)
+
+    async with trio.open_nursery() as nursery:
+        nursery.start_soon(gui.launch_gui)
+
     return
 
 if __name__ == '__main__':
@@ -100,4 +102,4 @@ if __name__ == '__main__':
     parser.add_argument('artist', type=str)
     parser.add_argument('album', type=str)
     parser.add_argument('song', type=str)
-    main(parser.parse_args())
+    trio.run(main, parser.parse_args())
