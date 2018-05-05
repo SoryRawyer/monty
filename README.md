@@ -13,3 +13,10 @@ rough outline of things to acheive with varying degrees of "I can do this":
 - try and get video on this thing too
 - try some audio fingerprinting
 - store play count data
+
+
+todo:
+- sqlite db to store local track info?
+- on startup, look for sqlite db file
+  - if not found: list media_dir and populate sqlitedb
+  - if found: just use that? not sure how to add data locally once the program starts up

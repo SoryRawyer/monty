@@ -34,7 +34,7 @@ class MediaKeyListener(ListenerMixin, _base.Listener):
             None)
         self._handlers = {}
 
-    def _handle(self, dummy_proxy, event_type, event, dummy_refcon):
+    def _handle(self, _, event_type, event, __):
         """
         _handle: handle Quartz events
 
@@ -53,10 +53,10 @@ class MediaKeyListener(ListenerMixin, _base.Listener):
                     self._handlers[self.keys_of_interest[code]]()
         except Exception as err:
             print(err)
-        return
+        return None
 
-    def on(self, event_name, func):
+    def on_action(self, event_name, func):
         """
-        on: register an event handler for a given button
+        on_action: register an event handler for a given button
         """
         self._handlers[event_name] = func

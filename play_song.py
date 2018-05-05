@@ -75,9 +75,9 @@ async def main(args):
         sys.exit(0)
 
     listener = MediaKeyListener()
-    listener.on('play_pause', on_play_or_pause)
-    listener.on('next_track', on_next_track)
-    listener.on('previous_track', on_previous_track)
+    listener.on_action('play_pause', on_play_or_pause)
+    listener.on_action('next_track', on_next_track)
+    listener.on_action('previous_track', on_previous_track)
     listener.start()
     player = Player(track_queue.get_current_song())
     player.play()

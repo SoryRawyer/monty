@@ -7,7 +7,11 @@ from tkinter import ttk
 
 class PlayerGUI(tk.Frame):
     """
-    PlayerGUI : use tkinter to do graphing stuff
+    PlayerGUI : use tkinter to do gui stuff
+
+    Attributes:
+        mainframe: the main frame for tkinter
+        bindings: function bindings for different gui elements
     """
 
     def __init__(self, master, bindings):
@@ -19,7 +23,7 @@ class PlayerGUI(tk.Frame):
         self.populate_screen()
         self.bindings = bindings
         for chil in self.mainframe.winfo_children():
-            chil.grid_configure(padx=5, pady=5)
+            chil.grid_configure(padx=10, pady=10)
 
     def populate_screen(self):
         """
@@ -48,10 +52,14 @@ class PlayerGUI(tk.Frame):
         for track in tracklist:
             self.text.insert('end', track)
 
-    def bind_to(self, button, func):
+    def bind_to(self, button, func, override=False):
         """
         bind : bind the given function to the given button
         """
+        if button in self.bindings and not override:
+            raise BindingAlreadyExistsException('A binding already exists for this button '
+                                                + 'and you did not specify to override the handler')
+        self.bindings[button] = func
         self.__getattribute__(button).bind('<Button-1>', func)
 
     @staticmethod
@@ -60,7 +68,11 @@ class PlayerGUI(tk.Frame):
         new : create a new PlayerGUI
         """
         root = tk.Tk()
-        bindings = {
-            'next' : '',
-        }
+        bindings = {}
         return PlayerGUI(root, bindings)
+
+class BindingAlreadyExistsException(Exception):
+    """
+    BindingAlreadyExistsException : a binding already exists
+    """
+    pass
