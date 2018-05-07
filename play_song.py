@@ -13,8 +13,7 @@ from monty.playback import Player
 from monty.tracklist import TrackList
 from monty.keyboard import MediaKeyListener
 from monty.gui import PlayerGUI
-
-MEDIA_DIR = '/Users/rorysawyer/media/audio'
+import monty.config as config
 
 sh = logging.StreamHandler(sys.stdout)
 logger = logging.getLogger(__name__)
@@ -25,7 +24,8 @@ def make_track_queue_from_song(artist, album, song) -> TrackList:
     make_track_queue_from_song : given an artist, album, and song, create a tracklist
     containing all the songs from the album
     """
-    search_dir = os.path.join(MEDIA_DIR, artist, album)
+    media_dir = config.media_dir
+    search_dir = os.path.join(media_dir, artist, album)
 
     songs = []
     song_position = 0
