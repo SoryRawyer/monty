@@ -9,6 +9,7 @@ pyobjc = "*"
 trio = "*"
 pynput = "*"
 mutagen = "*"
+pylint = "*"
 
 [dev-packages]
 pylint = "*"

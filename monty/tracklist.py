@@ -8,7 +8,8 @@ class TrackList(object):
     """
     def __init__(self, song_locations, position=0):
         if position < 0 or position > len(song_locations):
-            raise Exception('position in track list cannot be greater than the list of songs')
+            raise NoAvailableSongException('position in track list ' +
+                                           'cannot be greater than the list of songs')
         self.song_locations = song_locations
         self.position = position
 
@@ -32,7 +33,7 @@ class TrackList(object):
         update the current position to reflect the track change
         """
         if self.position == len(self.song_locations):
-            raise Exception('no more songs')
+            raise NoAvailableSongException('no more songs')
         self.position += 1
         return self.song_locations[self.position]
 
@@ -43,7 +44,7 @@ class TrackList(object):
         update the current position to reflect the track change
         """
         if self.position == 0:
-            raise Exception('no more songs')
+            raise NoAvailableSongException('no more songs')
         self.position -= 1
         return self.song_locations[self.position]
 
@@ -52,3 +53,20 @@ class TrackList(object):
         get_current_song : return the location of the song we're currently playing
         """
         return self.song_locations[self.position]
+
+    def skip_to_index(self, index: int):
+        """
+        skip_to_index : skip to a given index
+        """
+        if index < 0 or index >= len(self.song_locations):
+            raise NoAvailableSongException('cannot skip to index {}'.format(index))
+        self.position = index
+        return self.song_locations[self.position]
+
+
+class NoAvailableSongException(Exception):
+    """
+    NoAvailableSongException : generic exception to be raised when there is no song
+    to return
+    """
+    pass

@@ -34,8 +34,9 @@ class Database(object):
         if not os.path.isfile(self.db_location):
             # if the db doesn't exist, make it!
             self._conn = sqlite3.connect(self.db_location)
-            self._cursor = self._conn.cursor()
             self.init_db()
+        else:
+            self._conn = sqlite3.connect(self.db_location)
 
     def init_db(self):
         """
@@ -57,6 +58,13 @@ class Database(object):
                 insert into audio_tracks (artist, album, track_name, album_position) values
                                                 (?, ?, ?, ?)
                 """, (metadata.artist, metadata.album, metadata.track_title, metadata.track_number))
+
+    def generate_all_track_info(self):
+        """
+        generate_all_track_info : create a generator for all track information
+        """
+        for i in self._conn.execute('select * from audio_tracks'):
+            yield i
 
     @staticmethod
     def get_tracks_from_media_dir(input_dir):

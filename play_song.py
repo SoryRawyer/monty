@@ -45,7 +45,7 @@ async def main(args):
     """
     track_queue = make_track_queue_from_song(args.artist, args.album, args.song)
 
-    def on_play_or_pause(event=None):
+    def on_play_or_pause(_):
         """
         on_play_or_pause : how to react when the play/pause media key is pressed
         """
@@ -54,19 +54,26 @@ async def main(args):
         else:
             player.play()
 
-    def on_next_track(event=None):
+    def on_next_track(_):
         """
         on_next_track : how to react when the next track media key is pressed
         """
         player.change_song(track_queue.get_next_song())
 
-    def on_previous_track(event=None):
+    def on_previous_track(_):
         """
         on_previous_track : how to react when the previous track media key is pressed
         """
         player.change_song(track_queue.get_previous_song())
 
-    def stop_everything(signum, frame):
+    def skip_to_arbitrary_song(song_position):
+        """
+        skip_to_arbitrary_song : given an index, skip to that position in the tracklist
+        """
+        player.change_song(track_queue.skip_to_index(song_position))
+
+
+    def stop_everything(_, __):
         """
         stop_everything: shut everything down
         """
@@ -85,11 +92,13 @@ async def main(args):
     signal.signal(signal.SIGTERM, stop_everything)
     signal.signal(signal.SIGINT, stop_everything)
 
-    gui = PlayerGUI.new()
-    gui.bind_to('play_pause', on_play_or_pause)
-    gui.bind_to('next_track', on_next_track)
-    gui.bind_to('previous_track', on_previous_track)
-
+    gui_bindings = {
+        'play_pause' : ('<Button-1>', on_play_or_pause),
+        'next_track' : ('<Button-1>', on_next_track),
+        'previous_track' : ('<Button-1>', on_previous_track),
+        'text' : ('<Double-Button-1>', skip_to_arbitrary_song),
+    }
+    gui = PlayerGUI.new(gui_bindings)
     gui.add_tracks_to_listbox(track_queue.song_locations)
 
     async with trio.open_nursery() as nursery:
