@@ -3,8 +3,6 @@
 purpose: I'd like a way to play music outside of itunes. Spotify doesn't necessarily have everything I'd listen to.
 
 rough outline of things to acheive with varying degrees of "I can do this":
-- create a cli for playing music
-  - pydub + pyaudio
 - create a docker image for this so I can put this wherever and have it *just work*
 - use google cloud (or something else) to store music remotely so I don't use all my disk space
 - create an API for getting/browsing music
@@ -13,10 +11,4 @@ rough outline of things to acheive with varying degrees of "I can do this":
 - try and get video on this thing too
 - try some audio fingerprinting
 - store play count data
-
-
-todo:
-- sqlite db to store local track info?
-- on startup, look for sqlite db file
-  - if not found: list media_dir and populate sqlitedb
-  - if found: just use that? not sure how to add data locally once the program starts up
+- get the gui to display a little more information in a way that's useful?
