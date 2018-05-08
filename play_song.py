@@ -3,7 +3,6 @@ play_song.py : try to play a song through vlc. try to handle play/pause keystrok
 """
 
 import logging
-import os
 import signal
 import sys
 import trio
@@ -13,13 +12,12 @@ from monty.playback import Player
 from monty.tracklist import TrackList
 from monty.keyboard import MediaKeyListener
 from monty.gui import PlayerGUI
-import monty.config as config
 
-sh = logging.StreamHandler(sys.stdout)
-logger = logging.getLogger(__name__)
-logger.addHandler(sh)
+SH = logging.StreamHandler(sys.stdout)
+LOGGER = logging.getLogger(__name__)
+LOGGER.addHandler(SH)
 
-async def main(args=None):
+async def main():
     """
     main : play some songs
     """
