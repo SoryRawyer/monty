@@ -2,13 +2,13 @@
 play_song.py : try to play a song through vlc. try to handle play/pause keystrokes
 """
 
-import argparse
 import logging
 import os
 import signal
 import sys
 import trio
 
+from monty.db import Database
 from monty.playback import Player
 from monty.tracklist import TrackList
 from monty.keyboard import MediaKeyListener
@@ -19,32 +19,12 @@ sh = logging.StreamHandler(sys.stdout)
 logger = logging.getLogger(__name__)
 logger.addHandler(sh)
 
-def make_track_queue_from_song(artist, album, song) -> TrackList:
-    """
-    make_track_queue_from_song : given an artist, album, and song, create a tracklist
-    containing all the songs from the album
-    """
-    media_dir = config.media_dir
-    search_dir = os.path.join(media_dir, artist, album)
-
-    songs = []
-    song_position = 0
-    i = 0
-    for filename in os.listdir(search_dir):
-        # for filename in filenames:
-        if filename.startswith(song):
-            song_position = i
-        songs.append(os.path.join(search_dir, filename))
-        i += 1
-
-    return TrackList(songs, song_position)
-
-async def main(args):
+async def main(args=None):
     """
     main : play some songs
     """
-    track_queue = make_track_queue_from_song(args.artist, args.album, args.song)
 
+    # A bunch of callback functions for keyboard/gui events
     def on_play_or_pause(_):
         """
         on_play_or_pause : how to react when the play/pause media key is pressed
@@ -58,19 +38,19 @@ async def main(args):
         """
         on_next_track : how to react when the next track media key is pressed
         """
-        player.change_song(track_queue.get_next_song())
+        player.change_song(track_list.get_next_song())
 
     def on_previous_track(_):
         """
         on_previous_track : how to react when the previous track media key is pressed
         """
-        player.change_song(track_queue.get_previous_song())
+        player.change_song(track_list.get_previous_song())
 
     def skip_to_arbitrary_song(song_position):
         """
         skip_to_arbitrary_song : given an index, skip to that position in the tracklist
         """
-        player.change_song(track_queue.skip_to_index(song_position))
+        player.change_song(track_list.skip_to_index(song_position))
 
 
     def stop_everything(_, __):
@@ -81,13 +61,17 @@ async def main(args):
         listener.stop()
         sys.exit(0)
 
+    db = Database()
+    tracks = list(db.generate_all_track_info())
+    track_list = TrackList([x[4] for x in tracks])
+    track_display_format = '{} - {} - {}'
+
     listener = MediaKeyListener()
     listener.on_action('play_pause', on_play_or_pause)
     listener.on_action('next_track', on_next_track)
     listener.on_action('previous_track', on_previous_track)
     listener.start()
-    player = Player(track_queue.get_current_song())
-    player.play()
+    player = Player(track_list.get_current_song())
 
     signal.signal(signal.SIGTERM, stop_everything)
     signal.signal(signal.SIGINT, stop_everything)
@@ -99,7 +83,7 @@ async def main(args):
         'text' : ('<Double-Button-1>', skip_to_arbitrary_song),
     }
     gui = PlayerGUI.new(gui_bindings)
-    gui.add_tracks_to_listbox(track_queue.song_locations)
+    gui.add_tracks_to_listbox([track_display_format.format(x[0], x[1], x[2]) for x in tracks])
 
     async with trio.open_nursery() as nursery:
         nursery.start_soon(gui.launch_gui)
@@ -107,8 +91,4 @@ async def main(args):
     return
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser()
-    parser.add_argument('artist', type=str)
-    parser.add_argument('album', type=str)
-    parser.add_argument('song', type=str)
-    trio.run(main, parser.parse_args())
+    trio.run(main)

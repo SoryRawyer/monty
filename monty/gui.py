@@ -43,7 +43,7 @@ class PlayerGUI(tk.Frame):
         self.next_track = ttk.Button(self.mainframe, text='next track')
         self.next_track.grid(column=2, row=1)
         # ListBox to show available songs
-        self.text = tk.Listbox(self.mainframe, height=10)
+        self.text = tk.Listbox(self.mainframe, height=10, width=30)
         # if 'text' in self.bindings:
         #     self.text.bind('<Double-Button-1>', self.bindings['text'])
         self.selected_item = None

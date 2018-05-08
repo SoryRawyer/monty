@@ -48,22 +48,28 @@ class Database(object):
                 (artist varchar,
                 album varchar, 
                 track_name varchar,
-                album_position int)
+                album_position int,
+                track_location varchar)
             """)
         # iterate through self.media_dir
         #   get metadata for each track, then insert it into the database
         with self._conn:
-            for metadata in Database.get_tracks_from_media_dir(self.media_dir):
+            for (metadata, location) in Database.get_tracks_from_media_dir(self.media_dir):
                 self._conn.execute("""
-                insert into audio_tracks (artist, album, track_name, album_position) values
-                                                (?, ?, ?, ?)
-                """, (metadata.artist, metadata.album, metadata.track_title, metadata.track_number))
+                insert into audio_tracks (artist, album, track_name, album_position, track_location)
+                 values (?, ?, ?, ?, ?)
+                """, (metadata.artist,
+                      metadata.album,
+                      metadata.track_title,
+                      metadata.track_number,
+                      location))
 
     def generate_all_track_info(self):
         """
         generate_all_track_info : create a generator for all track information
         """
-        for i in self._conn.execute('select * from audio_tracks'):
+        query = 'select * from audio_tracks order by artist, album, album_position'
+        for i in self._conn.execute(query):
             yield i
 
     @staticmethod
@@ -76,7 +82,8 @@ class Database(object):
                 Database.get_tracks_from_media_dir(dirname)
             for filename in filenames:
                 try:
-                    yield Metadata(os.path.join(dirpath, filename))
+                    yield (Metadata(os.path.join(dirpath, filename)), 
+                           os.path.join(dirpath, filename))
                 except FormatNotImplemented:
                     continue
 
