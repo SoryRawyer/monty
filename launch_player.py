@@ -7,11 +7,7 @@ import signal
 import sys
 import trio
 
-from monty.db import Database
-from monty.playback import Player
-from monty.tracklist import TrackList
-from monty.keyboard import MediaKeyListener
-from monty.gui import PlayerGUI
+from monty import Database, Player, PlayerGUI, TrackList, MediaKeyListener
 
 SH = logging.StreamHandler(sys.stdout)
 LOGGER = logging.getLogger(__name__)
@@ -49,7 +45,6 @@ async def main():
         skip_to_arbitrary_song : given an index, skip to that position in the tracklist
         """
         player.change_song(track_list.skip_to_index(song_position))
-
 
     def stop_everything(_, __):
         """
