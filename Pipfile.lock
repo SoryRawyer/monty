@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "23a491bab4a9586748ebe6ad4d61a02e8456246d5fbb4bcb7ff04fdccedb8d45"
+            "sha256": "3f1a2e897fe0daf68d99ef51797400220867ab6f04793bea3ba8761d76d2f86f"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -18,10 +18,10 @@
     "default": {
         "astroid": {
             "hashes": [
-                "sha256:35cfae47aac19c7b407b7095410e895e836f2285ccf1220336afba744cc4c5f2",
-                "sha256:38186e481b65877fd8b1f9acc33e922109e983eb7b6e487bd4c71002134ad331"
+                "sha256:032f6e09161e96f417ea7fad46d3fac7a9019c775f202182c22df0e4f714cb1c",
+                "sha256:dea42ae6e0b789b543f728ddae7ddb6740ba33a49fb52c4a4d9cb7bb4aa6ec09"
             ],
-            "version": "==1.6.3"
+            "version": "==1.6.4"
         },
         "async-generator": {
             "hashes": [
@@ -116,6 +116,13 @@
             ],
             "version": "==0.6.1"
         },
+        "musicbrainzngs": {
+            "hashes": [
+                "sha256:28ef261a421dffde0a25281dab1ab214e1b407eec568cd05a53e73256f56adb5"
+            ],
+            "index": "pypi",
+            "version": "==0.6"
+        },
         "mutagen": {
             "hashes": [
                 "sha256:b2a2c2ce87863af12ed7896f341419cd051a3c72c3c6733db9e83060dcadee5e"
@@ -125,11 +132,11 @@
         },
         "pylint": {
             "hashes": [
-                "sha256:0b7e6b5d9f1d4e0b554b5d948f14ed7969e8cdf9a0120853e6e5af60813b18ab",
-                "sha256:34738a82ab33cbd3bb6cd4cef823dbcabdd2b6b48a4e3a3054a2bbbf0c712be9"
+                "sha256:aa519865f8890a5905fa34924fed0f3bfc7d84fc9f9142c16dac52ffecd25a39",
+                "sha256:c353d8225195b37cc3aef18248b8f3fe94c5a6a95affaf885ae21a24ca31d8eb"
             ],
             "index": "pypi",
-            "version": "==1.8.4"
+            "version": "==1.9.1"
         },
         "pynput": {
             "hashes": [
@@ -215,6 +222,7 @@
                 "sha256:e53479f9cf52185bb9d226da9960863007f75e41fcfa8ec932d087ae97552aba",
                 "sha256:fef56ca8e0c136141971ca3aec2fa5c7f873dfcff43960de97943639af132dbb"
             ],
+            "markers": "platform_release >= '11.0'",
             "version": "==4.2.1"
         },
         "pyobjc-framework-avkit": {
@@ -300,6 +308,7 @@
                 "sha256:9f5fcb31397541e64e63f61c4c74b2257d06ed4906f258e0946b22f1c3b4751a",
                 "sha256:bedefb82f15256a603a6ac55f7b7c688cc872eb176c5bebb71377afdbd15a8a8"
             ],
+            "markers": "platform_release >= '15.0'",
             "version": "==4.2.1"
         },
         "pyobjc-framework-contactsui": {
@@ -903,6 +912,7 @@
                 "sha256:9cee35417a7ad64dd649f721b2ce8f7369b6c219883cfbd2998fb85463745828",
                 "sha256:ab27ab7fe4a19de6b7e9104ac4db1010399d05347f9fdd332e998f51ef3327ba"
             ],
+            "markers": "platform_release >= '13.0'",
             "version": "==4.2.1"
         },
         "pyobjc-framework-storekit": {
@@ -978,10 +988,10 @@
         },
         "sortedcontainers": {
             "hashes": [
-                "sha256:566cf5f8dbada3aed99737a19d98f03d15d76bf2a6c27e4fb0f4a718a99be761",
-                "sha256:fa96e9920a37bde76bfdcaca919a125c1d2e581af1137e25de54ee0da7835282"
+                "sha256:2c9db81119d0285a26119554e1ce7332b846ff7f0d05c9a46e9490423685808a",
+                "sha256:87b80f909def3f73778a7c4572ae1d3615daad0c86fc01cb046b51c32bbf85c1"
             ],
-            "version": "==1.5.10"
+            "version": "==2.0.2"
         },
         "trio": {
             "hashes": [
@@ -1002,10 +1012,10 @@
     "develop": {
         "astroid": {
             "hashes": [
-                "sha256:35cfae47aac19c7b407b7095410e895e836f2285ccf1220336afba744cc4c5f2",
-                "sha256:38186e481b65877fd8b1f9acc33e922109e983eb7b6e487bd4c71002134ad331"
+                "sha256:032f6e09161e96f417ea7fad46d3fac7a9019c775f202182c22df0e4f714cb1c",
+                "sha256:dea42ae6e0b789b543f728ddae7ddb6740ba33a49fb52c4a4d9cb7bb4aa6ec09"
             ],
-            "version": "==1.6.3"
+            "version": "==1.6.4"
         },
         "isort": {
             "hashes": [
@@ -1058,11 +1068,11 @@
         },
         "pylint": {
             "hashes": [
-                "sha256:0b7e6b5d9f1d4e0b554b5d948f14ed7969e8cdf9a0120853e6e5af60813b18ab",
-                "sha256:34738a82ab33cbd3bb6cd4cef823dbcabdd2b6b48a4e3a3054a2bbbf0c712be9"
+                "sha256:aa519865f8890a5905fa34924fed0f3bfc7d84fc9f9142c16dac52ffecd25a39",
+                "sha256:c353d8225195b37cc3aef18248b8f3fe94c5a6a95affaf885ae21a24ca31d8eb"
             ],
             "index": "pypi",
-            "version": "==1.8.4"
+            "version": "==1.9.1"
         },
         "six": {
             "hashes": [

@@ -10,6 +10,7 @@ trio = "*"
 pynput = "*"
 mutagen = "*"
 pylint = "*"
+musicbrainzngs = "*"
 
 [dev-packages]
 pylint = "*"
