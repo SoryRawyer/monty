@@ -64,14 +64,6 @@ class BackBlaze(object):
     def upload_file(self, file_location, bucket_id, upload_location):
         """
         upload_file : send stuff to the cloud
-        curl \
-            -H "Authorization: $UPLOAD_AUTHORIZATION_TOKEN" \
-            -H "X-Bz-File-Name: $FILE_TO_UPLOAD" \
-            -H "Content-Type: $MIME_TYPE" \
-            -H "X-Bz-Content-Sha1: $SHA1_OF_FILE" \
-            -H "X-Bz-Info-Author: unknown" \
-            --data-binary "@$FILE_TO_UPLOAD" \
-            $UPLOAD_URL
         """
         file_upload_info = self.get_file_upload_url(bucket_id)
         _, extension = os.path.splitext(file_location)
@@ -86,17 +78,30 @@ class BackBlaze(object):
                 'X-Bz-Info-Author' : 'rsawyer (co-authored-by ablewer)',
             }
             audio.seek(0)
-            requests.post(file_upload_info['uploadUrl'], audio, headers=headers)
+            resp = requests.post(file_upload_info['uploadUrl'], audio, headers=headers)
+            resp.raise_for_status()
+            return resp.json()
+
+    def download_file_by_name(self, bucket_name, file_name, file_destination):
+        """
+        download_file_by_name : do that thing ("that thing", in this case, is downloading
+        files from the sky (cloud))
+        """
+        url = os.path.join(self.auth_stuff['downloadUrl'], 'file', bucket_name, file_name)
+        resp = requests.get(url, headers=self._headers)
+        resp.raise_for_status()
+        with open(file_destination, 'wb') as out:
+            out.write(resp.content)
+
 
 def main():
     b = BackBlaze()
     buckets = b.list_buckets()
     print(buckets)
-    # file_upload_spot = b.get_file_upload_url(buckets[0]['bucketId'])
-    # print(file_upload_spot)
-    b.upload_file('/Users/rorysawyer/media/audio/panda bear/panda bear/05 Fire!.flac',
-                  buckets[0]['bucketId'],
-                  'panda_bear/panda_bear/fire!.flac')
+    # b.upload_file('/Users/rorysawyer/media/audio/panda bear/panda bear/05 Fire!.flac',
+    #               buckets[0]['bucketId'],
+    #               'panda_bear/panda_bear/fire!.flac')
+    b.download_file_by_name('monty-media', 'panda_bear/panda_bear/fire!.flac', 'fire!.flac')
 
 if __name__ == '__main__':
     main()
