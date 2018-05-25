@@ -14,6 +14,7 @@ look up artist/album/song using musicbrainz
 """
 
 import argparse
+# import backblazeb2
 import os
 
 import musicbrainzngs as mb
@@ -26,10 +27,18 @@ def main(arguments):
     main : do something with the args
     look up metadata for each track
     """
+    storage_credentials = load_bb_creds()
     metadata = get_metadata_for_directory(arguments.music_location)
     get_track_data = get_musicbrainz_data()
-    for i in metadata:
-        print(get_track_data(i))
+    enriched_metadata = [get_track_data(i) for i in metadata]
+
+
+def load_bb_creds():
+    """
+    load_bb_creds : load backblaze credentials
+    """
+    env_vars = os.environ
+    return env_vars['B2_ACCOUNT_ID'], env_vars['B2_APPLICATION_KEY']
 
 def get_musicbrainz_data():
     """
@@ -79,20 +88,6 @@ def get_musicbrainz_data():
         return metadata
 
     return get_mb_data_for_track
-
-def recording_from_release(recording: dict, release_id: str) -> bool:
-    """
-    get_recording_matching_artist:
-    arguments:
-    - recording: dict containing attributes about a recording
-    - release_id: string id of release we want to match to
-    """
-    try:
-        releases = [x for x in recording['release-list'] if x['id'] == release_id]
-        return len(releases) > 0
-    except KeyError:
-        print(recording)
-        return False
 
 def get_metadata_for_directory(music_location) -> (list, list):
     """
