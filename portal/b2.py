@@ -3,6 +3,7 @@ b2.py : utilities for iteracting with the Backblaze HTTP API
 """
 
 import base64
+import hashlib
 import os
 import requests
 
@@ -11,6 +12,12 @@ class BackBlaze(object):
     BackBlaze : ugh
     """
     AUTH_URL = 'https://api.backblazeb2.com/b2api/v1/b2_authorize_account'
+
+    EXTENSION_TO_MIME_TYPE = {
+        'flac' : 'audio/flac',
+        'mp3' : 'audio/mpeg',
+        'wav' : 'audio/wav',
+    }
 
     def __init__(self):
         # non-standard way of storing/accessing b2 creds, I guess
@@ -54,13 +61,42 @@ class BackBlaze(object):
         resp.raise_for_status()
         return resp.json()
 
+    def upload_file(self, file_location, bucket_id, upload_location):
+        """
+        upload_file : send stuff to the cloud
+        curl \
+            -H "Authorization: $UPLOAD_AUTHORIZATION_TOKEN" \
+            -H "X-Bz-File-Name: $FILE_TO_UPLOAD" \
+            -H "Content-Type: $MIME_TYPE" \
+            -H "X-Bz-Content-Sha1: $SHA1_OF_FILE" \
+            -H "X-Bz-Info-Author: unknown" \
+            --data-binary "@$FILE_TO_UPLOAD" \
+            $UPLOAD_URL
+        """
+        file_upload_info = self.get_file_upload_url(bucket_id)
+        _, extension = os.path.splitext(file_location)
+        extension = extension.replace('.', '')
+        with open(file_location, 'rb') as audio:
+            sha1 = hashlib.sha1(audio.read()).hexdigest()
+            headers = {
+                'Authorization' : file_upload_info['authorizationToken'],
+                'X-Bz-File-Name' : upload_location,
+                'Content-Type' : self.EXTENSION_TO_MIME_TYPE[extension],
+                'X-Bz-Content-Sha1' : sha1,
+                'X-Bz-Info-Author' : 'rsawyer (co-authored-by ablewer)',
+            }
+            audio.seek(0)
+            requests.post(file_upload_info['uploadUrl'], audio, headers=headers)
+
 def main():
     b = BackBlaze()
-    # print(b.auth_stuff)
     buckets = b.list_buckets()
     print(buckets)
-    file_upload_spot = b.get_file_upload_url(buckets[0]['bucketId'])
-    print(file_upload_spot)
+    # file_upload_spot = b.get_file_upload_url(buckets[0]['bucketId'])
+    # print(file_upload_spot)
+    b.upload_file('/Users/rorysawyer/media/audio/panda bear/panda bear/05 Fire!.flac',
+                  buckets[0]['bucketId'],
+                  'panda_bear/panda_bear/fire!.flac')
 
 if __name__ == '__main__':
     main()
