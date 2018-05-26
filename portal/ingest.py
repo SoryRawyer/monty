@@ -14,11 +14,12 @@ look up artist/album/song using musicbrainz
 """
 
 import argparse
-# import backblazeb2
 import os
 
 import musicbrainzngs as mb
 from mutagen import mp3, flac
+
+from google.cloud import storage
 
 mb.set_useragent("application", "0.01", "http://example.com")
 
@@ -27,18 +28,23 @@ def main(arguments):
     main : do something with the args
     look up metadata for each track
     """
-    storage_credentials = load_bb_creds()
+    client = storage.Client()
     metadata = get_metadata_for_directory(arguments.music_location)
     get_track_data = get_musicbrainz_data()
     enriched_metadata = [get_track_data(i) for i in metadata]
-
-
-def load_bb_creds():
-    """
-    load_bb_creds : load backblaze credentials
-    """
-    env_vars = os.environ
-    return env_vars['B2_ACCOUNT_ID'], env_vars['B2_APPLICATION_KEY']
+    bucket = client.get_bucket(arguments.upload_bucket)
+    for track in enriched_metadata:
+        _, ext = os.path.splitext(track['path'])
+        ext = ext.replace('.', '')
+        upload_location = os.path.join(track['artist_id'],
+                                       track['release_id'],
+                                       '{}.{}'.format(track['track_id'], ext))
+        print('Uploading {} to {}/{}'.format(track['path'],
+                                             arguments.upload_bucket,
+                                             upload_location))
+        blob = bucket.blob(upload_location)
+        with open(track['path'], 'rb') as audio:
+            blob.upload_from_file(audio)
 
 def get_musicbrainz_data():
     """

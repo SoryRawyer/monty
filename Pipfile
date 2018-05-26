@@ -11,7 +11,7 @@ pynput = "*"
 mutagen = "*"
 pylint = "*"
 musicbrainzngs = "*"
-requests = "*"
+google-cloud-storage = "*"
 
 [dev-packages]
 pylint = "*"
