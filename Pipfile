@@ -12,6 +12,7 @@ mutagen = "*"
 pylint = "*"
 musicbrainzngs = "*"
 google-cloud-storage = "*"
+requests = "*"
 
 [dev-packages]
 pylint = "*"
