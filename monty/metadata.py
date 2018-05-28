@@ -26,6 +26,11 @@ class Metadata(object):
         self.track_number = int(self._metadata['tracknumber'][0].split('/')[0])
         self._file_format = extension.replace('.', '')
 
+        # musicbrainz fields
+        self.artist_id = None
+        self.release_id = None
+        self.recording_id = None
+
     def set_format(self, file_format):
         """
         set_format : validate format before setting it

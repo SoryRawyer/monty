@@ -12,10 +12,11 @@ from typing import Callable, List
 import musicbrainzngs as mb
 from mutagen import mp3, flac
 
+from monty.metadata import Metadata
 
 mb.set_useragent("application", "0.01", "http://example.com")
 
-def generate_local_index(directory: str) -> List[dict]:
+def generate_local_index(directory: str) -> List[Metadata]:
     """
     generate_local_index : generate an index (list of dicts) of music data
     arguments:
@@ -39,11 +40,11 @@ def get_musicbrainz_data() -> Callable[[dict], dict]:
     # releases_with_tracks : key is release ID, value is a track list sorted by track number
     releases_with_tracks = {}
 
-    def get_mb_data_for_track(metadata: dict) -> dict:
+    def get_mb_data_for_track(metadata: Metadata) -> Metadata:
         """
         get_mb_data_for_track
         arguments:
-            metadata : dict containing artist, album, and track names
+            metadata : Metadata object containing artist, album, and track names
         returns:
             musicbrainz ids for artist, album, and track names
         """
@@ -60,21 +61,18 @@ def get_musicbrainz_data() -> Callable[[dict], dict]:
         release = release_group['release-group-list'][0]['release-list'][0]
 
         if release['id'] in releases_with_tracks:
-            track = releases_with_tracks[release['id']][metadata['position'] - 1]
+            track = releases_with_tracks[release['id']][metadata.track_number - 1]
         else:
             release_with_tracks = mb.get_release_by_id(release['id'], includes=['recordings'])
             tracks = release_with_tracks['release']['medium-list'][0]['track-list']
             tracks.sort(key=lambda x: int(x['position']))
             releases_with_tracks[release['id']] = tracks
-            track = tracks[metadata['position'] - 1]
+            track = tracks[metadata.track_number - 1]
 
-        ids = {
-            'artist_id' : artist['id'],
-            'release_id' : release['id'],
-            'track_id' : track['recording']['id'],
-        }
+        metadata.artist_id = artist['id']
+        metadata.release_id = release['id']
+        metadata.track_id = track['recording']['id']
 
-        metadata.update(ids)
         return metadata
 
     return get_mb_data_for_track
@@ -91,7 +89,7 @@ def get_metadata_for_directory(directory: str) -> List[dict]:
     for (dirpath, dirnames, filenames) in os.walk(directory):
         for dirname in dirnames:
             get_metadata_for_directory(dirname)
-        metadata += [get_artist_album_track_name(os.path.join(dirpath, filename))
+        metadata += [Metadata(os.path.join(dirpath, filename))
                      for filename in filenames]
     return metadata
 
@@ -101,6 +99,7 @@ def get_artist_album_track_name(path: str) -> dict:
     argument: full path to audio file
     return artist, album, and track name
     """
+    metadata = Metadata(path)
     _, extension = os.path.splitext(path)
     metadata = None
     if extension == '.mp3':

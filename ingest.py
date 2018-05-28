@@ -17,8 +17,8 @@ import argparse
 import json
 import os
 import shutil
-from google.cloud import storage
 from typing import List
+from google.cloud import storage
 
 from monty import config
 from monty.index import generate_local_index
@@ -32,17 +32,17 @@ def main(arguments):
     enriched_metadata = generate_local_index(arguments.music_location)
     bucket = client.get_bucket(arguments.upload_bucket)
     for track in enriched_metadata:
-        _, ext = os.path.splitext(track['path'])
+        _, ext = os.path.splitext(track.file_path)
         ext = ext.replace('.', '')
         upload_location = os.path.join(arguments.upload_prefix,
-                                       track['artist_id'],
-                                       track['release_id'],
-                                       '{}.{}'.format(track['track_id'], ext))
-        print('Uploading {} to {}/{}'.format(track['path'],
+                                       track.artist_id,
+                                       track.release_id,
+                                       '{}.{}'.format(track.track_id, ext))
+        print('Uploading {} to {}/{}'.format(track.file_path,
                                              arguments.upload_bucket,
                                              upload_location))
         blob = bucket.blob(upload_location)
-        with open(track['path'], 'rb') as audio:
+        with open(track.file_path, 'rb') as audio:
             blob.upload_from_file(audio)
     # tracks uploaded. now let's make that index
     # first, check to see if it's already there
@@ -50,7 +50,17 @@ def main(arguments):
     existing_blob = bucket.get_blob(index_location)
     index = {}
     for track in enriched_metadata:
-        index[track['track_id']] = track
+        index[track.track_id] = {
+            'artist' : track.artist,
+            'album' : track.album,
+            'track_name' : track.track_title,
+            'position' : track.track_number,
+            'path' : track.file_path,
+            'artist_id' : track.artist_id,
+            'release_id' : track.release_id,
+            'track_id' : track.track_id,
+            'file_format' : track.file_format,
+        }
     if existing_blob:
         # blob exists
         beep = existing_blob.download_as_string()
@@ -73,15 +83,15 @@ def copy_to_media_directory(metadata: List[dict]):
     - list of files to copy (dict containing song IDs)
     """
     for metadatum in metadata:
-        src = metadatum['path']
+        src = metadatum.file_path
         album_dir = os.path.join(config.MEDIA_DIR,
-                                 metadatum['artist_id'],
-                                 metadatum['release_id'])
+                                 metadatum.artist_id,
+                                 metadatum.release_id)
         try:
             os.makedirs(album_dir)
         except FileExistsError:
             pass
-        dest_shortname = '{}.{}'.format(metadatum['track_id'], metadatum['format'])
+        dest_shortname = '{}.{}'.format(metadatum.recording_id, metadatum.file_format)
         dest = os.path.join(album_dir, dest_shortname)
         shutil.copyfile(src, dest)
 
