@@ -2,5 +2,11 @@
 config.py : project-wide configuration
 """
 
-media_dir = '/Users/rorysawyer/media/audio'
-db_location = '/Users/rorysawyer/media/db/local.db'
+# local app values
+APP_DIR = '/Users/rorysawyer/.monty'
+MEDIA_DIR = '/Users/rorysawyer/media/audio'
+DB_LOCATION = '/Users/rorysawyer/.monty/db/local.db'
+
+# Cloud storage values
+CLOUD_STORAGE_PREFIX = '/audio'
+CLOUD_STORAGE_BUCKET = 'monty-media'

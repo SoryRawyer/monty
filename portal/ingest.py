@@ -153,6 +153,7 @@ def get_artist_album_track_name(path: str) -> dict:
         'track_name' : metadata['title'][0],
         'position' : int(metadata['tracknumber'][0].split('/')[0]),
         'path' : path,
+        'format' : extension.replace('.', '')
     }
 
 if __name__ == '__main__':

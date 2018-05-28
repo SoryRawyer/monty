@@ -29,8 +29,8 @@ class Database(object):
     """
 
     def __init__(self):
-        self.media_dir = config.media_dir
-        self.db_location = config.db_location
+        self.media_dir = config.MEDIA_DIR
+        self.db_location = config.DB_LOCATION
         if not os.path.isfile(self.db_location):
             # if the db doesn't exist, make it!
             self._conn = sqlite3.connect(self.db_location)
@@ -82,7 +82,7 @@ class Database(object):
                 Database.get_tracks_from_media_dir(dirname)
             for filename in filenames:
                 try:
-                    yield (Metadata(os.path.join(dirpath, filename)), 
+                    yield (Metadata(os.path.join(dirpath, filename)),
                            os.path.join(dirpath, filename))
                 except FormatNotImplemented:
                     continue
