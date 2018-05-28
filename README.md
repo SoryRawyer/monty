@@ -9,9 +9,10 @@ purpose: I'd like a way to play music outside of itunes. Spotify doesn't necessa
   - local DB has a list of all the music on the computer
   - local db will also try to get a list of all music in cloud storage
   - if a user wants to listen to a song that's on cloud storage, monty will download it
-- portal: music ingest (maybe something else later)
-  - ingest.py recursively reads a directory and uploads music found there to cloud storage
+- index.py recursively reads a directory and returns metadata about it (both from the file and from musicbrainz)
+- ingest.py uploads music returned by index.py to cloud storage
   - upload path is determined by data returned by the musicbrainz API
+  - moves data to the application's media directory, also stored using musicbrainz IDs
 
 ---
 

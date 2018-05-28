@@ -16,8 +16,11 @@ look up artist/album/song using musicbrainz
 import argparse
 import json
 import os
+import shutil
 from google.cloud import storage
+from typing import List
 
+from monty import config
 from monty.index import generate_local_index
 
 def main(arguments):
@@ -61,6 +64,26 @@ def main(arguments):
     with open('audio_index.json', 'rb') as tmp:
         blob = bucket.blob(index_location)
         blob.upload_from_file(tmp)
+    copy_to_media_directory(enriched_metadata)
+
+def copy_to_media_directory(metadata: List[dict]):
+    """
+    copy_to_media_directory
+    arugments:
+    - list of files to copy (dict containing song IDs)
+    """
+    for metadatum in metadata:
+        src = metadatum['path']
+        album_dir = os.path.join(config.MEDIA_DIR,
+                                 metadatum['artist_id'],
+                                 metadatum['release_id'])
+        try:
+            os.makedirs(album_dir)
+        except FileExistsError:
+            pass
+        dest_shortname = '{}.{}'.format(metadatum['track_id'], metadatum['format'])
+        dest = os.path.join(album_dir, dest_shortname)
+        shutil.copyfile(src, dest)
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
