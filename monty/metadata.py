@@ -24,6 +24,17 @@ class Metadata(object):
         self.album = self._metadata['album'][0]
         self.track_title = self._metadata['title'][0]
         self.track_number = int(self._metadata['tracknumber'][0].split('/')[0])
+        self._file_format = extension.replace('.', '')
+
+    def set_format(self, file_format):
+        """
+        set_format : validate format before setting it
+        """
+        if (file_format != 'mp3' and file_format != 'flac'):
+            raise FormatNotImplemented('File format {} not supported'.format(file_format))
+        self._file_format = file_format
+
+    file_format = property(fset=set_format)
 
 class FormatNotImplemented(Exception):
     """

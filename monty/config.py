@@ -6,7 +6,7 @@ import os
 
 # local app values
 APP_DIR = '/Users/rorysawyer/.monty'
-MEDIA_DIR = '/Users/rorysawyer/media/audio'
+MEDIA_DIR = os.path.join(APP_DIR, 'media', 'audio')
 DB_LOCATION = os.path.join(APP_DIR, 'db/local.db')
 AUDIO_INDEX_LOCATION = os.path.join(APP_DIR, 'index/audio.json')
 
