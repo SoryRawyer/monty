@@ -4,8 +4,11 @@ db.py : do some database-y things with sqlite
 This should keep track of what songs we have available, with a flag for local vs remote
 """
 
+import json
 import os
 import sqlite3
+from typing import List
+
 import monty.config as config
 from monty.metadata import Metadata, FormatNotImplemented
 
@@ -86,6 +89,30 @@ class Database(object):
                            os.path.join(dirpath, filename))
                 except FormatNotImplemented:
                     continue
+
+    @staticmethod
+    def get_tracks_from_index_file(index: str) -> List[Metadata]:
+        """
+        get_tracks_from_index_file : pretty self-explanatory
+        """
+        with open(index) as index_file:
+            tracks = json.load(index_file)
+        metadata = []
+        for track_id in tracks:
+            track = tracks[track_id]
+            metadatum = Metadata()
+            metadatum.artist = track['artist']
+            metadatum.album = track['album']
+            metadatum.track_title = track['track_name']
+            metadatum.track_number = track['position']
+            metadatum.file_path = track['path']
+            metadatum.artist_id = track['artist_id']
+            metadatum.release_id = track['release_id']
+            metadatum.track_id = track['track_id']
+            metadatum.file_format = track['file_format']
+            metadata.append(metadatum)
+        return metadata
+
 
 if __name__ == '__main__':
     db = Database()

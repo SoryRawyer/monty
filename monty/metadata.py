@@ -10,13 +10,25 @@ class Metadata(object):
     Metadata : return information about a track
     """
 
-    def __init__(self, file_path):
-        self.file_path = file_path
-        _, extension = os.path.splitext(file_path)
+    def __init__(self, file_path=None):
+        if file_path:
+            self.file_path = file_path
+            self.set_metadata_from_file()
+
+        # musicbrainz fields
+        self.artist_id = None
+        self.release_id = None
+        self.recording_id = None
+
+    def set_metadata_from_file(self):
+        """
+        set_metadata_from_file : fill out metadata fields based on input file path
+        """
+        _, extension = os.path.splitext(self.file_path)
         if extension == '.mp3':
-            self._metadata = mp3.EasyMP3(file_path)
+            self._metadata = mp3.EasyMP3(self.file_path)
         elif extension == '.flac':
-            self._metadata = flac.FLAC(file_path)
+            self._metadata = flac.FLAC(self.file_path)
         else:
             raise FormatNotImplemented('Extension {} not supported'.format(extension))
 
@@ -24,12 +36,7 @@ class Metadata(object):
         self.album = self._metadata['album'][0]
         self.track_title = self._metadata['title'][0]
         self.track_number = int(self._metadata['tracknumber'][0].split('/')[0])
-        self._file_format = extension.replace('.', '')
-
-        # musicbrainz fields
-        self.artist_id = None
-        self.release_id = None
-        self.recording_id = None
+        self.file_format = extension.replace('.', '')
 
     def set_format(self, file_format):
         """
