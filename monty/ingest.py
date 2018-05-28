@@ -16,7 +16,7 @@ look up artist/album/song using musicbrainz
 import argparse
 import json
 import os
-import tempfile
+from typing import Callable, List
 
 import musicbrainzngs as mb
 from mutagen import mp3, flac
@@ -31,9 +31,7 @@ def main(arguments):
     look up metadata for each track
     """
     client = storage.Client()
-    metadata = get_metadata_for_directory(arguments.music_location)
-    get_track_data = get_musicbrainz_data()
-    enriched_metadata = [get_track_data(i) for i in metadata]
+    enriched_metadata = generate_local_index(arguments.music_location)
     bucket = client.get_bucket(arguments.upload_bucket)
     for track in enriched_metadata:
         _, ext = os.path.splitext(track['path'])
@@ -69,17 +67,31 @@ def main(arguments):
         blob = bucket.blob(index_location)
         blob.upload_from_file(tmp)
 
+def generate_local_index(directory: str) -> List[dict]:
+    """
+    generate_local_index : generate an index (list of dicts) of music data
+    arguments:
+    - directory : full path to root of media for which we want to generate index
 
-def get_musicbrainz_data():
+    returns list of dict with musicbrainz ids and names and file format
+    """
+    metadata = get_metadata_for_directory(directory)
+    get_track_data = get_musicbrainz_data()
+    enriched_metadata = [get_track_data(i) for i in metadata]
+    return enriched_metadata
+
+def get_musicbrainz_data() -> Callable[[dict], dict]:
     """
     get_musicbrainz_data : memoization closure for musicbrainz data
     reduce calls to the musicbrainz api by saving track lists
+
+    returns a closure, get_mb_data_for_track
     """
 
     # releases_with_tracks : key is release ID, value is a track list sorted by track number
     releases_with_tracks = {}
 
-    def get_mb_data_for_track(metadata: dict):
+    def get_mb_data_for_track(metadata: dict) -> dict:
         """
         get_mb_data_for_track
         arguments:
@@ -119,16 +131,16 @@ def get_musicbrainz_data():
 
     return get_mb_data_for_track
 
-def get_metadata_for_directory(music_location) -> (list, list):
+def get_metadata_for_directory(directory: str) -> List[dict]:
     """
     get_metadata_for_directory
     arguments:
-        music_location: full path to directory of audio files
+        directory: full path to directory of audio files
     returns:
         listof metadata dicts (with paths!)
     """
     metadata = []
-    for (dirpath, dirnames, filenames) in os.walk(music_location):
+    for (dirpath, dirnames, filenames) in os.walk(directory):
         for dirname in dirnames:
             get_metadata_for_directory(dirname)
         metadata += [get_artist_album_track_name(os.path.join(dirpath, filename))
@@ -137,7 +149,7 @@ def get_metadata_for_directory(music_location) -> (list, list):
 
 def get_artist_album_track_name(path: str) -> dict:
     """
-    get_artist_album_track_name :
+    get_artist_album_track_name : read metadata from file and return certain fields
     argument: full path to audio file
     return artist, album, and track name
     """
