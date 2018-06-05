@@ -2,8 +2,10 @@
 tracklist.py : a tracklist class for playing audio
 """
 
+import os
 from typing import List
 
+from monty.cloud import CloudStorage
 from monty.metadata import Metadata
 
 # TODO: make this hold a list of metadata or cloud objects or something
@@ -17,6 +19,7 @@ class TrackList(object):
                                            'cannot be greater than the list of songs')
         self.song_metadata = song_metadata
         self.position = position
+        self.cloud = CloudStorage()
 
     def enqueue_song(self, song):
         """
@@ -37,10 +40,7 @@ class TrackList(object):
         If there are no more songs to play, raise an exception
         update the current position to reflect the track change
         """
-        if self.position == len(self.song_metadata):
-            raise NoAvailableSongException('no more songs')
-        self.position += 1
-        return self.song_metadata[self.position].get_local_path()
+        return self.skip_to_index(self.position + 1)
 
     def get_previous_song(self) -> str:
         """
@@ -48,10 +48,7 @@ class TrackList(object):
         If we're at the first track, rais an exception
         update the current position to reflect the track change
         """
-        if self.position == 0:
-            raise NoAvailableSongException('no more songs')
-        self.position -= 1
-        return self.song_metadata[self.position].get_local_path()
+        return self.skip_to_index(self.position - 1)
 
     def get_current_song(self) -> str:
         """
@@ -59,14 +56,22 @@ class TrackList(object):
         """
         return self.song_metadata[self.position].get_local_path()
 
-    def skip_to_index(self, index: int) -> str:
+    async def skip_to_index(self, index: int) -> str:
         """
         skip_to_index : skip to a given index
         """
         if index < 0 or index >= len(self.song_metadata):
             raise NoAvailableSongException('cannot skip to index {}'.format(index))
         self.position = index
-        return self.song_metadata[self.position].get_local_path()
+        current_track = self.song_metadata[self.position]
+        try:
+            os.stat(current_track.get_local_path())
+        except FileNotFoundError:
+            await self.cloud.get_recording(current_track.artist_id,
+                                           current_track.release_id,
+                                           current_track.recording_id,
+                                           current_track.file_format)
+        return current_track.get_local_path()
 
 
 class NoAvailableSongException(Exception):

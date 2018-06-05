@@ -9,6 +9,8 @@ import os
 import sqlite3
 from typing import List
 
+import trio
+
 import monty.config as config
 from monty.cloud import CloudStorage
 from monty.metadata import Metadata, FormatNotImplemented
@@ -33,16 +35,7 @@ class Database(object):
     """
 
     def __init__(self):
-        self.media_dir = config.MEDIA_DIR
-        self.db_location = config.DB_LOCATION
-        if not os.path.isfile(self.db_location):
-            # if the db doesn't exist, make it!
-            self._conn = sqlite3.connect(self.db_location)
-            storage = CloudStorage()
-            storage.get_audio_index()
-            self.init_db()
-        else:
-            self._conn = sqlite3.connect(self.db_location)
+        pass
 
     def init_db(self):
         """
@@ -146,6 +139,24 @@ class Database(object):
                 metadatum.file_format = ext.replace('.', '')
             metadata.append(metadatum)
         return metadata
+
+    @staticmethod
+    async def new():
+        """
+        new : asynchronously create a new instance of a database object
+        """
+        db = Database()
+        db.media_dir = config.MEDIA_DIR
+        db.db_location = config.DB_LOCATION
+        if not os.path.isfile(db.db_location):
+            # if the db doesn't exist, make it!
+            db._conn = sqlite3.connect(db.db_location)
+            storage = CloudStorage()
+            await storage.get_audio_index()
+            db.init_db()
+        else:
+            db._conn = sqlite3.connect(db.db_location)
+        return db
 
 
 if __name__ == '__main__':

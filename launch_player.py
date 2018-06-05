@@ -7,7 +7,7 @@ import signal
 import sys
 import trio
 
-from monty import Database, Player, PlayerGUI, TrackList, MediaKeyListener
+from monty import Database, Player, PlayerGUI, TrackList
 
 SH = logging.StreamHandler(sys.stdout)
 LOGGER = logging.getLogger(__name__)
@@ -19,67 +19,80 @@ async def main():
     """
 
     # A bunch of callback functions for keyboard/gui events
-    def on_play_or_pause(_):
+    async def on_play_or_pause():
         """
         on_play_or_pause : how to react when the play/pause media key is pressed
         """
-        if player.is_playing():
-            player.pause()
-        else:
-            player.play()
+        while True:
+            await play_pause_queue.get()
+            print('hi')
+            if player.is_playing():
+                player.pause()
+            else:
+                player.play()
 
-    def on_next_track(_):
+    async def on_next_track():
         """
         on_next_track : how to react when the next track media key is pressed
         """
-        player.change_song(track_list.get_next_song())
+        while True:
+            await next_track_queue.get()
+            player.change_song(track_list.get_next_song())
 
-    def on_previous_track(_):
+    async def on_previous_track():
         """
         on_previous_track : how to react when the previous track media key is pressed
         """
-        player.change_song(track_list.get_previous_song())
+        while True:
+            await previous_track_queue.get()
+            player.change_song(track_list.get_previous_song())
 
-    def skip_to_arbitrary_song(song_position):
+    async def skip_to_arbitrary_song():
         """
         skip_to_arbitrary_song : given an index, skip to that position in the tracklist
         """
-        player.change_song(track_list.skip_to_index(song_position))
+        while True:
+            song_position = await seek_queue.get()
+            song_location = await track_list.skip_to_index(song_position)
+            player.change_song(song_location)
 
     def stop_everything(_, __):
         """
         stop_everything: shut everything down
         """
         player.stop()
-        listener.stop()
         sys.exit(0)
 
-    db = Database()
+    db = await Database.new()
     # how should this work? db returns metadata objects?
     tracks = list(db.generate_all_track_info())
     track_list = TrackList(tracks)
 
-    listener = MediaKeyListener()
-    listener.on_action('play_pause', on_play_or_pause)
-    listener.on_action('next_track', on_next_track)
-    listener.on_action('previous_track', on_previous_track)
-    listener.start()
     player = Player(track_list.get_current_song())
 
     signal.signal(signal.SIGTERM, stop_everything)
     signal.signal(signal.SIGINT, stop_everything)
 
+    play_pause_queue = trio.Queue(1)
+    next_track_queue = trio.Queue(1)
+    previous_track_queue = trio.Queue(1)
+    seek_queue = trio.Queue(1)
+
     gui_bindings = {
-        'play_pause' : ('<Button-1>', on_play_or_pause),
-        'next_track' : ('<Button-1>', on_next_track),
-        'previous_track' : ('<Button-1>', on_previous_track),
-        'text' : ('<Double-Button-1>', skip_to_arbitrary_song),
+        'play_pause' : ('<Button-1>', play_pause_queue),
+        'next_track' : ('<Button-1>', next_track_queue),
+        'previous_track' : ('<Button-1>', previous_track_queue),
+        'text' : ('<Double-Button-1>', seek_queue),
     }
     gui = PlayerGUI.new(gui_bindings)
     gui.add_tracks_to_listbox([track.get_display_string() for track in tracks])
 
     async with trio.open_nursery() as nursery:
         nursery.start_soon(gui.launch_gui)
+        nursery.start_soon(skip_to_arbitrary_song)
+        nursery.start_soon(on_play_or_pause)
+        nursery.start_soon(on_next_track)
+        nursery.start_soon(on_previous_track)
 
     return
 

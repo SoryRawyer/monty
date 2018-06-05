@@ -2,6 +2,7 @@
 gui.py : gui for playing the music
 """
 
+import asyncio
 import functools
 import tkinter as tk
 from tkinter import ttk
@@ -23,9 +24,6 @@ class PlayerGUI(tk.Frame):
         self.mainframe.rowconfigure(0, weight=1)
         self.bindings = {}
         self.populate_screen()
-        for button in bindings:
-            event, func = bindings[button]
-            self.bind_to(button, event, func)
         for chil in self.mainframe.winfo_children():
             chil.grid_configure(padx=10, pady=10)
 
@@ -61,7 +59,7 @@ class PlayerGUI(tk.Frame):
         for track in tracklist:
             self.text.insert('end', track)
 
-    def bind_to(self, button, event, func, override=False):
+    def bind_to(self, button, event, queue, override=False):
         """
         bind : bind the given function to the given button
         """
@@ -71,7 +69,9 @@ class PlayerGUI(tk.Frame):
         elif button == 'text' and event == '<Double-Button-1>':
             # if this is the text button, then we need to pass the current selected
             # item to the callback
-            func = functools.partial(self.on_text_double_click, func)
+            func = functools.partial(self.on_text_double_click, queue)
+        else:
+            func = lambda _: queue.put_nowait(1)
         self.bindings[button] = (event, func)
         self.__getattribute__(button).bind(event, func)
 
@@ -87,11 +87,11 @@ class PlayerGUI(tk.Frame):
         """
         return self.text.selection_get()
 
-    def on_text_double_click(self, func, _):
+    def on_text_double_click(self, queue, _):
         """
         on_text_double_click : on text double click, call the function with the selected element
         """
-        func(self.text.index(tk.ACTIVE))
+        queue.put_nowait(self.text.index(tk.ACTIVE))
 
     @staticmethod
     def new(bindings=None):
@@ -101,7 +101,11 @@ class PlayerGUI(tk.Frame):
         root = tk.Tk()
         if not bindings:
             bindings = {}
-        return PlayerGUI(root, bindings)
+        gui = PlayerGUI(root, bindings)
+        for button in bindings:
+            event, func = bindings[button]
+            gui.bind_to(button, event, func)
+        return gui
 
 class BindingAlreadyExistsException(Exception):
     """

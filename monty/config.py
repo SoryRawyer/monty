@@ -11,5 +11,5 @@ DB_LOCATION = os.path.join(APP_DIR, 'db/local.db')
 AUDIO_INDEX_LOCATION = os.path.join(APP_DIR, 'index/audio.json')
 
 # Cloud storage values
-CLOUD_STORAGE_PREFIX = '/audio'
+CLOUD_STORAGE_PREFIX = 'audio'
 CLOUD_STORAGE_BUCKET = 'monty-media'

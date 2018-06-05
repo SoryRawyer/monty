@@ -16,7 +16,7 @@ class CloudStorage(object):
         self.client = storage.Client()
         self.bucket = self.client.get_bucket(config.CLOUD_STORAGE_BUCKET)
 
-    def get_recording(self, artist_id, release_id, recording_id, file_format):
+    async def get_recording(self, artist_id, release_id, recording_id, file_format):
         """
         get_recording : download a recording from cloud storage
         """
@@ -36,7 +36,7 @@ class CloudStorage(object):
                                  recording_shortname)
         storage.Blob(name=blob_name, bucket=self.bucket).download_to_filename(recording_path)
 
-    def get_audio_index(self):
+    async def get_audio_index(self):
         """
         get_audio_index : pretty self-explanatory
         """
