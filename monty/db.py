@@ -10,6 +10,7 @@ import sqlite3
 from typing import List
 
 import monty.config as config
+from monty.cloud import CloudStorage
 from monty.metadata import Metadata, FormatNotImplemented
 
 class Database(object):
@@ -37,6 +38,8 @@ class Database(object):
         if not os.path.isfile(self.db_location):
             # if the db doesn't exist, make it!
             self._conn = sqlite3.connect(self.db_location)
+            storage = CloudStorage()
+            storage.get_audio_index()
             self.init_db()
         else:
             self._conn = sqlite3.connect(self.db_location)
@@ -49,31 +52,58 @@ class Database(object):
             self._conn.execute("""
             create table audio_tracks 
                 (artist varchar,
-                album varchar, 
-                track_name varchar,
-                album_position int,
-                track_location varchar)
+                 album varchar,
+                 track_title varchar,
+                 track_number int,
+                 file_path varchar,
+                 artist_id varchar,
+                 release_id varchar,
+                 track_id varchar,
+                 file_format varchar)
             """)
         # iterate through self.media_dir
         #   get metadata for each track, then insert it into the database
         with self._conn:
-            for (metadata, location) in Database.get_tracks_from_media_dir(self.media_dir):
+            for metadatum in Database.get_tracks_from_index_file(config.AUDIO_INDEX_LOCATION):
                 self._conn.execute("""
-                insert into audio_tracks (artist, album, track_name, album_position, track_location)
-                 values (?, ?, ?, ?, ?)
-                """, (metadata.artist,
-                      metadata.album,
-                      metadata.track_title,
-                      metadata.track_number,
-                      location))
+                insert into audio_tracks (
+                    artist,
+                    album,
+                    track_title,
+                    track_number,
+                    file_path,
+                    artist_id,
+                    release_id,
+                    track_id,
+                    file_format)
+                 values (?, ?, ?, ?, ?, ?, ?, ?, ?)
+                """, (metadatum.artist,
+                      metadatum.album,
+                      metadatum.track_title,
+                      metadatum.track_number,
+                      metadatum.file_path,
+                      metadatum.artist_id,
+                      metadatum.release_id,
+                      metadatum.recording_id,
+                      metadatum.file_format))
 
     def generate_all_track_info(self):
         """
         generate_all_track_info : create a generator for all track information
         """
-        query = 'select * from audio_tracks order by artist, album, album_position'
+        query = 'select * from audio_tracks order by artist, album, track_number'
         for i in self._conn.execute(query):
-            yield i
+            metadatum = Metadata()
+            metadatum.artist = i[0]
+            metadatum.album = i[1]
+            metadatum.track_title = i[2]
+            metadatum.track_number = i[3]
+            metadatum.file_path = i[4]
+            metadatum.artist_id = i[5]
+            metadatum.release_id = i[6]
+            metadatum.recording_id = i[7]
+            metadatum.file_format = i[8]
+            yield metadatum
 
     @staticmethod
     def get_tracks_from_media_dir(input_dir):
@@ -108,8 +138,12 @@ class Database(object):
             metadatum.file_path = track['path']
             metadatum.artist_id = track['artist_id']
             metadatum.release_id = track['release_id']
-            metadatum.track_id = track['track_id']
-            metadatum.file_format = track['file_format']
+            metadatum.recording_id = track['track_id']
+            try:
+                metadatum.file_format = track['format']
+            except KeyError:
+                _, ext = os.path.splitext(track['path'])
+                metadatum.file_format = ext.replace('.', '')
             metadata.append(metadatum)
         return metadata
 

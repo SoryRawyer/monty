@@ -55,9 +55,9 @@ async def main():
         sys.exit(0)
 
     db = Database()
+    # how should this work? db returns metadata objects?
     tracks = list(db.generate_all_track_info())
-    track_list = TrackList([x[4] for x in tracks])
-    track_display_format = '{} - {} - {}'
+    track_list = TrackList(tracks)
 
     listener = MediaKeyListener()
     listener.on_action('play_pause', on_play_or_pause)
@@ -76,7 +76,7 @@ async def main():
         'text' : ('<Double-Button-1>', skip_to_arbitrary_song),
     }
     gui = PlayerGUI.new(gui_bindings)
-    gui.add_tracks_to_listbox([track_display_format.format(x[0], x[1], x[2]) for x in tracks])
+    gui.add_tracks_to_listbox([track.get_display_string() for track in tracks])
 
     async with trio.open_nursery() as nursery:
         nursery.start_soon(gui.launch_gui)

@@ -41,5 +41,4 @@ class CloudStorage(object):
         get_audio_index : pretty self-explanatory
         """
         blob_name = '/index/audio.json'
-        local_index = os.path.join(config.APP_DIR, blob_name)
-        storage.Blob(name=blob_name, bucket=self.bucket).download_to_filename(local_index)
+        storage.Blob(name=blob_name, bucket=self.bucket).download_to_filename(config.AUDIO_INDEX_LOCATION)
