@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "b27f5f792b2ea585592803f271a1acd3800b10ad13fb6972fe736d31d70ddd98"
+            "sha256": "811aa21d3b7485b8afc871252dfd09869da270484a55b6aedf76be59ad595b2f"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -22,20 +22,6 @@
                 "sha256:dea42ae6e0b789b543f728ddae7ddb6740ba33a49fb52c4a4d9cb7bb4aa6ec09"
             ],
             "version": "==1.6.4"
-        },
-        "async-generator": {
-            "hashes": [
-                "sha256:2f45541002a14f80fffc6d52788f92470ff0d9bfe81c434ea8cd60babe43de9e",
-                "sha256:b7d5465c6174fe86dba498ececb175f93a6097ffb7cc91946405e1f05b848371"
-            ],
-            "version": "==1.9"
-        },
-        "attrs": {
-            "hashes": [
-                "sha256:4b90b09eeeb9b88c35bc642cbac057e45a5fd85367b985bd2809c62b7b939265",
-                "sha256:e0d0eb91441a3b53dab4d9b743eafc1ac44476296a2053b6ca3af0b139faf87b"
-            ],
-            "version": "==18.1.0"
         },
         "cachetools": {
             "hashes": [
@@ -58,13 +44,6 @@
             ],
             "version": "==3.0.4"
         },
-        "contextvars": {
-            "hashes": [
-                "sha256:7d73f8b1426cf0200fbe16900fcd73c9be29c54546b48a3980727e670b1acb10"
-            ],
-            "markers": "python_version < '3.7'",
-            "version": "==2.2"
-        },
         "google-api-core": {
             "hashes": [
                 "sha256:370d5dc108ac5dfea2eee8ef32b77693444bf957d4657820d12596ca5082e8ae",
@@ -74,10 +53,10 @@
         },
         "google-auth": {
             "hashes": [
-                "sha256:34088434cb2a2409360b8f3cbc04195a465df1fb2aafad71ebbded77cbf08803",
-                "sha256:9051802d3dae256036cca9e34633a32c0ed1427730d4ebc513dff91ec8b6dd45"
+                "sha256:1745c9066f698eac3da99cef082914495fb71bc09597ba7626efbbb64c4acc57",
+                "sha256:82a34e1a59ad35f01484d283d2a36b7a24c8c404a03a71b3afddd0a4d31e169f"
             ],
-            "version": "==1.4.1"
+            "version": "==1.5.0"
         },
         "google-cloud-core": {
             "hashes": [
@@ -113,22 +92,6 @@
                 "sha256:8c7309c718f94b3a625cb648ace320157ad16ff131ae0af362c9f21b80ef6ec4"
             ],
             "version": "==2.6"
-        },
-        "immutables": {
-            "hashes": [
-                "sha256:1614177d08408176a7b12313d6efefad41c3ba17e56cbeb404bb74f83cfdeaac",
-                "sha256:18cd84d5ff10ffd42db163d4aad88128d86c2939335b068852f8f399594521ee",
-                "sha256:4d29f0e6a880a20f94c9efd4672212c3276fa303621a4bdf2a5e4ba7f27cba84",
-                "sha256:5180319a7aebc9319e63e7ea663830d46566b84bed91cbcdb50e247d65fbda07",
-                "sha256:57d17742fccec4c0466ab658053fab1a327df42241e7b1cab28e5b85e7066ac1",
-                "sha256:75e2e4e9441938690821adc1ab00829a174f696aef1c52ae6aba767219d1e84f",
-                "sha256:812fd1124fca2f56a3a7f376f34ac44719f131d82b6001323aef84faa8be7f00",
-                "sha256:8a3d2fc0d9db57188f28d3e6cefe45e9905292965895a7a391be6ededa626811",
-                "sha256:95da22e2d16b47dbd3464ae447b94f8d74866bce045be216dd1691f2f1838a94",
-                "sha256:9c8e0267a4d35032ccc670e5ab52aba2693ded330c4c1f2a4870b4a7c86b65af",
-                "sha256:da1c24d6ab6b38604444b4b767b3bf6074dfa3f7d15d8192a3a4935f61f00bd6"
-            ],
-            "version": "==0.5"
         },
         "isort": {
             "hashes": [
@@ -270,825 +233,925 @@
         },
         "pyobjc": {
             "hashes": [
-                "sha256:6223094b3ddaf1ee8805bc8e06c000b65f28369adc682cda5b68ba9fcc180b7d",
-                "sha256:885f4ee7ad8c756088c31d587e676a0aafefd454cdc5d20565a0d70bd13241f2",
-                "sha256:b156abab60da3f3c4bc65a919eabb2c98539a94163a277efba5828358396d23e"
+                "sha256:24be63e394e8e66c1131e2b8e67e44f6c28ceb4329af01e9c10824044be8adbc",
+                "sha256:537b85db0be882b9b2cd4c54e5679fe9d3cf823dfa7c81aeaf92830fa2a3b901",
+                "sha256:af4a67d1be1d32c07298f5e906c1173dd07a58cbee5487952a3c76687b8aee39"
             ],
             "index": "pypi",
-            "version": "==4.2.1"
+            "version": "==4.2.2"
         },
         "pyobjc-core": {
             "hashes": [
-                "sha256:2496357032c390fbce35c7dc29c91cafcc8686d4b909bc09c649fa8fd85d6938",
-                "sha256:4af7106cb7ad86b56bfd6dc8a841217418582715b2f982045ca4778a92e63b15",
-                "sha256:5d9a8fac87ec37c2d05a30430abdedb1135b46e2b00887076d8d960430a7f31c",
-                "sha256:a712eae1d89f952d3814df90eed7b6afcb5816db24d1a86b4f97e0810534119e",
-                "sha256:c2399e9e4942f926945d196bfd044c59bcd60d8e6a663a14286ab4f3b0a7a116",
-                "sha256:c372a912f2f83b3c419c7044edc04f3dd8f3f4ee6cddf7f05ff5f0483ccd73ea"
+                "sha256:198b0490b50d261aa155295b6b9f7d154a52a6bb6a67b8e3704bb29820512a6c",
+                "sha256:19b98162bb42de01b05bb6c3c32e2c533085ce98799c6451177550416430188a",
+                "sha256:30098aa6242b873c35546e8771e13989685d9310de76cf32d5c4d35355394899",
+                "sha256:313f8868d5125d740a579e9565c777342b4676afce312073f84e292de0896b0e",
+                "sha256:4a2703684d90ac323261bc4155ca839e924986354a1c23a4bb35c4da9219d37b",
+                "sha256:9f63e76e1e1ff345aa00436247a6c914c1b2e54b1b192fe65b17496dc866f544",
+                "sha256:aa63dd6bc1a45d0ec247088a92dad1d39a7b9282835823ea9cb79c02c23e9d0f",
+                "sha256:f76ed67ae902ea4bf6b673962520334b0ae26910c294b6ffbd2ac1af9b62ea0f"
             ],
-            "version": "==4.2.1"
+            "version": "==4.2.2"
         },
         "pyobjc-framework-accounts": {
             "hashes": [
-                "sha256:52b0ae314009d403b67536def30078034732b28e3cff101577d2ab309b21245f",
-                "sha256:deef8c7b3874b57f7470d9ea29a2571d7f061f22c630a41d09690fef070838ab"
+                "sha256:44a7e5382a36d121ca93d4eb91f854ebba4d4301bec38396cd19bd1824d57aa6",
+                "sha256:c66fed4fca69dfb86da1f977b0731df64d134b7e32d634d74bc3e11cbdf9e5a6"
             ],
-            "version": "==4.2.1"
+            "markers": "platform_release >= '12.0'",
+            "version": "==4.2.2"
         },
         "pyobjc-framework-addressbook": {
             "hashes": [
-                "sha256:1cb41a06a0bad00bd059f33374e1f85897871a8213cc9b2763c42d202bd1fd92",
-                "sha256:3a615e6f806f610f52c325b0fa3818982a2e4ee07647fbcb3546a11d7f443b0a",
-                "sha256:497b96482984843d2f59f4c8fc5136bc85412894dee4799c7dd17c30927bb38c",
-                "sha256:8e0ccd179bc8c1625b46d0987c16f6ad45752ec7b5cbfd503160ebe02c5b7116",
-                "sha256:a3f3e33b8d16a97dd1c896f91fc6d56fabe8548c0cf51fc107df0d3fb32de5b3",
-                "sha256:d0b1d1eebcee4a741b9e8ce31e1d61fa4f843fca89e23a46e61c7e1f3e12376f"
+                "sha256:041f4aca73730609e95e6e2ed1e024248d63c9795e9545341f8460ca33a9994c",
+                "sha256:0644dbbc17d42efd33bf991cd759833913180f748cd4680d7d88f50de8bd1d93",
+                "sha256:2db05a274fcb7b2362e0b729444b7fff2c3f8fb1b2cf313a59eb87e14dbf7a59",
+                "sha256:335a39b0f528aa43ab0896d1392482efaf31158055bad2eb808069917dd96ecf",
+                "sha256:58387c077ba40ec21f9007af88eabfc30abcd3f84eb75ebfad278ec5bd824d58",
+                "sha256:85d33ae0ff8e68742e757165cc4327d6261814147406299a203b1decfbf345a9",
+                "sha256:982e4fa1e6c30c0467fb2d987709da4987dcd1cb7ca96048ac544157e5234e8f",
+                "sha256:bf054cadef2cb0ec164292c1ebc6ecdc83af48d3829674c04da6d0cce980ae63"
             ],
-            "version": "==4.2.1"
+            "version": "==4.2.2"
         },
         "pyobjc-framework-applescriptkit": {
             "hashes": [
-                "sha256:b9f9c00fea49b9b0f66e4dbae98a6e1cfa45651f836c0f3fba5e5508ba7c1d34",
-                "sha256:ba585053f8b4327fefbc895daf7352c0afb8545eab7abf8e53615bf0aeeb4bb2"
+                "sha256:6cacfdb736ea2b844a92e8e453db961bc2d567d2e88c0ab43f13baa383cb4717",
+                "sha256:fcf59b5e23c04c239e573feb881acc86ee6dbdeeb92477dd276529b754fdbf22"
             ],
-            "version": "==4.2.1"
+            "version": "==4.2.2"
         },
         "pyobjc-framework-applescriptobjc": {
             "hashes": [
-                "sha256:66b31478001dd7a858177dbd04c72608b870825e2c39aa7b95d079ee4927c6e7",
-                "sha256:9821caeb8a39d2a8361598fe8b59740c00ac4c7c0f48364a78f64865e766aab8"
+                "sha256:9b54b8d069fc79ff102fd83a4144042c60d435d8aba1bce48c2fb576ec5e6d44",
+                "sha256:b870293cfa58ac1a449152dc36392a9fc445a67984fe4fda6c77ee163f25e206"
             ],
             "markers": "platform_release >= '10.0'",
-            "version": "==4.2.1"
+            "version": "==4.2.2"
         },
         "pyobjc-framework-applicationservices": {
             "hashes": [
-                "sha256:62a894e7b10450a5ef648e87fea6b0b706b6866389156b48d255685b2aaad6d7",
-                "sha256:d99abff8f47ecb230b75833659aaeb06a21dd3563b4f765ac7ca1272640a6255"
+                "sha256:49eeb78303037513d956128151fb5d2224dbebb1119c12f50ef3da526c09a037",
+                "sha256:b094c8b24d64bbd8e01b66ccba2484f5f45e75dfca7eac32f331f991c40a7623"
             ],
-            "version": "==4.2.1"
+            "version": "==4.2.2"
         },
         "pyobjc-framework-automator": {
             "hashes": [
-                "sha256:af2396da9abcae93b5abfd5a12f8ef87a8c605be41a425e889ed9939f0e9cf8b",
-                "sha256:c9a60100b7ff7c9c03f28a606d29f24c14d0a413e10feec9e1c45347b22edd4d"
+                "sha256:ab8f973522ec5f212e47cc87663d242ce6e0f31bbd048d742e741e5ff302a06e",
+                "sha256:fd7bee6152b7332d5241581b900d8574dc84070ff0338ecb0966ab8e6b5d2a74"
             ],
-            "version": "==4.2.1"
+            "version": "==4.2.2"
         },
         "pyobjc-framework-avfoundation": {
             "hashes": [
-                "sha256:1960c19dd8236bfaeefd30141845079ddac7cc6a8f1ae021b39bea9cc1627543",
-                "sha256:3aa7d7f3041449943d5ab85213f71241a82f93ff4f521ff3f602399b641427f3",
-                "sha256:3ac636159badbeba88fce0965c1e5f56cc825fb1f4e93df06a6d8cf3a20859bf",
-                "sha256:6bce6fcef51118de62418812fbe78d55e523e88d6755a34f7980c81f80bb3566",
-                "sha256:e53479f9cf52185bb9d226da9960863007f75e41fcfa8ec932d087ae97552aba",
-                "sha256:fef56ca8e0c136141971ca3aec2fa5c7f873dfcff43960de97943639af132dbb"
+                "sha256:26aae1aeff880fe633f1c80c54679839bde64ff93535c1ed5dcb01e7ac760968",
+                "sha256:5d6474c6b6ea914deb18e8ac6c031d19c41c44235002343dca3cda9a30f343ea",
+                "sha256:8163ab3562ed2b4f804a1e11dc4541da41472dd0d5926ecbf7be079f5194045c",
+                "sha256:9e18d0795df7e2758cb8b7a76d80ed8b73057cb40ca1e28786473f62bcf19364",
+                "sha256:aa22bd4a284b1d7821a731fc498534df5d24cae64226e22588e6c5fcce0c9ab9",
+                "sha256:c4831261acc93673b4dfe3f6d616dc3d28c826340fb35707a5bdb94aac12cebc",
+                "sha256:d44292f79201e2061f2e1a37d6d00b5c3ac765c09bfc6a18c130216e9749fb4f",
+                "sha256:fd69c922140d354a840b04cac45d26b5e98be41a104f0b502e59dc9cc4d1bfd3"
             ],
-            "version": "==4.2.1"
+            "version": "==4.2.2"
         },
         "pyobjc-framework-avkit": {
             "hashes": [
-                "sha256:2bf35074a830d8d3793fd0e5e1fca7e6f3e9b1a830128f0e659bfadca204a8c6",
-                "sha256:a26bab4a591866232f16f0186819e71c7e266d64a46c569995c49eded84d11a5",
-                "sha256:c327cf80778b7b623ddc303f01e357436cfb67bb9ea8f8be0cbd80691c5809b2",
-                "sha256:cc1f225204e2d044d8c44632d2823692856ae708531bc473d9b8e54aa4186638",
-                "sha256:d77e9ba24223e0a81ffae53d60ea41f21bf38bb95596294cba9719c2478b829b",
-                "sha256:e7c5ff0e420fb09b56c404b35ad8bc781e0209c95ece27038f4d72d4f8884e34"
+                "sha256:15c234b87e65005073a66d5d20121b13e779743c2f3a3d6785c1e6ca24484e44",
+                "sha256:236dec2736b032abb1b727d1c4c68b948c3d4d9f5b81174a4830ca3d999d3cd2",
+                "sha256:4135f2bc059224526dc8c69e5b9d7a150c34cb551fb18101fcf15d685bddf7ac",
+                "sha256:4751f006d0b9344223581536a1deb9e7314651b6c74df22ee5177b2c44eda23e",
+                "sha256:60cc57f25cb8911e332b267712c747f55063e6952f5104384b3b3d75aa7ebdc3",
+                "sha256:88ee3c09b2fa840b4d3dfc0578744fd58bbbb17797169e950afd844c2452d2c9",
+                "sha256:e46843f0b0d2118fd907416bf827b5b69202ddedd25a6268be1de25e98f12663",
+                "sha256:f0682a93b3d5d5f1f10a07405f935fa7cf2b0550c13406b0db1ee398d73f8e56"
             ],
             "markers": "platform_release >= '13.0'",
-            "version": "==4.2.1"
+            "version": "==4.2.2"
         },
         "pyobjc-framework-businesschat": {
             "hashes": [
-                "sha256:407eed5ecad4e89929bdca83ef2cdedcd50ca8cb3f74bb69e6d64a41fbcfa2fa",
-                "sha256:c8ddd92d55b285b6a0ca373f4d7b50e17c038d34d68f220e4fc49a51e552327e"
+                "sha256:d2abf8a1f6b9b78eed12375e4ca1e2b7ce05638ebc03e05973e45267d90ba2b9",
+                "sha256:ff99b5c118df01ddc5e92124d7c73760e2c177019ae1094a50e102014aa10c0d"
             ],
             "markers": "platform_release >= '17.0'",
-            "version": "==4.2.1"
+            "version": "==4.2.2"
         },
         "pyobjc-framework-calendarstore": {
             "hashes": [
-                "sha256:c0c1dad342d88510ff5449beed2b4671c684810b4d21b74378907cd104ad934b",
-                "sha256:f8a7ca82548a1711e4cd92a0ccad1a810321aa3558d0c59ca21775319ad55c99"
+                "sha256:864a91a050e933eb96d7abf01ae69e681990fb5a7745e8bb790e5741ac74f4fa",
+                "sha256:f95aa1ecc526603563490ac6872e36541bb370aed0ea5cc88b7bb0fff6b4cd0f"
             ],
             "markers": "platform_release >= '9.0'",
-            "version": "==4.2.1"
+            "version": "==4.2.2"
         },
         "pyobjc-framework-cfnetwork": {
             "hashes": [
-                "sha256:0d7a942264690f5adc1d63abe664b64b10196a31c763593b9b8c481597bc7e74",
-                "sha256:491ec541db31c85e06cea01b9c7a9ce501b634badaaf81c88cc58ceee14cd5f9",
-                "sha256:90aab453e0cb19f3ac06fbd313be6c7ae9a351fe447fe8fd291017883254ade1",
-                "sha256:98b5287c4e38a77150d2159ddb1ec1f725be5650c69e771616989d67914c00da",
-                "sha256:a97b5b52a0a55c8beb45734d49bf4807697312a65aa2dca9e643d0d1c6b74e5d",
-                "sha256:db6247763f506caba535fe6ddc4d78e428b21d60c0266d9ed3adfc51ccae3a43"
+                "sha256:016e5c521799065a1690f8961f4e250cc1c085b15a30d98126b37d4eff3ae48f",
+                "sha256:0fddd19e2b6fd1d73c5636882ad5e93476537c30e6e623fa8c6dcabddece8b29",
+                "sha256:67a8507c9f7cdaa4f20cd32f658a02e6206ef4c26abb0d4847f770f58f454934",
+                "sha256:88bd2db1cbc7bf419a5a464127065d023aed4c50ec1c04e02dda50f70209d7ba",
+                "sha256:be1d3a60406fad9ef9d9c2fd52d723ee569418210db3fd04f4c9873f7b695327",
+                "sha256:ddeb6d50d3f032a8e9976cecb112ae3e7b853934e5d42f1fea44d2b51876e7ac",
+                "sha256:f84e325aeb2e4f771dd682941cea0cc83f61002446fc730bd1cde4142f93a944",
+                "sha256:fee873f9e4d258d4c840ccd1c1b73ef138b9ad27ebb5f7c7e11779cec9ec77e5"
             ],
-            "version": "==4.2.1"
+            "version": "==4.2.2"
         },
         "pyobjc-framework-cloudkit": {
             "hashes": [
-                "sha256:1b0dcd75399c31089c0bac93a5f94f1267b8ba94e78fcc2ee7adbf3fe5b293c0",
-                "sha256:43e7c012927280d8d59598efcacc0d9b52eb4d20287aaa026746c74fcb90fa05"
+                "sha256:09fd5c40d3d16d0afde975c576892067dc0cdc7949ed332dcd0b727be6146f27",
+                "sha256:331b66a26fc1dbe8725bb92ef22c17f306db2eff8fbeb2fedc145fbaccce6131"
             ],
             "markers": "platform_release >= '14.0'",
-            "version": "==4.2.1"
+            "version": "==4.2.2"
         },
         "pyobjc-framework-cocoa": {
             "hashes": [
-                "sha256:15bcb9c0d35feef594497edd52dabac60a0ae60360d2e277993104323fa4814a",
-                "sha256:89325066429b155e510ee45fd8cc862daa62b6eaf9543f0f9994ba6563e6f1f1",
-                "sha256:8ef446b1803b2392ce4df1a3600e8d5f1bc577206d57e30142c8425555009000",
-                "sha256:b9f72af16f2acfa7c388dc029c8324b6975bc62e66409f2e85c9205dec9c7d92",
-                "sha256:e4054600909cbc6f685a2e13c3eabc6945da937207a4a912c6b5a1704fef2dc6",
-                "sha256:e9b361a9151054696a7503d8a80c93ceef36d74c44c7196f7284945baf538101"
+                "sha256:15c0f28b39ff638d73d2f1c400c92ec8cb4904193e2650ce51dd9b8bd4435362",
+                "sha256:38001a7cbc49452e844fef011546322683f3fe782f84c62cc1e03c79341dff42",
+                "sha256:58691c40df5d7e1a8baf6cf68b579a6b1fe3b7d9ab735c6015cc0e03a146fd38",
+                "sha256:80610ece3ff537c41f31c5a149e4253caa75ce46e6a6bfc2e00fcaff154f8a7d",
+                "sha256:99b33ab038b90e8866e4cb510213f235c3010982fa425d8f34850c45ece30c43",
+                "sha256:c1b7f5418848faf0106dbd06462f37e0fa3cade8fba869e7299f282f89651cc8",
+                "sha256:d97fd162a60e4dc8384b4fe2cc4916039f3a8b6c8545d9df0ad35c580c1424ea",
+                "sha256:e11c70043c5adb2acb275773396f0e4899f987749de92081e6d32f68a6abb8ed"
             ],
-            "version": "==4.2.1"
+            "version": "==4.2.2"
         },
         "pyobjc-framework-collaboration": {
             "hashes": [
-                "sha256:5e2df089cc5459dd58ae42b9061697817bfb1793c5ee2236af33622dffae4516",
-                "sha256:c4bbf9eb1acfad1d5e63095f454c8fef6fba74683e12b8b19369366f32976c19"
+                "sha256:2a1783c780dc6e81ef4fb0bff4d23435a34797f6f721c4c8b021d929d7a7185c",
+                "sha256:92a19c241f87c9a48707e70a5de1b04e45dc429688f6d585cdb3bdd557f27e2c"
             ],
             "markers": "platform_release >= '9.0'",
-            "version": "==4.2.1"
+            "version": "==4.2.2"
         },
         "pyobjc-framework-colorsync": {
             "hashes": [
-                "sha256:28b26eb312d6e6d2a9411f6eee1b147b3c85795f61e45e740e24b21a9ec2dfab",
-                "sha256:c666097ea4b99d19cd16757f68c1026f07dc927d100b081b2dc1627dc25bc577"
+                "sha256:8b5b0f5c3ef53c972caa0af220e801b884a3fe8745e8ecde719cce2aa8275570",
+                "sha256:e6494dbc51672e3d60f8054d0085e0a86143836aab432f995600add06784aa5e"
             ],
             "markers": "platform_release >= '17.0'",
-            "version": "==4.2.1"
+            "version": "==4.2.2"
         },
         "pyobjc-framework-contacts": {
             "hashes": [
-                "sha256:0c64bdc1b82a465ced6b2ccf67d8e8a55d0b7f56d11596a70fc46c6416c45b72",
-                "sha256:55fbe05ede74068ec6c004bd78ed122986a291318fd54342146dad70f8f15df9",
-                "sha256:59c3f574e91cbfe0baac70cca039885950a61dc0a19da52fc03341f53e3d44ce",
-                "sha256:6c408fabfd56976dc1de2f1fe8e87f9bae1391c3c0f9471ad9bddd9b65812e39",
-                "sha256:9f5fcb31397541e64e63f61c4c74b2257d06ed4906f258e0946b22f1c3b4751a",
-                "sha256:bedefb82f15256a603a6ac55f7b7c688cc872eb176c5bebb71377afdbd15a8a8"
+                "sha256:249feaf46b45e974d48667e5957f2edd03d4c4ac2a97007ca4ed5b05b1fa334d",
+                "sha256:324a1509e628030d9b59c32e486b44078723b218d053e3b0a31cc7af9be4c9ae",
+                "sha256:611911f75458fe8d873958558eebdd87d8ebbddc9d450e77db042dc25d76f43d",
+                "sha256:7c41bae88a4db1600658615f1bd549da811891b8f6cc5743df81552dcc08b1bc",
+                "sha256:97a61210a9385f371bb25e73e94458d84abf6d1e9989c4c5aa76e7f25d50d4b4",
+                "sha256:d07487682c8b7bfa992641f80a58b30a8d06fb1da5a01518ee72895a95f28f00",
+                "sha256:dcadaefa3bc13a57d47a4bbb75508724b4af62e4bef1fbb311ddc388a10d9a5d",
+                "sha256:f80d6c2ff51413f9c95db673d13718ab8eba11f34ab14b13ad62f6a085438b1a"
             ],
-            "version": "==4.2.1"
+            "markers": "platform_release >= '15.0'",
+            "version": "==4.2.2"
         },
         "pyobjc-framework-contactsui": {
             "hashes": [
-                "sha256:55d40c5ba73bc9429b7d007fe72ba1d2e94a711126b4e6b32dd15b61a0a2bd5f",
-                "sha256:65ee9f994dd55a8f95ccc858d4e357021a42692f301b93fb355f4d2f95502644",
-                "sha256:ba80e49e9d16f8f32b4defa9b70b79562395473193853a84958f1277f22aa96b",
-                "sha256:be91915abffac99a369710c3d0675ac9cf1d5f1955e64f28862dfa66f6d63967",
-                "sha256:c464ff79ba8b93cdcc3e035ad686c501c5134870314ee4ad62f094c99d148ba0",
-                "sha256:e24c332aa87bdd9628c84643aa22c620f2a9b6c8f834a013bd600279fa50379c"
+                "sha256:11563877c34c1510516b155489772ca517fda5b45e3aa4c0db3534b80d6236d3",
+                "sha256:185ecb4d827df1d17840986ba4dec5db2fbfc01ca34e70556a3bbbc9c1b8501e",
+                "sha256:676dfce3499bf8d3abbcf42d4e6c727f6010ccc8ba850f9cca8194a6aa84cd92",
+                "sha256:7c03a1ef427d7e64195aa6f47542f15b7f715d98032c16a7d1537fec36c2ef69",
+                "sha256:c1b4b61b7ebdd48b468a2631937f5150d9475e98d50c4c730bc4910d8eddd2e7",
+                "sha256:c3912718d2f02213631b00f756ed08f8e038053306c5ae088a0efde9c8702848",
+                "sha256:d8a34334c7ac1c7cd7419154e274bd54d80ee440340c9fefac11fe61a1cde69e",
+                "sha256:f4ad2ccdb65cd98df03f2641bc43ea172e72ae28ed09bdaab4d6d0beb41040d6"
             ],
             "markers": "platform_release >= '15.0'",
-            "version": "==4.2.1"
+            "version": "==4.2.2"
         },
         "pyobjc-framework-corebluetooth": {
             "hashes": [
-                "sha256:3f67b5958e8786a8cf6f4a58c5850396fa7de5f96080b4a826e003fa52c259a8",
-                "sha256:446f1677c820a8cc0d671149942bf9ba27a9044a6c3fbfeb054217c050d6a784",
-                "sha256:77026282f913973829210637fecb9d6e75bdeabf1d2d44b2cb70a451520699af",
-                "sha256:88c1771466df437188de13c51c203c9905d0dd0ffac558d9b6b5c92f409e2606",
-                "sha256:d00015374fbc3c92ec6b196b012b6c9261c91aed12faf457b13d0531f6d92bda",
-                "sha256:ebf182a6924d99ff8a7950ff6ada0fc75ac876d453e43bdfb7e1eff6c7ab7cb6"
+                "sha256:1dd0a9a6892df5f1c77d53fb40179b72790aebd095119310695e7d8f2ffb1328",
+                "sha256:3c05c6ab3342848a2dbc2087f9d5125c42308e780b2d304eab98a9cbc6aa8894",
+                "sha256:5f7adc12523373733dbe29c739dad8aecc95d740ea24555ba43287a6b6e27dec",
+                "sha256:91dcbf37bab89d273c64750a8274ec67f13668f86fd8b218f90320e57940f9a5",
+                "sha256:b59e2e8490baf254bbe5a8a46e4ca060ac57871e939b93f9f79347af4d3e0069",
+                "sha256:b93b877fc6834b7f86ac66aa98e5942ac5d502fdc218c51b7a14507447757bf3",
+                "sha256:ba14f3947ebeeb36e357af90057e29108d4e3a5e16cf042155a5cd120a294a85",
+                "sha256:dfd39ca86fc91eb40322cf1c38739f2a033174b1f08517aa1e6af41b120f57a0"
             ],
             "markers": "platform_release >= '14.0'",
-            "version": "==4.2.1"
+            "version": "==4.2.2"
         },
         "pyobjc-framework-coredata": {
             "hashes": [
-                "sha256:0c661b5b8c8214f2ac358cd97411d6138287a0710d40e462238f508643a4d58d",
-                "sha256:14853d10efe3271bb40eae46d2de5d106f86fe8bd88ea4915c499510c4b141e0",
-                "sha256:58005bee189b55bbc0f8995cb6555458e524e72b69bef38800fd86b17fa9fbc2",
-                "sha256:676855e2f4223f9d625ab65774164e19de23937b5338629dac4244d3e9b969cd",
-                "sha256:863f4c3f628f229719ccd5e93280c487bfdbb2e9c637bb4959e5e301616f742e",
-                "sha256:f1beba3c24c5750b788b7d2007f6d553b4a9a5234a202ff92ee8e818498fb26d"
+                "sha256:0754eb00a7cd6c70243d92e83e1d11150ae38b9ab05fd99e73d7c29d9d489a25",
+                "sha256:1c7858d42a39a008d6d957bc0dc109670dfbcee752a88775c5d434cabc8c7d24",
+                "sha256:3e84d4a0413594d49f78ea18a6858af02cfc6e2ec46f8544ffc7e78afd43b1f6",
+                "sha256:462e025406111737be56100467e5f22a569ec923f46af494b272cc0aef4fea39",
+                "sha256:845301a6a3e19476363a302aecdfe5715572136904b6bc870ec8ce28983f3466",
+                "sha256:bc17765b3a707afbbbc03df55e6af9d7098821b6c96ff23066a8f99311bc8c46",
+                "sha256:d2b8c153afc5a023749cd02b1b7b54954ec4b65ecbc99d1f5788e40edc4545f8",
+                "sha256:ea3bf10982038673dd9983708fdf41b60ffbf7bc61568caf60d6957948a8ff9d"
             ],
-            "version": "==4.2.1"
+            "version": "==4.2.2"
         },
         "pyobjc-framework-corelocation": {
             "hashes": [
-                "sha256:46083a2a1a6021f88d47f6e5af44836f0ed823d9c2a7e4d7d1c5f37b59c65929",
-                "sha256:4ae951054e8dff5e74c3f907530087d52db3d3bb4ea7cfc3b4a63322ab0267e0",
-                "sha256:67094ffaa9342187623ab1d262f6c3434776773f3b8eefb471ef5b9271a0260f",
-                "sha256:9d8b923549a4255960e00ace48ea0647bf562a72e95cb15b51f0f72b59ee2606",
-                "sha256:bad02d64379f7bcdebf7172ac0a5b3e8b2d0c476a5d4771634d4451fdcfa9230",
-                "sha256:f5ba05e142aa5c7ea1d966f32db1092f8eee0d85d36840e51c011fb5f432d409"
+                "sha256:09c451fbefb6ccbf809e726126bce9c35a49e1d387ad3b7e345505b8da571f9c",
+                "sha256:3bc7f046eaf7dde6d6c6a0076ff1aea5aa7a610919fa97a915877cda9337e46f",
+                "sha256:43aed6dbeb092109b4061c4edb7a65bb140871af0860d710a4ec3d6b8bae16ed",
+                "sha256:71923fb84de9340c1a09666f3efa80177f5219711b71d0eb11f90e1c7a365283",
+                "sha256:c1021a6cb9322054c802c937627a97f5385efde15545989840f9d9529877e7d5",
+                "sha256:d6d6bbda48cb33621ba10cf748ffd08252e5708a0886a091955fcd08b4533c59",
+                "sha256:fcdee0bb1de68e2292385ff79e1b86a8b8588ace68db9ee8197e39fc1e5aefd5",
+                "sha256:fce8db345557d51e240bc9a7527f40aeccbe7721dcf0fb8f8c3f91837c9d508f"
             ],
-            "version": "==4.2.1"
+            "markers": "platform_release >= '10.0'",
+            "version": "==4.2.2"
         },
         "pyobjc-framework-coreml": {
             "hashes": [
-                "sha256:0c17676448eb557cbb0734831c77268e191cff1f5c7bc0d4b226eaee42b85b3d",
-                "sha256:251f90308407bd7d671a3f7732aefe986b86b2f54b26cf4b2e56e13b612a70b5",
-                "sha256:3ce933e96930535dfee476ee94a8c87af195b7d692a46e45b5d9deb1fec85a01",
-                "sha256:51969095ee85a5e73ef5c87b6094502062c93cb4147739dd054fcc3f03b7bd1b",
-                "sha256:7a1362be6f05b09512a9aa7462e06de6201c005eceb8be4536fcea3b569c2130",
-                "sha256:e958391a95729105f5b40a55521a2537c0b8bb57964ad300129e4c29fb3019e1"
+                "sha256:174ca9c50b22f3c674fd2f5a5bdc6df4d5719a879367a6ba4ad481911e6e647e",
+                "sha256:2454e9f74ad8038091e360dd3d110a28e5bd78508137ab1b9f82da79276ca2b8",
+                "sha256:5fd8e6c33399c38d4635aab49dd84e2b618a673dadc104bb26500653bb1baa59",
+                "sha256:6bf06ac19495bef3e23641cdce0eb7c64205ed74829c3933aba794421520092f",
+                "sha256:c1881c9fd01ce4cc28da4efbac0ca65a5964a59a5b512f799c1ca9ffbda63309",
+                "sha256:d270fba9bdf2d8f7703dda30985c1e6b87703de373dd6de7d5ca1b36fd5229dc",
+                "sha256:e41e70a3c093c89e4264d2c6ef5a5914a082b896ed9fda666e405b855e8fa502",
+                "sha256:f00d455489da7b55b7164cdecd522c554931fc3fe46ca4cd871e63d003e810f5"
             ],
-            "version": "==4.2.1"
+            "markers": "platform_release >= '17.0'",
+            "version": "==4.2.2"
         },
         "pyobjc-framework-coreservices": {
             "hashes": [
-                "sha256:281efad3ed2f41f4011ad3883677dc75ba09d6f4c056ca442c9c40e3c86a166f",
-                "sha256:a33707ca011fdab08bf84d1ae311497ade6eead699677dca38713a23474951b6"
+                "sha256:02bc3f817361c6cc1d82696746c69948f2afc0835914329eac5f820c422f8017",
+                "sha256:cb8822d7eb01112e0903bba3b26ec1e5f1c2b29acca9eb9cad1dff40cec7294b"
             ],
-            "version": "==4.2.1"
+            "version": "==4.2.2"
         },
         "pyobjc-framework-corespotlight": {
             "hashes": [
-                "sha256:5e1e5d5521e254c8c866afd7b818600189c6b6764f57ee0000419a0d97296dc4",
-                "sha256:70eb8a73165f216a3fb49f9ee45dc7fb958b59ec4742e624e8bee2001a786ae6",
-                "sha256:a246c052676de76c305d549dfc358565011c1e797c477316abc0e9e603df87d0",
-                "sha256:cf63271b1aacc5f45a606cbc6bae129073a98ba6efa79c3f0af7b4174a54aa1b",
-                "sha256:d186cb080f9522397f6dc0090c83942ba3b87d2731da114121312b9bdc5fef73",
-                "sha256:ecb85e53d09113fb5b1be9ae2133f4fe4f3631d7769ebfd9b7c7ebc907f03c04"
+                "sha256:00a1b53c7849002b39fa57dcee74bf1e07822b6b2e9970b09909a0f4bbffb7a2",
+                "sha256:07ebf593f3ce7e3c168c07400ae18cdb308b07c950e4f8a00a405824d64e9f2d",
+                "sha256:0ab55728edda92f6c0b80ef3ae39d2e86ed30f1bd09c090451a33a02dee7eb63",
+                "sha256:4f8c650551cb190521958dce9ca9aed6a1ce9c56c6b6913aa9506e82ff48723f",
+                "sha256:5641ed67d113840622a0c2d15380b0de3afa8438470bd4f06987c1f089ea3083",
+                "sha256:9cf2e9084405a6044d429a97e002a7ad2d7d23d311ec0210b5917e8a86bdfbae",
+                "sha256:bacd1dabd102c9a87e06ab28e3fd032360f85145e9268f3c188ee3ac5e77ad0b",
+                "sha256:d0165a057dde6a32f17ffe3345fe07db40c838ea21c044131e0c64b03b11cb1e"
             ],
             "markers": "platform_release >= '17.0'",
-            "version": "==4.2.1"
+            "version": "==4.2.2"
         },
         "pyobjc-framework-coretext": {
             "hashes": [
-                "sha256:0ded4b0c679227c11c31bcc1bc80148e5da8d14bcef650286dba1c892048214e",
-                "sha256:250936978f9889e679803b08cc82f842dff10a2d57af16cdbcd76ca70f1e4a7d",
-                "sha256:2dc564d5cd346b3f60359c7c44ae7114ffae2a529f957d54b58eb3d0b9a6ce50",
-                "sha256:3b2f3f430238218b364be8ab03e0df314ff006d828916669d304ad96f7c15500",
-                "sha256:4d5b1ea5b31df721fad0d2af2bf9e5f1dd8e9d7cc96544c11b01e39fb91091e8",
-                "sha256:946437fecf4fed566d27ba707048ee47152367c9d54adf69e2222e9348c89b9b"
+                "sha256:2120db1ba44f0276e6f85c7d0c2f07f11d85e714baf72177420d3327d1aa56af",
+                "sha256:2c61eea86860c51472d31eb252a76499df00e3a8d48fa2dcd5ba93ba9f233bf3",
+                "sha256:6663e61df56edd3524ee60ce52adc2d374c7d1ce1f84706293825de271acb3ad",
+                "sha256:6cd3072104db8f2f8e1b9ba675cd56579b476d04b1314deade18f1f5e56fd5d2",
+                "sha256:77cbd012d3cc6ee4399d86c7d9d6fbaaed19fb83a6c2c83760a9f0626a43052f",
+                "sha256:8fadd1b6aea2420f00481013ca9b1c2bf0c985b3e1938621efa797b717a10bbe",
+                "sha256:d084df520c5f3d65929a5a500d274792d7e681efa7c3b7e26a0f5d5719b2ba6b",
+                "sha256:e90c4d7d4d903339e607a1226a6c9cf5dfc44e826fa602fa63ef91961c87f478"
             ],
-            "version": "==4.2.1"
+            "version": "==4.2.2"
         },
         "pyobjc-framework-corewlan": {
             "hashes": [
-                "sha256:0dbce3a5992dc7884039cb431eda175bc64e0815eb57b40fa74ca9204aaf1978",
-                "sha256:3ea65b49634fb5a455b9280549429275e4fee67ac4f591b05f2d2d19f93a5091",
-                "sha256:4653401e9ffcb18b7f5208c22822e80caad9d52a788bd84b8d682cbc4a85f8ae",
-                "sha256:4d09e9b05a4b101e8d0301f6ead0fcf2a4c68846a5b83b7b26c8a461ecb1eb10",
-                "sha256:7c1b831afa61cda0831d3bef988c885760e55436a8406712c2b4a9d33a405b48",
-                "sha256:c443af624ef3935058e68957dfb4ae56f26696e303b3d963f9e20b0f405d388a"
+                "sha256:048b8b62273d894e2629979835e6242334f9a31c77b0b1cd9611716f8f3389de",
+                "sha256:46795f57d4b1d0fdcdd4e9852d0b93697b9a57a2616eb7a6569f5d976c62d550",
+                "sha256:5a13ad5abe0b9dbfb030a8d5f92443ec67788706138d0c9183085b4731016991",
+                "sha256:809ca1b474ece0106dc9398653caacb84891677a92cd35eb8461772c95324e6f",
+                "sha256:8ea1ebb20678af3ebe2882dc4af30478c397d462242f3b7e8a5b29a5444a51d3",
+                "sha256:92736b884fef9adb0e8b2988dad53d4f2d5eb53ce2275ef092734c8b6b4545da",
+                "sha256:b7449bc6b405da7e128e99b7d0e39beddcc638b4b45fa49046d772d363759ca6",
+                "sha256:e4bb74bdc9d1e668660518cff2d086912660e0ecc0dc5da28b8d4ecdd38125ba"
             ],
             "markers": "platform_release >= '10.0'",
-            "version": "==4.2.1"
+            "version": "==4.2.2"
         },
         "pyobjc-framework-cryptotokenkit": {
             "hashes": [
-                "sha256:33229b17b6544dde2f2a1955aaa48824551e2a3c908168a02ef17b0a58e44f7f",
-                "sha256:8e6c18f1498ad6302a8b938af61cacb2e45e6ccfa6e999b2c122967bb00209f2",
-                "sha256:93d3fb4c3699d692d7cdcd36bdd78bc186c777e0987341ca4e1f960b8afaea86",
-                "sha256:947350b74424115d815638c95970e846899f0e72ffc4f8ead5d826ed1a70e0ce",
-                "sha256:d7818eb9d2b15f3ba0eadbba1897735db123eb93fa97e3a79616a69d8f249807",
-                "sha256:e71628916d3574cea824cb321c44f3accd73ee74db662e4d9cff3b1208edd8e3"
+                "sha256:4344d78d5a0f5d451b7ef3c486b975e43b4395be02b6303512890538204e650a",
+                "sha256:68852fed52ac0382dd0fdf9be832e33c6626d27208c134a38dea85c8550675b6",
+                "sha256:c559a394201668a16297ff939626faaabc5693132eee111fc6fdffc9e1e2f6c2",
+                "sha256:c6a96dc91cd11569e80ef3c0099f7672f9105937667fe3553cf871348bab6c53",
+                "sha256:c7ee2de1c1ed8ceeb77bc7bf2664ecfe4cabfece18e2f4ed1f6c2d3ddc806299",
+                "sha256:ded754bf0675147e8b3ff878910532f044b63725ce3030d77613e071e878835e",
+                "sha256:e6d6aeef178a370667eafadfd835cf87c6d4a36962af659143b815e6bc195d67",
+                "sha256:e960b06db43418138f9acd98eb82def6e1b373aadc4ddb615e490dbf657a5943"
             ],
             "markers": "platform_release >= '14.0'",
-            "version": "==4.2.1"
+            "version": "==4.2.2"
         },
         "pyobjc-framework-dictionaryservices": {
             "hashes": [
-                "sha256:4ea0263f32707cd2303833228029bc6c4eede31d6122744995d7a971682d8a8b",
-                "sha256:76328e2f9c13b8c8bfd5970f6f0502928a9b761ff1533ec2be4b0af878fceb9b"
+                "sha256:27d9fef593681ea63f2a67a587796fbfb2b13c8201cb283226cdb1e8fbb5e1ca",
+                "sha256:2b982a6a806300df0e98cf21c233490a7e9a9666735585f6788247318d7b2eb3"
             ],
-            "version": "==4.2.1"
+            "markers": "platform_release >= '9.0'",
+            "version": "==4.2.2"
         },
         "pyobjc-framework-diskarbitration": {
             "hashes": [
-                "sha256:03a3f98d3aa84ab40888243baf3b1655614cefa80f9fe2477d2a0b27ecd25ca2",
-                "sha256:912627a4e3e85c4f36e36b310e6e423389ed73001d4c21901f5a46d1e1954184"
+                "sha256:335dae3c67ecf4a0c4e99f0a68ccf1481d4be7ba2379d89c26c8983992301ba6",
+                "sha256:7578c0320bd0ea0610759f98c0161fd61ee088b68d67ae3c5e0ab081cdd923bf"
             ],
-            "version": "==4.2.1"
+            "version": "==4.2.2"
         },
         "pyobjc-framework-eventkit": {
             "hashes": [
-                "sha256:0b1dfafe6dd4742f4fe4234547173ad3ca21f53af48aa2bee78eafe7372fb114",
-                "sha256:d7735225043eba55009a0d680e9e514b74707c6722e6fd362cdeb186a573c982"
+                "sha256:3b7aab8b59e1a778e8380ea65765d1da8a5477964d635d58a394e32b0e181ea7",
+                "sha256:511e6130a310ad1a0a8d3ceb7c2af47489591ece9a2ec0c1f8b3f7bed90c464a"
             ],
             "markers": "platform_release >= '12.0'",
-            "version": "==4.2.1"
+            "version": "==4.2.2"
         },
         "pyobjc-framework-exceptionhandling": {
             "hashes": [
-                "sha256:5fc55ec1debcc7e4ae01f91c0a22ef0aa7f7b811ffd4f9dec5ecde2d242660e4",
-                "sha256:dd2b2a22c933e14a6f2548a3184efc38e7266e87dfd778f9d95c0a4d144d176f"
+                "sha256:8102e95a75a832b1eacccdd263ac2289ac6d3997f506ef5180c4bcbc80e7b841",
+                "sha256:a2a87febc4a2d7ec0cc2c4fd7fd5d5b5846bc8c05be561682c5c31ca78cc2988"
             ],
-            "version": "==4.2.1"
+            "version": "==4.2.2"
         },
         "pyobjc-framework-externalaccessory": {
             "hashes": [
-                "sha256:3962c4962cd985b66ec792202e4e20d58abef621048ba94efc16049249779a92",
-                "sha256:558de0eda85f0b8a34d152b347ab14c8c18924857b9390e1d3ef347fe9821560",
-                "sha256:7141ddb74bdf433d75ddf10b544920cf41facea55af55c94c191d730e27e17c1",
-                "sha256:86b51d7ef3267fa27b78cd61114ccd67870b852cb879f2c7c0b036fb1f961ad2",
-                "sha256:a103d6d9bd8ccb421e454573aaebe20b47dbd93512ac42f0ddc0f8b59f07b9e7",
-                "sha256:c6748467d83da30164e18dd490b844161c206aa337afb450834db723d4c01477"
+                "sha256:18764e7b8657bb8d346879d16c4c2c2216e1dfca54df11a9b27f89fe14b6533d",
+                "sha256:54bef15697887b06140e99ac35ed1730271e45fc88ff343526db24b16e2a4e9c",
+                "sha256:5bc6e498597a1bb42ac3ca2825cfd0d8fa732a55d4d22ca2ebdf18cc98dac803",
+                "sha256:6632eac729a714d1f6e9174474f49c681fa4d7447a7ec525607ffa1bb1109175",
+                "sha256:758a35ae92000e3f755c8e6b03542e179257bfb86ecc356303b32c18178d27cd",
+                "sha256:887b4728a3c13f28bb476ba7ea8a389917a25c4e4ea594a24d920662dc818cfa",
+                "sha256:9eb841f46071cae62e18a03a30ba713932331d22c60d03c22935fed953b4312b",
+                "sha256:a16f21c48a33568236a5b1475ad4f7e580b4a23eaa0a7ac9469e39be06616424"
             ],
             "markers": "platform_release >= '17.0'",
-            "version": "==4.2.1"
+            "version": "==4.2.2"
         },
         "pyobjc-framework-findersync": {
             "hashes": [
-                "sha256:ac27145ab228ab6c554cfacf718bcb0700dcfc2f65f072cdf927301e9e8522d5",
-                "sha256:bbe5327f6c8b82557f5e22026f7e12d0fde573396ec03e4e9a9267fd192bcc60"
+                "sha256:ce5f96663c928ccb641ab42a8bbf23ef9ef528b84bb2932276353fdbab705948",
+                "sha256:e2007b3b7b5e3b082f2571324ad3bc3beee30886d8cacf97f10ecc18fdffab5f"
             ],
             "markers": "platform_release >= '14.0'",
-            "version": "==4.2.1"
+            "version": "==4.2.2"
         },
         "pyobjc-framework-fsevents": {
             "hashes": [
-                "sha256:04e9aa8b64585ea710f5af4e7b5b2d1ad6a8c0475012206371f129f4d4304a54",
-                "sha256:1e9acf5e8ade6da1abc321cc40a412f907f76d188aaab119a55298572a6bce1b",
-                "sha256:cab62258cd77f8cded8a1e9cad20024437818e255e7fb0a3471cac0c6c584c95",
-                "sha256:cb1a7e33062e0ff4dcca252d1133b9b1d7ce9e6a96c338ee795c25eec26c85ec",
-                "sha256:e925e09a143edf9c6b5fdeb6ac50aca3f68ead1d8450a0450451f6a34ff4cc75",
-                "sha256:f138595ea7d7fd4c81844287359af30089d663485f98d7c6a56eea59e8028098"
+                "sha256:039649dd48dd298fe4437c5dbbc3429a40c87421edb42be89e66181b811f0447",
+                "sha256:52553a01a18b8f20e45399ed401d6c6bbb059b4df1be5a5f1af1127937b44848",
+                "sha256:5555ec8dd1c695336799abd8c8d27f6471d3acc67755f3c75b3788b6e13bcdc9",
+                "sha256:5f3c798f2f2ce81815c39a62a63229ca2cfd74c2333887103b27271a7aa4764d",
+                "sha256:66fa22c06075ac98dc91a0cc7e249107095eff03cd8354fa90f5a1ea7dcd7fc9",
+                "sha256:8d553da7d0fd9cda3c988ec07fb8aa899178afad825b72747679c2987dcd7211",
+                "sha256:c043c2c4c00af6f9a5b831e95719b044ed3bd6c5a47e4ff57e34d363d23a48f1",
+                "sha256:cd33c86571fafe4ac244e885357da2c9f44e6f6cd8fd567afb58ec30bf130dac"
             ],
-            "version": "==4.2.1"
+            "markers": "platform_release >= '9.0'",
+            "version": "==4.2.2"
         },
         "pyobjc-framework-gamecenter": {
             "hashes": [
-                "sha256:238c64f4e32f95849e5e814ba4551baac3dcdb58c850c7b1854c5ab55d014efa",
-                "sha256:4548fc8128a22744b39a6249182324e191516e41dc22cc8b7d6f5f2a534f8725",
-                "sha256:505f06da3e3e056c5927496ceb1a96c74345be4097aa38a1cbf39a93fb9ee147",
-                "sha256:8b266937fcaaf0a48731d35c685887fb9c87b5ddbf6a86d5a3ebbbadc214d6e9",
-                "sha256:d48c0feecf60c8fa2020658d7ab22dad61e8e3a9ca9a0fcbc1331e0da83c2be7",
-                "sha256:e075ae3bf98013c7856a96fcff8d7d108bd3e9ce9f640ba4db2229a82a5338c3"
+                "sha256:058921cb7a7dee8149f386b0d47ff4cd540085bbae6297fd54c671b9be72d05c",
+                "sha256:150cbad6fce8710e7bb83c2284a86cc50be197d6363e2cf9c4a66c54ef3f5c6a",
+                "sha256:605948b0450dc59a6cf279db25870b3248c9cd8e0128d5b32b65cc4bfe30a49c",
+                "sha256:8551717681b9fb50c8369ba6ff335b9795bb23d379ac917373a73ab2594d4761",
+                "sha256:87d73cae2913ee8a32f0a4fa8a3c6deca22ae3d66007884ac4a7641486ddbf92",
+                "sha256:8b79e08e8be9808d75a36971562fb3dd2fa48a8fa06bfc1056e4a26c745f9a18",
+                "sha256:b10684ae81a089e1a573fd0e111edb5dec8b677c43a8e0528ad0d808e73afe64",
+                "sha256:e633c11b0abb87abdeb6b33dcf0aa58460a83167fc945b08fcc018ca73bbfe66"
             ],
             "markers": "platform_release >= '12.0'",
-            "version": "==4.2.1"
+            "version": "==4.2.2"
         },
         "pyobjc-framework-gamecontroller": {
             "hashes": [
-                "sha256:8e3a639dc3a7e4d33c42f134b7340669c2ed43cf29cee4e062b06086bdff7af1",
-                "sha256:b65c48a092282f88c93cf11f620b7ce845f821da8f89ff64d667e8723077b03e"
+                "sha256:2c53c9b51403e8aa47ea619d6decfe4c6b57d35345b5682406f7cce5df16c633",
+                "sha256:d23e5a85d79769b2e684114914a14f51920bed3f1daf54c6dec7135d25c86fe5"
             ],
             "markers": "platform_release >= '13.0'",
-            "version": "==4.2.1"
+            "version": "==4.2.2"
         },
         "pyobjc-framework-gamekit": {
             "hashes": [
-                "sha256:15cab03468c48fc812913eec440b2c58d475c6f8439235b5bdcf4b0b70decea8",
-                "sha256:62eed3d936b53d01e79c9afc742079b8ccc5d5f9eecd8c6f8394b64c260d53fc",
-                "sha256:6d8e5dd10e149584b96b221072768178fa1ddbf7e0681c6b4bd6fb29a1af7f5c",
-                "sha256:8657e1d83bd300ab79c151704789c52d3010607e8dee62a2d16810d7fa5ffea5",
-                "sha256:90239c77d24c66704a95e60dd3f0ee6772eea090974c5d121a8905e3fe0f1127",
-                "sha256:d0a195284eec88c7c4a9a9da79ec2543aac9747797120dbf439c94f54e94e908"
+                "sha256:02832dadc421054fd06ff7f292539327ae9081300ffc8d01cd5eb872638fe409",
+                "sha256:0770c46c04325c0a926ccc8ad7c62f24b46a87cb85bf72a7a9537b1d45969956",
+                "sha256:23924d204b81a20a398281f136efe59bc926a2282de9005b08f0e6ed0b955d5b",
+                "sha256:5cd2d973138e06d596e6f37fd5de90e26d804363fbf3d8799868b15a94fe9005",
+                "sha256:625e053609737813e043f8842684cc55229f7abece3b7da46edccb3c807fc006",
+                "sha256:656f302ae1fa85e45c4478003c7ae0fae43230d500a2c07a440432cedd409067",
+                "sha256:b34c9903b85c3db5345e411fbcfb8d5b40ebf415833dc2fec90aab2581ed7810",
+                "sha256:fba6ff2df20bf8e452a121409c8048cddf5f55b7fad64f4cf7c203c019649989"
             ],
             "markers": "platform_release >= '12.0'",
-            "version": "==4.2.1"
+            "version": "==4.2.2"
         },
         "pyobjc-framework-gameplaykit": {
             "hashes": [
-                "sha256:0d5cfc3b7acee99ac95dc82c1edc94154bcaa993809533ad9296fdaa5be97ebc",
-                "sha256:3cb5ff711251bebc12e317991912d01b45c03e0f420cfd47e825c096fde8fd6a",
-                "sha256:781442a431b6fa61a2530dc16655cb570cc080126da3c35f828cb15951b72479",
-                "sha256:85c6375d95762cbec18a4441540e78d311e86f77387bd74aa3188d67a7ccca4c",
-                "sha256:c21dea2c3d573f923f6b38ea9d830a37d4ea03b65693617d738e46eaa41457b2",
-                "sha256:d7a0f21efb7d09cacc62e11fd75e30ff86811bb84712517ee8cdc43b303c325b"
+                "sha256:0096a25716d1b65faa016612fb4bd4a5eeb9d50899f451445ac17b42718f38f4",
+                "sha256:279085d1b18f469cc378f0853a7c4a1a763773d84934a29efd13916f810aea2a",
+                "sha256:2ab095468c847ed03f53e14ccea37488a8895f375113c2db4bbbb8214daf12a2",
+                "sha256:57be355e8a4eec373118ad5865360a7bfc0cb82ba182efd80d773328f69eb44c",
+                "sha256:60140bb940bf90023bb8da587b642edaf3409100000f69bcb3ffc86745c4f017",
+                "sha256:75c95c2b97864d5a6053947082c4caed027be319857b706410d3218a0e2bd231",
+                "sha256:ae240ce77e6b03dd4ff9a67832c269eb3c9195560cabd7ca09e39d2d1670e99f",
+                "sha256:f410058ac4a41cd00281c800f43412ecbc73119a6551e09186238afe5e4a1243"
             ],
             "markers": "platform_release >= '15.0'",
-            "version": "==4.2.1"
+            "version": "==4.2.2"
         },
         "pyobjc-framework-imagecapturecore": {
             "hashes": [
-                "sha256:0c2977108e970acf3bc6c64b89a1318db9b5e0b491423a18959cd617c7a92932",
-                "sha256:1dcf2955022b2326150874fd4981f586e907e1685c15c1135b6012f6ab992412",
-                "sha256:42474228bb09eeb6aa91c45424950da6f1459a102fbfb752be2403ce36fe0030",
-                "sha256:a1c780f39d1d4a7d9ee911ed4ad75e9161cd6c84e6910c93f5b27b8a7284df9f",
-                "sha256:bcd41a68e4ef803a1a544d19c6163988a6031bf648c4bef134b06b6d7881d0a4",
-                "sha256:f29b5447830c800e96b20c6d165e421b9139dc9f4f1b3e1e52e4769a75fa2414"
+                "sha256:0efa7cfe2127516a6bead70d361812af76f13521ced4028577883463eb3f9fdc",
+                "sha256:7cd518ce3557119a0b7411253abe8000313d2a74d9a822029518f4a8a9bc8682",
+                "sha256:830d55b8096e2040c7e286862ca3483d4744d7ccfe6c805e736f9c539dada9e3",
+                "sha256:990e5da7be8573994fe4ca05907560bb3f209a6dc8d4c50fe98639b7130bd70c",
+                "sha256:bf05463a701daba4b2a65c9e9ac5ae04cb19d9e82576434813fb48eab256ecbe",
+                "sha256:cbfab3c5766401edf6f46e37d3ab9888db9f549b5da2ecebab76c32a25f5a07a",
+                "sha256:eabcff2f778f28c936ee187ec95e4706a52e4b09d8ef816c8b2069976499a252",
+                "sha256:fe4ef4f2c13e7d5c6d171f9cb948208c1acf781174e3af8c31f452d0c5d04e68"
             ],
             "markers": "platform_release >= '10.0'",
-            "version": "==4.2.1"
+            "version": "==4.2.2"
         },
         "pyobjc-framework-imserviceplugin": {
             "hashes": [
-                "sha256:0f9942bbba8fe2c29b59fe4ea3603e5addc151f14e02364910642c42bd3422b0",
-                "sha256:109f6a5ecb9a7ab550e9cec22b264b4dd1f74fe6341aeb303363a0364163898e",
-                "sha256:9a44870a3e0ae4d5dbe00e08101de1b3213d16ce6262a9b2136e44cd8ce8a51a",
-                "sha256:b2d7e36a78b544efdef63a6f63492b9e85517fdd8d851236f8ec08307da4c858",
-                "sha256:bb199df53f4c1a7c38622b8c3a0b4490fde8902705a04f297e8e27045316ed85",
-                "sha256:be9234003c578253cc196a258d2ce29f302c5573187ac8c9c7110a9f7a2fe28c"
+                "sha256:27778162a88b1bf4d1649ad640cd0f80bb562d5eb9c684d1aafbc7760209fd4f",
+                "sha256:363c69d0116ee11b414870b2baa013d626cf2ad861bea909aa1a4269e9c5ae53",
+                "sha256:41588ad11bb2e86426a6669213ac8a09d2ab44925c8880771080176869bcda1c",
+                "sha256:b3c54b1986c9fabc71455504933b83789c8d43f47cb5462ff758189ff1cbeed3",
+                "sha256:b705557b11824846f99893ce4ca7cf6d4b7316f80a20d8e340589cf93ce101f5",
+                "sha256:bed8b6855bc60ca95aa8d1e43a658f414da018832a0ec85d8df72c12c36540e1",
+                "sha256:c2a975c57a8c40c4f646fb8889a3ea08067dd5d1dccc8e8ed6972ce7f30d3839",
+                "sha256:e9a2f4ff68e4951e76c7b3b2584870f3160dde84dcd0781b557c52bda9ea1c27"
             ],
             "markers": "platform_release >= '11.0'",
-            "version": "==4.2.1"
+            "version": "==4.2.2"
         },
         "pyobjc-framework-inputmethodkit": {
             "hashes": [
-                "sha256:6000895da68e62a0e10a5fd8616f6af062ac2de0bb7a318b607d5411a286e7b6",
-                "sha256:6cd4ed8edeb5ae25e10b600d598e53b5ffe2c0d611265d863cc832e495d41425",
-                "sha256:8ff9600242681144f95af3892a3894694afaa58d56f00ad60f8865a42e5511ed",
-                "sha256:a62f50455311b280e9e579b2821cb96916333c85e8f88bf3f5b35c09bebca833",
-                "sha256:b35a86556a0b34aebc45202d9d57bcdc29b11fdacf0786d7a0fe865bdadfcdfd",
-                "sha256:ca7e62299bfb642faefa37d1e99fb9ed0653c878f415463d70e8dbd6fc08202b"
+                "sha256:0ae33888565cc51c79c4f09dfa782d4380a1fb6774d527dfeb504efbbfa38116",
+                "sha256:0c724e6e443d123dcebaa87e845c417f6d6bdff64cf31f47f350cceca975ad8d",
+                "sha256:189b8b33788ccea9bc8f21a1737577b5fb7121de86338c6af8491dea31c572d7",
+                "sha256:8b4033b7445ab64e04bd5d574c4de7f0189e69a5dc9a16bfe29d054bd41b8f8f",
+                "sha256:9d34d4373e7ed9b2cfa7d89f9a409403a63484566706a6738c43d21c66af7d0f",
+                "sha256:9d9e358c8b7e97df61700f53d28422c17a4625f083897bc7aebcf64c09c1e72f",
+                "sha256:ef2f86424922373c32e9f606856d794943df56a5672e48c38a970a670908face",
+                "sha256:fd2629b4962342399ead706c4f51f6abb64436a05e3320f008558183bb66f7ef"
             ],
             "markers": "platform_release >= '9.0'",
-            "version": "==4.2.1"
+            "version": "==4.2.2"
         },
         "pyobjc-framework-installerplugins": {
             "hashes": [
-                "sha256:231c4607452d6e60bb6ae7c1ff0c367af875b6b8c83371b666d25453f3cfbe55",
-                "sha256:a9fabbfed5e930aeb61d83bb14a34ee23c042cda5a99b70a18003182c3223ce1"
+                "sha256:01ca5ecf8ae4b3bdc4d7d4adf06e623fe3a5f8b24c64d4f02e13c709ff683bf6",
+                "sha256:ee50ef03bdf7b533925c17db4b4144b46b5b74dc9fb9fefead1a294a88d57cd2"
             ],
-            "version": "==4.2.1"
+            "version": "==4.2.2"
         },
         "pyobjc-framework-instantmessage": {
             "hashes": [
-                "sha256:0eb43251c411854be0e75304d0303a71233d5e95c65d5881d8ed1578bd83b37a",
-                "sha256:fa768da775f4ccc82a77509e1e16cf55424b422ef20ea889ab4467e9a78a2d4d"
+                "sha256:1eb3d3f7d53b58e22899f8121f7ec3b99e934e6ddec2dee263dc2e67112638a5",
+                "sha256:9ba8d51d549f8f9db2f08ca3c11ebcf2140effcd83e51643dae0dccfd501ecd9"
             ],
             "markers": "platform_release >= '9.0'",
-            "version": "==4.2.1"
+            "version": "==4.2.2"
         },
         "pyobjc-framework-intents": {
             "hashes": [
-                "sha256:4320e3422bc5e21b5f979f59d28e6966868417bfbc911362aeffa3895157449d",
-                "sha256:71922cf186acf73348532a92c4dbe55d3e960f3be6ec0c637bedc09b7699be8e",
-                "sha256:82ead8a18aa153696d4513c049a8332d38fb954918c0692af2a10e55436c96b6",
-                "sha256:d49290492f8db3e14dbbf64ccfc493db169c0418d5dd74c605d44732cf9a7377",
-                "sha256:f6335155d01a39c8dcb8d1f7cbb0cb39b1db5517a14908847d02ecac2583ce1c",
-                "sha256:f8fe7a441725cc5d2cf61a05e2157a27a53e68c11aceea10e7292178c499970a"
+                "sha256:236863aa134f66212ae67be1834996bcd00f734b845db87f17f99d5b70a508f6",
+                "sha256:8f01dda648962777fd9d58ef0f264d81bc3a2f94e4d2e28239849be5192f37c2",
+                "sha256:c2cf2d1d4c477495dec48f91131dd8de67ddad0d56b488a885dc1a119a66aae7",
+                "sha256:d3f420ddc010e82baa66ee80342549b1062fc05a0388ceda5367742070e5b0cc",
+                "sha256:ee9a5a46f4c563fb45448d3c62359cbaba5cd7ac2c76b85e3d9c50435edaf63d",
+                "sha256:f1c97af841af9e23960ba0a406d14cdb384e627866da8899fab4b557a4b63488",
+                "sha256:f2923f9ca81f7073b628ee7565ba5588efffa607c2a71e6235e21a2b867e20a5",
+                "sha256:f57b861890c2e02ac04fbd335b851d7e03c861fd655feb8539a3eca19d623a6d"
             ],
             "markers": "platform_release >= '16.0'",
-            "version": "==4.2.1"
+            "version": "==4.2.2"
         },
         "pyobjc-framework-iosurface": {
             "hashes": [
-                "sha256:a530a18bc3e332c30d9c8414b8acc42d1a9545f4707eb3426eb071a8e14e58da",
-                "sha256:a7a6606fefe19f5d03c23be2e1e35322b3b8df42114df3f941b0685d8fed3094"
+                "sha256:14edf19c2d3ed9cac1476dcbac723df0917cd702bbf0750f5b8004fca4973599",
+                "sha256:dc61734b4feaeb1b2adef75ee81574aa6943b41b9eecb5efc8366c933325cd5e"
             ],
             "markers": "platform_release >= '10.0'",
-            "version": "==4.2.1"
+            "version": "==4.2.2"
         },
         "pyobjc-framework-ituneslibrary": {
             "hashes": [
-                "sha256:92ec19f5f70e41bc3db74375615c525b4259038101c1e303cd91ba4f65c0a6c2",
-                "sha256:fda1a17e6b5ec90626c4c530d54c3e68c023d9a8e6c9d3d9e50a514e58e43133"
+                "sha256:57f8063ab61397b8d2263be5fb89f268150224f00ee492b86296dc60f47ba480",
+                "sha256:b5fe6906a92c139178e4ae770fe7ef8fa3e07327f1fa56ae6d0dbad845fd37b2"
             ],
             "markers": "platform_release >= '10.0'",
-            "version": "==4.2.1"
+            "version": "==4.2.2"
         },
         "pyobjc-framework-latentsemanticmapping": {
             "hashes": [
-                "sha256:c3478cf038afb5ff5cfec91344788db0c0b061e2002efad7257cb9515df25e65",
-                "sha256:c71eb48ca15bfb4ba65e12ac9706b872a0dabfd69f6e37f0394f5ce01f3810f1"
+                "sha256:725ae63d3681088b50e6bab1aebee06f984a5e3936ae8856ef49ea23d7f5edbe",
+                "sha256:98eef74f49a63e40c19d711e32a14ad07bab9a596789b114e448242197d29715"
             ],
-            "version": "==4.2.1"
+            "version": "==4.2.2"
         },
         "pyobjc-framework-launchservices": {
             "hashes": [
-                "sha256:6e12da95e87eeb307a5a344ec63f28ddefe1e34b7c5f10c8026c6a249d251171",
-                "sha256:d7f4171325e278e1d0b9d28e797906e32f7a8b0c4881abe5f51424c803f71d39"
+                "sha256:2ca578f35258eb1e8d6a17c3893bfbaeffd926a3db02988167b11c36e4de7a46",
+                "sha256:b5d2288155e8a952d46740f448a92f621953190b88a356ff49c963f20eaee5f1"
             ],
-            "version": "==4.2.1"
+            "version": "==4.2.2"
         },
         "pyobjc-framework-libdispatch": {
             "hashes": [
-                "sha256:1240003a5163457c81cfa10830d8cae11b0249360ee01fded70b0b15fcbd0fe1",
-                "sha256:21d14ee1c157fbc3cb68c7b8be1a9cdc28c54f4b2fc9b2bfabb63387be11a739",
-                "sha256:3f6701ae888dcdf5f6f709459dfd649de923cb7f5861a840bf820eef2b6fe928",
-                "sha256:a28ea1b16c3289098242bebefd413b20f8a7df7d1a2b741e3461d8a7a6562dbf",
-                "sha256:bfdd7c06efb7efd02810bd501838aebf9e5bca9a513fe34abf2ba7771347e8e4",
-                "sha256:ff72b271ae4f946f4956708aa8c0927463ca4fbab3497c680312ed64e5f34377"
+                "sha256:0ae5a5fd89abaa462e32d72da9f52b6ae8c231d7f6fc7d81b4c67c6810ffad18",
+                "sha256:0cfefaac4305df029a7466e3b0e11a0805cd13ba56d27e8a2edf8bbf79732d9d",
+                "sha256:2ff8fb9fba06c41b65fb78cbcb390682952271e27d7ea8d70374d78d94ae7a32",
+                "sha256:5770f78159e6e5c2f485772fa62316cfd82b69e40865e58f0ce0d30d9fcd38c8",
+                "sha256:8cb8b9a22126862307dc9d658ebf5d9c7616c35eb5ebcfaa9549e2320c0cffc6",
+                "sha256:a63c7f98dad60dba0798d2e4d789ab7c0b316fb343078fac24f1262dd04cefe8",
+                "sha256:ee17886d7a099fa4148f6caf1429ca1f2b8cf1901beb1d8063e4735cc92201fd",
+                "sha256:f2896c19fe6a8e87fac0478073ef64b60f6838e1befa7353a003e38571b1ad21"
             ],
             "markers": "platform_release >= '12.0'",
-            "version": "==4.2.1"
+            "version": "==4.2.2"
         },
         "pyobjc-framework-localauthentication": {
             "hashes": [
-                "sha256:58e5bb7c5cd86673eb47c0e760273e1f641f6c813374b969314b8b53a509c1d5",
-                "sha256:7268d0fb2fa74fa9e02671ff5493ec06bf158e601154bf3ae66ddb2c5b67dfe3"
+                "sha256:8764f5230ff41553d012e41ad807bce6cd868502d26664267b1eb59a8f76393f",
+                "sha256:99a42ccd7d03f710401259b76e3d642e26880804988d4eb3c827f6e99727e229"
             ],
             "markers": "platform_release >= '14.0'",
-            "version": "==4.2.1"
+            "version": "==4.2.2"
         },
         "pyobjc-framework-mapkit": {
             "hashes": [
-                "sha256:0edf0759528dd735a2866319ca2c93f8ca123d8c3cc0e4eea59cdd9f421a1b03",
-                "sha256:852e1f88f62e933983aa605b83ca69c71896244bafe5cdf445458011723ac520",
-                "sha256:9b03c0d648367e4177b5d90b862ecc158dbd0893aec925235ef952f0b3e828ea",
-                "sha256:a1684562771dbdf79a846db66ff0b519a7ad44fcad70f8d55f465e039a437b6a",
-                "sha256:dde2d5142e83f5046e0b8d1e0282abb78778b00bf81cc676a9acf50514102c01",
-                "sha256:f1ba3b33218e6c385e59165e0ba873159fa214f80b8941d70f852c6dc50e1af1"
+                "sha256:0282e1847ae8efc1513be93819cbc34417b0bf68b373343a1618d991aefd5a77",
+                "sha256:20562f9ae0300d328388ea9a73c306ed0e6d0f9c184c2e92bbd8ee4b33d8ae4a",
+                "sha256:4fc952122b42aaf6c6dbc4dc2aebd6d2763f24201f4fcf2f1fdbaef75ed7ca83",
+                "sha256:8f1958773bb3c065c5740ab8fe074df6ce0d0704c17f408448a2ce520bc52cc0",
+                "sha256:9734cd9011efc141cf1caafb047909184a0f04f881d2e6f80cfad9f384535800",
+                "sha256:9ce73ac35a82b9c2317bb21915797b035f2b02bf54cdc29d065961caefb1ec0d",
+                "sha256:a29619c9b5ca399c99cc4c754d1c1a4cda9e91b852214c29209d9d940817eafc",
+                "sha256:da12e5b6e06c6deb8397348db2e5001b7a4b866dab415794eee3848c78331278"
             ],
             "markers": "platform_release >= '13.0'",
-            "version": "==4.2.1"
+            "version": "==4.2.2"
         },
         "pyobjc-framework-mediaaccessibility": {
             "hashes": [
-                "sha256:571ec55e9aa505085968d952aa26577af5d75c43d8c393a305e36eb5a3c36e17",
-                "sha256:e4b35c6f23764fbc55529a252eeeb6ce09f9574d005fa3b8c5d358ecf26afe20"
+                "sha256:c007ce2926a52b24fb8b20c8b3985ce8c2e43155143515ed0538e6ad58600348",
+                "sha256:e33159968a6c5dcc166bc51bd26362a09b16c138f59e1aad93e42c2e0bbf241c"
             ],
             "markers": "platform_release >= '13.0'",
-            "version": "==4.2.1"
+            "version": "==4.2.2"
         },
         "pyobjc-framework-medialibrary": {
             "hashes": [
-                "sha256:3fdeb4d950c1d4ee06e17b4cd66dbfb5eaac0bb60d1678cf9bb775f594902094",
-                "sha256:5945d57a6f9114cccb13191c93538c1cc4ff752c44c5458a9f5aa962c918eb7f"
+                "sha256:2016babb84ec3ef97bf057e3b399698f3be3ae6fda4ae8d2886ccd5a988d8726",
+                "sha256:f90e912979b38626348cfed6321ab81ca711bf50ca81bee27e9ae2593bc002ad"
             ],
             "markers": "platform_release >= '13.0'",
-            "version": "==4.2.1"
+            "version": "==4.2.2"
         },
         "pyobjc-framework-mediaplayer": {
             "hashes": [
-                "sha256:0942a6a0c0b4c0d2f9380eb16ea265ec4ab03df33630e3583bffdb3c0d0f0f62",
-                "sha256:1a397160e990d50ef5e68faa25e60fd85b0c815cba32412fda076911d0791a45"
+                "sha256:028bcda981333c92ca51b48b41465edfb335ffdf7e222b71c32d1c494ca0838f",
+                "sha256:4319d547b2e14144d1d14ef581139df4bbd243be799261c2875fa7ee3d3095fe"
             ],
             "markers": "platform_release >= '16.0'",
-            "version": "==4.2.1"
+            "version": "==4.2.2"
         },
         "pyobjc-framework-modelio": {
             "hashes": [
-                "sha256:17e43b7642b4ba6b6fc0c1e96dd3a4d3211d307bd9199b73aed9523fd1629d5a",
-                "sha256:2344fed7d2463533782bdb33d630430d0b108f14d30d998e77d1391e7dec3215",
-                "sha256:49bf8d967de484e3386f5789b08e21b34da216137cff3dd53a837b3ce5bc43ee",
-                "sha256:58a55c694cf47378c9233d05151e0f260555597a3e34668c59c01a55928fa072",
-                "sha256:920e3010083dcc885f30c2d706b05305f9fe022d6117b721616fb47cf7f0bbac",
-                "sha256:9240d79b3e911527cc049cee2aee69273775f1a7eebe615a793194ed19c7a238"
+                "sha256:067860db2daff8e0e812a0993b4f0397fa6e0cdb59acd1ab1ba47feb4de56623",
+                "sha256:3709645cecbd340acfa73b3ae4256ebb9de6a6e6621eb90cddc357ab62d695af",
+                "sha256:488576a65c4e925967f2950fd3312b9387b2e77d7aa132c6a9d088940a860d09",
+                "sha256:4b6438ef8f19af0c9d49a003e0a81f5c667dae9a112eca183f6fe6a3741dd06d",
+                "sha256:59e915ca67dbe971a5c06bcc4b38251518113d1ed86be073b05f85747fd155d8",
+                "sha256:767aa6f83585b4bbb7f32c72fe68e56d7170522bf312aa5f76d67ae2bd7642b3",
+                "sha256:b254ff136c24bcf7cb057e676cf0ffc007d3467902e9f346840b7f9922a498ee",
+                "sha256:bf6e070fa3335b7888b718661cb6989c64f9138db94fcb8e35135108ddc4f9b4"
             ],
             "markers": "platform_release >= '15.0'",
-            "version": "==4.2.1"
+            "version": "==4.2.2"
         },
         "pyobjc-framework-multipeerconnectivity": {
             "hashes": [
-                "sha256:5e39c7dab1361660ce131f80e1a083dd033663305a981eb615145280a82935f6",
-                "sha256:6403839c79cebf3920f6151955ce8589b26f755dc2020c2631e84842471a8be3",
-                "sha256:972b6dbed5668629b2a3ef58f5b50097d726a0ed319f350f5727fe43c4b658ec",
-                "sha256:9e3b68c13455ce0ab4ebdccd2af366b8ad3ac997d0d87985a0e9d93f4cfc513a",
-                "sha256:b75e38f3b129e2444099beaf8c6bdd6d394a27bff5ab4316973aded3c263b9c7",
-                "sha256:f88f351224fc7d06ba48e73f715912c39023b39552ef13879cfacd7803b2c85f"
+                "sha256:018518ff41362804af28d944d42ae371218aaefa6aa15f33c506c1f422113f50",
+                "sha256:144aa8c855801f19a25a4de8171845dd1167c16486be213914fbacf2d167d0c8",
+                "sha256:1f2b19be93b8c9b9fc75d78a77dbe65237caeefc9cdf6f18d688668d981e0fde",
+                "sha256:275b3373c1a76f1d6eebc9b703ce58c53ba0ff379e432e58aafc50b51d291b34",
+                "sha256:2dea1a014d4e668f504f5bee8e7afd664d9da5cf24cea3c40bdcc82949e7628d",
+                "sha256:962ab717816776658173fd819af3b5f5cb328133e7c2c42b45ad2c6f0212e2c2",
+                "sha256:af6fd1f357c72f7d9a55976e340e754e8b5a78c41aea6a48879dfab8c1ec01d1",
+                "sha256:de1a53dcb3a35a2285d303c6e6efd37aef9f56f3f0954f28ed23ec78cee8a16e"
             ],
             "markers": "platform_release >= '14.0'",
-            "version": "==4.2.1"
+            "version": "==4.2.2"
         },
         "pyobjc-framework-netfs": {
             "hashes": [
-                "sha256:7fc93f5fb6f5f3573f3d4b82b212e3d67d4dd639e41b6ccb6b49a13b3d718553",
-                "sha256:b6f9b684fcd3e64de3f02556fc27f5264c7846b63b43f6460070cfa25dc8a9c2"
+                "sha256:80edb603288c241854c4ec41c390fbedd15e556068c04943e20ef8d285d00a2b",
+                "sha256:c7660d85ddc9d0650a2363d53345a78691cc99ed8391a7d9642bb657f547e6b5"
             ],
             "markers": "platform_release >= '10.0'",
-            "version": "==4.2.1"
+            "version": "==4.2.2"
         },
         "pyobjc-framework-networkextension": {
             "hashes": [
-                "sha256:0c83128436b73e893dd5b6342e66a057f358d4c5a33b29a7e7ff6b8c0dc632c6",
-                "sha256:1f2be26f0b83c13b7e388fa108be7bb43c32811e40763dc808a8e110704ef086",
-                "sha256:4d8f6b3375a8a6516ff72f052cb50b3c7b51c9b32cb339a545f2c6323a330bec",
-                "sha256:4f18346930c3193736200d35db8beaff020f59c2e02a5a55c8a5e91c618ec89d",
-                "sha256:5eb00a6a15d1e94263db88c890bf2ab031f36d64c3705a1a83a6882f603d51da",
-                "sha256:a32dc1ac1b0bde6cd75d4205804a06fa054a0ca8229095ca6eba984725d0e4ec"
+                "sha256:09f71c705377a8a6f95185e7a95a1818c16ce9b232b3527bece0d2e22f6033cc",
+                "sha256:0f25e3f0cceead10adc4bc1816f77631afbf639dc37bb2d14db1629ef644da1b",
+                "sha256:7cac696714edb309baa8323afabc45478cba5d5bb3b8c80627142296ea480b77",
+                "sha256:8e5ffa8d6683a8c82e189ad67e043d0030796c53205dbab97653bc20ae6989d0",
+                "sha256:9b423a8eb0b76b50ddfa9675ee1be3ad7c082d01118e05b6513265403a0186ed",
+                "sha256:ccdb66cf30a32a7a2aa2e00be82c1c036f015fcfe316acbcd0213d620f037a0b",
+                "sha256:e91eb6a7fe26caa48b411f68a24137ca4ed21bb7a12e67f93909de03e86079c7",
+                "sha256:edf624f426071a29fdacfaf6c5e21a95be876e7493c4847ac89f011ac4ce1877"
             ],
             "markers": "platform_release >= '15.0'",
-            "version": "==4.2.1"
+            "version": "==4.2.2"
         },
         "pyobjc-framework-notificationcenter": {
             "hashes": [
-                "sha256:026e93a3bfaabc6f296689fd5a9c8ebe51d33f890e0ea6abe891255194a17985",
-                "sha256:885acae04b6c5e8fc07116a5fcdc5103e32a92e33c4d1d13bb50b46eaadabbc2",
-                "sha256:889fab76bd8870f55af6dea6bf514855068c04c62c2f8b6adc030084a4e18d7f",
-                "sha256:a5a73208cb601bbc17d78ba27d9a51d57b59ce1e4f46020eb078bbbc8fbc74b0",
-                "sha256:aa470d2038ed997de94ca6eb29a9f208f5ee8c8a3d70ff2b9d7ea7abe0239707",
-                "sha256:e4389b00418e466017ef9bfb456149f324cc152232b30d600bb28476c89d57ec"
+                "sha256:2930b99de6704427bbb1e676008b26ee9e3ccb6550d2f8050d9b3381a4250107",
+                "sha256:2e05426be1025d9d4ff88e0cac421ee773ddda8a8c25a1ea92c1f775bc6444b2",
+                "sha256:568954e61c1251f47a1cddf03f27af89b43cc3f31b537ca266cfe1c73400ca74",
+                "sha256:7e9ccbaf9a33e0ccc60995385c68d11d91a1747e442de99704e78263fb4e0418",
+                "sha256:a9ec94ec4799b6d00eb361dcd8a9c1152b3906f8389aa95516c6aa86724ae70c",
+                "sha256:aff83c43a55ac380ee3364c9d333d42bd4e68504301f013a26eca09d94aa11e0",
+                "sha256:c39db63d9834c8afcc0163c3f8fd37b64c0438297a87058fe511dc993b743658",
+                "sha256:d6ffc2c7d9d2ac0f0ec82f7d6e19e3eed984978f222dcf5d4114a9503670bc79"
             ],
             "markers": "platform_release >= '14.0'",
-            "version": "==4.2.1"
+            "version": "==4.2.2"
         },
         "pyobjc-framework-opendirectory": {
             "hashes": [
-                "sha256:31d3c7012641e0f9f585cdbbe562a3af40cdb7c6b04a203f01329a02caa14bda",
-                "sha256:366dd1839cf4a06a7002258af720535e3d8ab6c8f49ca3818e56fc89586e044d"
+                "sha256:a6afb6361a0af16e5f05f3ebe4c060dd98e338c38a2fc72c2ab054446423a0d9",
+                "sha256:d3b21ed09e7c7c775390aa805a25de0f4836a2967403d490014b196f7f01034c"
             ],
             "markers": "platform_release >= '10.0'",
-            "version": "==4.2.1"
+            "version": "==4.2.2"
         },
         "pyobjc-framework-photos": {
             "hashes": [
-                "sha256:0ce7d1cee736b83450ea38c800dee1a949502eba8eea424eb99c52a2f03a705b",
-                "sha256:51f6811f1b034cb4f8eff9d7fb46463eaee7693cc86ba94be65eb96466030534",
-                "sha256:965d67a1961b81598983b83959dd7be08df648893bbcf6dd8fd6a82f8418517c",
-                "sha256:a63b13999b33f7cd1ba3d7a1c6a1ccb5d8d3817f95ca61291a59d16652e4687c",
-                "sha256:e30658e0d7265820ca079733bb9cf3019473bf85e585d19ca6e491b27b49eb07",
-                "sha256:fb1d003cdf2dd4aa41906625329eed718cd5376259f551365def6fdebbf93a72"
+                "sha256:10f55d28bfe454c8f41da5f69361d35e706660bcaf8464698ea9dcbb2e064c42",
+                "sha256:84e236b01e5d6ffb1e9f8fa96820caf47b0761b5e4e2a1250ee19ceb1663388a",
+                "sha256:bc513bc6c68ce62e8213d29caaae14cb3675046104d7c8c2e7b90527e20e611d",
+                "sha256:e8b698a9fac064c7f28c45f04d7e62f6a7b68a59ab262c442d6864053051092f",
+                "sha256:f492714f19f3e17875fc590f44ad330947242ca4e7c7959caa0e7333c0a12ec5",
+                "sha256:fcfe15c22f898d65a72849f3f94a841382dc9d61fc8402a3225ade1757234ef0",
+                "sha256:fe56278000bb70ecf052ca6d416fcd9c3a5e21090b5b88de97978fd516697d7d",
+                "sha256:ffefe09d842565ea986d9b045177a7e320388306c9d6f2c596b17324e9016263"
             ],
             "markers": "platform_release >= '15.0'",
-            "version": "==4.2.1"
+            "version": "==4.2.2"
         },
         "pyobjc-framework-photosui": {
             "hashes": [
-                "sha256:0cc5a4b43137eb1ef456267283056b13529cc69749983dc72cb8ad1182156485",
-                "sha256:3f26f60af21819fb4ee91df105bf4d118cb99731c2aaf413d2e92f2f32e50473",
-                "sha256:4cd7d9c0322bec05dde9c142e01600855f2f6fd68630790d39aac1f9a3e8b393",
-                "sha256:555274ffa018ca0d23b063b2f12e6bb2b08f3d6d7d650e5544ffa32793dbaf38",
-                "sha256:5a14e3caccee696315ef27fddeefa3586eaa554714fcd3164e8158513d210f83",
-                "sha256:d31d3568e316be754ad1f291929c28c09081e6aeb7a65211f56900481d06953c"
+                "sha256:11aa94a27f9dfc2dc882c7c34bfc5469618124d681382c884c699895ebdadc28",
+                "sha256:48a01669d37f221fd4d52e80c0943a7b6c4270264100af51a7567c98f672a7cc",
+                "sha256:70a6ba13119e1a1913f4b279df15972a92d30b81e49efa69124d41c64a299a94",
+                "sha256:8b56c39b98488a244825a7dff0b52b10e29c3d10c522721662caf875bd40a4f3",
+                "sha256:b5c6520c4bfd26358d04002bd8814ae9e552c5484e0be4f832fea6efad269528",
+                "sha256:b96cd9403f0706dabdc60527f51eb1bf2d43d875af3b50ea9eebb24fd22e8560",
+                "sha256:e2e67df2a9a3726ff9a13b1e38852a66d962c16e75c995c5af5bfcaa8ec045d5",
+                "sha256:e8b915d5ac74f8a65c496d342c5ea859a14c887817abc4a84abe071d6333037c"
             ],
             "markers": "platform_release >= '15.0'",
-            "version": "==4.2.1"
+            "version": "==4.2.2"
         },
         "pyobjc-framework-preferencepanes": {
             "hashes": [
-                "sha256:22b074bc1bcd32eafba114639492799ac7b860a602c1669bbefcf6c7958964bf",
-                "sha256:2580b5cd118170eb0834a0f5d0d5d4e00d1a1ee15916951828888a9af6ed240f"
+                "sha256:4afcd7b0b7cc8ccbb9de93cf67bf9bda5a8d60e9d46c08c3e11c8758b3909f46",
+                "sha256:b71cfce0f292393dead9b5f9e0aaa315c31d42f83c09d2aa1daaa594060e5dac"
             ],
-            "version": "==4.2.1"
+            "version": "==4.2.2"
         },
         "pyobjc-framework-pubsub": {
             "hashes": [
-                "sha256:00ff723766adab9f231005f3a94a31456a5c19957e3f45820fc760f3fa0488e7",
-                "sha256:7d0875e71339491ff2d1665cc5158aa3117e1b27ea8bc6af10bd49362845676a"
+                "sha256:05674dd30903cad2e9e635435847cae518afacd8a0253edbbfa1f08da70e5611",
+                "sha256:7ed1f3ed37d3b5480ffcc450cd1e0b6930dc3555fe89e4cfd652bf8dc3246a49"
             ],
             "markers": "platform_release >= '9.0'",
-            "version": "==4.2.1"
+            "version": "==4.2.2"
         },
         "pyobjc-framework-qtkit": {
             "hashes": [
-                "sha256:0b6257647605354235816f45c5137306e1781cda140a589ef8a86488436d206d",
-                "sha256:0ec002ea44f1ad2820ea53e324ac640b8c7c30a382798c4f96eba7023d6d3e4c",
-                "sha256:1f00561b54f41301032cc97211807adf6b4e6fccce5303da03eb0483f9487953",
-                "sha256:2c3ea77d48b8460d75adf32c9f8914f9a8e39253e1186e5c15e491bc27a9456c",
-                "sha256:3e32774f13ef45281b9b2b40de51b35d7a5135780a9fbe23ee121ed3343cdd8b",
-                "sha256:9c6733cd26cf4cdd9b6ece15e8478725623ce62d212f8faa299cf361d29054dd"
+                "sha256:09ae43a2fb0158bc18b18f301203721827f3236fcf7172601d99e50b075eaf75",
+                "sha256:4ecb8975340aecf14b306536c14756535c1b291d8ed666ba6c3f02f0d446221c",
+                "sha256:5b7abff9e7b37450b0489cda69c84526193bf51c562dbb36716aac925345a7fd",
+                "sha256:5f4b99a6acff7029078bfb244e251fd76f4d1b4c8862dcd2f7c99eb41770632f",
+                "sha256:9f1989bf5315ce30d5ec2997cd019b80b9aef5078aad10617bbdea02fdcb5c87",
+                "sha256:cac44e03a989814b05ca75af72d2e31b876bcb363060878fe210167d1ac03348",
+                "sha256:defb7551c952cacc4d5c5b1cb1bdd812a18705f8f4b5d182ee620d89b716cb3b",
+                "sha256:f53a99f2671c33a5b5c3bc0201b564dbac75e798fefe078f7a512643370495d7"
             ],
             "markers": "platform_release >= '9.0'",
-            "version": "==4.2.1"
+            "version": "==4.2.2"
         },
         "pyobjc-framework-quartz": {
             "hashes": [
-                "sha256:11161f7c5d0602786f9b401183fe2f8e19291813d5d07fdfc0681b3e8ae00f07",
-                "sha256:1dc6d4c8c8d1900bf6a32931e00ccd5f1ba069df778d7a585f5a0d977509e1b3",
-                "sha256:3f643fe02183244f6723d0b554ca7eae1b8e61bfbe1ce19042d89e8839df32df",
-                "sha256:633b76ba7310b2f89cd68bcc8e88027439f04c3230ebed23913a473a2bf1f52e",
-                "sha256:6ae5970f0b7f0dde569a92c76fec87b987ea5238ae20673ae993d77432cbcaef",
-                "sha256:9b8409062042dc10764ee0d353bcfc96795959e2afbc14b96d7a687b5da6d330"
+                "sha256:24e00ab3e50a3387d00334bc5f77d5c05825a8fbb80742420f10c4b64323ce01",
+                "sha256:2831436fafdf6133de091a84c7b8c19c1317d51ec4655fe4d15e77a8d8d91d15",
+                "sha256:518ea95f5aa68e8f6698dc04fc0ec0b23f181e62c994c4a2434df7b054c35906",
+                "sha256:541a9bc32909936f49a753317576f7c8772eaadace8e462845bb19aee79531d5",
+                "sha256:7360fdd5bb030becc317f9cb242b5e575bcec903e52764acba1a14b7e85128e3",
+                "sha256:b2475675cd853373ac656ff86e8b3ddf2812ee2f1a44039e342d2a383aef731c",
+                "sha256:eea4b0d7cf8bec3a8f71f736594aac03abe15ef082e63979774be4b99627cf28",
+                "sha256:fd9e111e2c4749f77c8e60360bd73af2f271cc7631b86ca990b1066123a1c3fc"
             ],
             "markers": "sys_platform == 'darwin'",
-            "version": "==4.2.1"
+            "version": "==4.2.2"
         },
         "pyobjc-framework-safariservices": {
             "hashes": [
-                "sha256:400a3998b936a5d69511c1019a2516f7bbb7fcc41931407bee32fe7845552ca2",
-                "sha256:4107c72caf6f86f83c9f5e750d6b90373cab6cc283c2d83cec9c563f61bc27bc",
-                "sha256:5c36e6d578c03485e7a0588b0b51f6b401de60fbe2f2c48b6974c75efa612b14",
-                "sha256:9cea847876dc7c998777583a90af7912b97207180ff40d9d39ca2a4b8c5d4649",
-                "sha256:f7ef6e83efd8cf97b54655595957b5f220674bc2d07c68a0aaa0a1671ca92008",
-                "sha256:f9631733814e707709d06a99604fb758db6b22189e525aa2b8e814814af744dc"
+                "sha256:1147d14f59d1d517bfac35c703a92193c3dd338f3767c42b012562705aa5a72c",
+                "sha256:18ec0d579143c9f3c1baf7816b7113edc192e11684af6940c70ef4ee00380b3e",
+                "sha256:9d82301219e945791d95c4dde3bdd8581b689403c111c7cc4e7665406ea7763b",
+                "sha256:bb904dbe1da114e8fcb44d463e1d7936bb9873f957d65a06fb89b5a8174b02ee",
+                "sha256:c163b1f0f921fabb1a48b8105ecbce415f56679491f08b5dfae86242fe728ed3",
+                "sha256:c8cd836b01e144f08984e0f14e427b4639c13b47c762eb5623cd1bc747216ccd",
+                "sha256:e2b964abb6e36060d1f116d1a2e6fb555e00b7751feee5641d9fff014506bf65",
+                "sha256:f6c221b8467e721cc86cf5b6aac786ef0f7c144ff604236d6546f85bd8d6286a"
             ],
             "markers": "platform_release >= '15.0'",
-            "version": "==4.2.1"
+            "version": "==4.2.2"
         },
         "pyobjc-framework-scenekit": {
             "hashes": [
-                "sha256:02618ba71f5099f32098c5dc74159ae8c9b14b4c3f8b2d2d396aa6a23d5265e1",
-                "sha256:20aa02e24caef9b64df30296b87fef0838c12a661fdf798828753df69648e669",
-                "sha256:2da52c3a9411149fc2ccfe55bd66b841c1ffa9cd564cafe6c2728e3be3f69b00",
-                "sha256:a18e4f2aea5599bcd1ed1dfef27c8ffbae05b06e31ce9ba01d0bd652df41fc5f",
-                "sha256:c24db3925729e289f8f3f0e74aeb24bc335382c9052415cd2b7ccdff58711328",
-                "sha256:d26e85aa2cba6cfe6a41c4cf83d7cd78f011b213a642cbae92434b4400f4d34c"
+                "sha256:1a177be2e12c237c3e76a653c3682282f2937683995c7cbbef4714f0dbf4f80f",
+                "sha256:1f71ff6246c8ad13bba51c23339584957772f5d1aec666f21b25e03d8e249212",
+                "sha256:3c0970ba6e1fad8aacc2773dc9201febfbb3333b8b102787f5cf655d39e9a7fe",
+                "sha256:59d34b050d5c6e8095bebd7570ab74f682b79d15d32b9dbe0ee78909425f1e57",
+                "sha256:7785577f52e686497caf4891e0290e581a2e8e371c833d6365df815966fcb306",
+                "sha256:86080e09e13197f22dc045c71210cb9cae7c8e2eb65aabee61ec8e58e36fd179",
+                "sha256:b9d83b920ac3cb790ef74c8499d8b6bd5e99b7cfc4e740f3c619b628247e63eb",
+                "sha256:ff792b0b87cf797186fe5b4f98dc805593dac9738e4717a8675586d0a1ed5caf"
             ],
             "markers": "platform_release >= '11.0'",
-            "version": "==4.2.1"
+            "version": "==4.2.2"
         },
         "pyobjc-framework-screensaver": {
             "hashes": [
-                "sha256:10ec595d4199d6ae114212c9b99f189075dd694321835ed48bf405640eb49aa1",
-                "sha256:14e63232860c9f94426c824112b0141d4f8d5b3e5956ac0703c31a5f1b9662ed",
-                "sha256:28041511ea6c89ecf5b2da9661b90088abbe5695c889033457ebc917bce6f0fd",
-                "sha256:744ea758fb67e26a9ca45e8c4a07906d98969e2f89f5fcc52ac80b23b92737a4",
-                "sha256:b64fbcaabdb0a8dbf4648dc3d49ccc436868b7820d233ee3e148739474bc85da",
-                "sha256:e951279ccee7d9e907a5f1e66c1e594e0634b3a398ddceb62686745274586f8a"
+                "sha256:274628a84d3fe71794f7a9c5560760457e5c1fffdfc583275303ab9216c7ce09",
+                "sha256:2eee85aeee50a8ecc2639ad866c4790aaa2c1367e70706029bb25aa32f74db3e",
+                "sha256:307f0370999db0ea63524be5b549412228f176e19ab35409e22b1964f45cf2e8",
+                "sha256:3fa270130c73cda836a9691bb4048029d9c3b7d601f0e1568a04e8f508eefff1",
+                "sha256:5b44680a3032c224b039a72f169867e3663dedb3c5450e9848691fc966e120b5",
+                "sha256:6df432ac634bbd17d713b3560d29f43a64efc6ce422eacebc8b78073cd53ff64",
+                "sha256:a4272e4c179e0a835ffbda9a985578ae4549a3caf12294758ec255edbe1d2b2e",
+                "sha256:fae1c19ea040fe449cc7018be775226560384a8bb14315515ce9a183ed3f17db"
             ],
-            "version": "==4.2.1"
+            "version": "==4.2.2"
         },
         "pyobjc-framework-scriptingbridge": {
             "hashes": [
-                "sha256:004f68853d468f5ca89e09741fdf1693c97f329018f64acc8feb717abc9eaf66",
-                "sha256:2e4f6cb6e1fa5968746f511ddf29826a83224274fea1e6f7c1d2024af7525203",
-                "sha256:650228c47ca920fc8f1db910019d56760791697a275a8b46150c86bdd2507618",
-                "sha256:b227d8eeae0ecbb803375c964760df4712d33d97f93c8bfc850b3278a4e0c28f",
-                "sha256:e3f4a30702078a65644632c217363847ba23dc01907db7096045c95ba585bfa6",
-                "sha256:e8eb71de90d83d7a0a379ad84eb0a7d76916bf98a8c65a92555ef547d4e7367e"
+                "sha256:1f57e707ce06979d8f4324b010eba2335b8bc9c6c6d62976ba1d1f43d2b1a96b",
+                "sha256:44f75594557202bc8ab0068aae0c75e4fdefb643713fcb9d196d22716074b6b7",
+                "sha256:963bed15a986590904118b20d729379bc16f7a7b345e63cdeb72161f294f73d9",
+                "sha256:b22b7d4894a59f2aa6fc0e56b3a0743b264258350b7eb377b8c17acfa2390512",
+                "sha256:d79666797355475821a63274a50921d42993b0d9e42c9ddb5f4656248a7daed2",
+                "sha256:eef1ce9c1d2b0f396cbbecb2fe5a42ea6329b6926da25488e9e762e9f8d72bdc",
+                "sha256:f6b5a001452dde16affafa47468e3081863c8847b591cb3ca47fbf69318fa590",
+                "sha256:f8603f98f502eaca2c71e29eea55f3f7647061790fa97b72d086b53023994a02"
             ],
             "markers": "platform_release >= '9.0'",
-            "version": "==4.2.1"
+            "version": "==4.2.2"
         },
         "pyobjc-framework-searchkit": {
             "hashes": [
-                "sha256:b92f6c1aa5145c3e41ec144eaf2a12ea4f33748f81b62cc34aeff89d3c708b3e",
-                "sha256:eaee435107885578b5470ab07a337adab52232eddfaa3eee97a02a8e8891c3b5"
+                "sha256:bed234cc5296fd5622914b3c0d3613184072624458bc36eb79a1202d69ab417a",
+                "sha256:fb3ab00bb5a4a2a9985401ae34b400089d6ce39d1f790b97e1c39d53c16db40f"
             ],
-            "version": "==4.2.1"
+            "version": "==4.2.2"
         },
         "pyobjc-framework-security": {
             "hashes": [
-                "sha256:336475a1b4b56c309d20eb7a91128192fafadec77e32a9ae452e33ac3476a220",
-                "sha256:4494f57c835eac7f4e8f7315667d8f57f48c6b48c3727e234faffeed262bb261",
-                "sha256:513d58cf230d180485b3ff509c4183cb84ffe405f7b07dbe437219211a64c75b",
-                "sha256:598926be2b412a6b96d33e258d57b2b1f8afa3abbc55cf9b02cb10d8b000cec0",
-                "sha256:dddb61e1bd830a2c2876200807368fb12df5bd1f1099fd8206d4f92972cfee7c",
-                "sha256:fd48785d0604c775b3f3c3ebf543bf8bac7f947b92171ceba845e681de0e0a0f"
+                "sha256:03c7e81d8954dd94c3a5ecc4c1c4181717b695cd8d6afb0e82ffc009839c8fed",
+                "sha256:0e2f4f64fedcbb6c5c78f8d4b2ee3fdc355db9ba03b44d898d7604e952a7f3ad",
+                "sha256:1a721e934a43995c425cedfa02425f9828495cce72e1f45c03ee0a72fe6000ff",
+                "sha256:3d0dc4138eabdcdb24541d059088f50121fa16e1d6645dc782276f19c9a553d0",
+                "sha256:655212f6b7edea0ab0039696036233774a810c9b462c6125637edc3bf4cf38a5",
+                "sha256:768d80808e0c2dd254c608579ebd0412d3de6776c8df068e64938945ef42450c",
+                "sha256:877f17f236d83a86ae63faf359a4ef283bb2fc10f2e183369fb6d368bb4e0de1",
+                "sha256:f8c0d5e5abf73f2312a006805aa784727bc905bd4f47b82f7793acfaf7100cff"
             ],
-            "version": "==4.2.1"
+            "version": "==4.2.2"
         },
         "pyobjc-framework-securityfoundation": {
             "hashes": [
-                "sha256:0d6874bc1423937ec7d2ae622496a6cf937eadbde9956699bcdf54b256229723",
-                "sha256:edff6d61dcda88efdfc3ed154495998e29601ee2f86a750ea74b839e52dc26aa"
+                "sha256:6b7aa7587175f1b2e5f09b5af2f150874fbee4369671d5c273ded6073d751765",
+                "sha256:7a66f92b01037ebd2bf373d50d844763526e6a2c48b45fa3bc347e49f70b04e6"
             ],
-            "version": "==4.2.1"
+            "version": "==4.2.2"
         },
         "pyobjc-framework-securityinterface": {
             "hashes": [
-                "sha256:12df0e67c55a837341937828a41859a94ebd89e02a4fa8c61c18a5e7b958ae56",
-                "sha256:25fd056d189bf6dc79c1b5d94a7ae0d262df0b7d11db886441ae1165fb2c9cf5",
-                "sha256:534eb63a10ba76f07e36cb809c40c461f5bb848b610a7ed1ad7cd9fcd8902119",
-                "sha256:bc0fdafc7cdd37f3461742991c220e0b63b9fe6037c342e1a0200d9b5f0196b3",
-                "sha256:d2d314f40c561100058330bd6e30ff25fbc135cbec4a1d21837fd45f04a61e80",
-                "sha256:f7c30ed7716bda1970d82cde5d0d47bfb410d01ed6c6203111c0e0b637997a1f"
+                "sha256:006b7192fbeb44d536bb5cf861e29a9fade71a31ffadcc086cbf22761ad1fff8",
+                "sha256:0d047e151bd402d7dc6068813f82774771a0a8318c167d23e2986c08276fd99b",
+                "sha256:27453a2efd9dffc5aab733fd5ad39ae947861361ce089f4bf2dcd1164e231428",
+                "sha256:31ffcfcdf387689a010a1041b5cb44e4e2630d7301455e3b8f5d7e5bf8a14a15",
+                "sha256:469b06ddf9b0ed7958602961bec36724f00ab80a18d93225a56fe80cebae557e",
+                "sha256:802ce75eebaf6d1b6d5e7041173070eb76c9b720cf427e9291217cafd8854441",
+                "sha256:b8c5c3c9d0fc0cab2b95e33de9f45437d1ea8d1e76de2acc47a181169c926414",
+                "sha256:c4c67056011ec7f3358c32212aec4c6d2c46f9ccd79edb8025afd58e5e179179"
             ],
-            "version": "==4.2.1"
+            "version": "==4.2.2"
         },
         "pyobjc-framework-servicemanagement": {
             "hashes": [
-                "sha256:21926cff7bc4b8514255b51c36d1952a3370a032c87c16fc484ce6797faffae6",
-                "sha256:2371a454eab070a0e9ff7bd551d8b0d4b2b1a9acc91e5e2300eac3dee045b8ce"
+                "sha256:a53734ea3f87c4fcd31d635d0ec51bb582574fa4ac12f2ae811f3e6abebccfa5",
+                "sha256:d099aa6b3a35cf99b0835bb72ae51ee73a144112fa433b30150d297341db29ec"
             ],
             "markers": "platform_release >= '10.0'",
-            "version": "==4.2.1"
+            "version": "==4.2.2"
         },
         "pyobjc-framework-social": {
             "hashes": [
-                "sha256:880220b00bc0c103c2589949e7e1b982f60a2d8ebc23a822ef82be89eb232016",
-                "sha256:b5f88066a23bf4c9127f1ceda864f6654fcdeb6ae755f0eacc069ec2706f21ef"
+                "sha256:b3fb3a4656190d6ecd7399c47e0ce9fc227d5668137e703805d9d81de84ba5b5",
+                "sha256:f519beb7e5eb83669eda826cde29eb4c5e33782327af6eb65eccc5390fc6af11"
             ],
             "markers": "platform_release >= '12.0'",
-            "version": "==4.2.1"
+            "version": "==4.2.2"
         },
         "pyobjc-framework-spritekit": {
             "hashes": [
-                "sha256:11bbb07267881ec881cdcfc4a15180f7b10a841ff7b93130c0783f1c9453eb07",
-                "sha256:1ed47a575eb8a17f111ede27d79c8a6df662ef1cc8b6b90851d8cf02a6aabd35",
-                "sha256:23da0458d1d0f18765406d289a0c216eabd50c56e04017df10a3e6933951d205",
-                "sha256:51ddbba4b6bb8254e0cc28197856cc0868b1b0f00740bc2f7784bfc5e5809328",
-                "sha256:9cee35417a7ad64dd649f721b2ce8f7369b6c219883cfbd2998fb85463745828",
-                "sha256:ab27ab7fe4a19de6b7e9104ac4db1010399d05347f9fdd332e998f51ef3327ba"
+                "sha256:1fff1c1f23c58bbbabab5b2c38b7264fbdb56405c07e8b03b0131fa941d7a723",
+                "sha256:4bd1b2f00340568c8a816fdf82ec6cb251a98bd6b6838a4df36595eb8195d96b",
+                "sha256:5bf6e3ad15a56d57c67ba55d1a7ce6bfa588eec55adacead74c308525e6cca37",
+                "sha256:8ef42508846ef1197722354139244467283bcd9ce0619e3ad18502ea7c5dbc6c",
+                "sha256:9f4d09286281ab84e2845ca553abd58464c1df3c5c7b12d7219b71d14ff8be70",
+                "sha256:c74305129851ec6f75f8ed68843717b6d51374492233cb4e75d2221c47a1341a",
+                "sha256:d246805be132e91a035e507c80fc71fc5e232e84d1dd2060353d5e13ea9f94b7",
+                "sha256:e924fa1400a38c78ca6b01565cefc2a2f2eb41cf5e1cb94a3c8bdac1c618cc9d"
             ],
             "markers": "platform_release >= '13.0'",
-            "version": "==4.2.1"
+            "version": "==4.2.2"
         },
         "pyobjc-framework-storekit": {
             "hashes": [
-                "sha256:08d72628d8f4a4b8a78dc07a636fd191b4927cfe06689ab5fded900bcfb986be",
-                "sha256:13b511e6fca0b89bcc79101c5b50f9670cadefa108440954548e7867135db499",
-                "sha256:3d71f33a78f39c0e92fd1030456d052c8843b53976427132137ded124dcebb5f",
-                "sha256:6c114325b9fbc911db58fbef84fd87dba0946b5f0e41bced9c1ba201d7d8ea3a",
-                "sha256:b0c5fba1ef2ebd8253bf75884bd098c3084bfbfd3e598ba7f50c35daf4bd4e1e",
-                "sha256:ebf031bf9d211d6539eb6337cc0f7118b5db01af5b79b4ecfd7ba31fe8b58d44"
+                "sha256:0f3b282ffeaeef8394ce23fc3a4a738b5c5aee87d6eee4646776b8575a6fa217",
+                "sha256:1fdbad89b8cbc5a4e4d95db500d45694a085881e4beaec5c83f0e76158572e56",
+                "sha256:52830f6bc795c395afbe1316e304a8c6f62007a7a753f4d2399f742abfdfe359",
+                "sha256:9ca6abf1803e0e9a01c44503cfa4a885780d80a6fb9e9916486f023de2f5a595",
+                "sha256:b5ab1de9feb9a88be15f3eb498539c16af693b2a8049086290d8ae327b49d0de",
+                "sha256:b5f597dff5bb0e3c4f63bd30d8a22145ef3988f5a42657b411708e44ff8f05f3",
+                "sha256:f9fcf2149ff0f93b9f552b72026668b8065afd5272b9ed2a76c1b9b5ac917974",
+                "sha256:fad648399d0a5555a9a46224491ca3cc561f62c89d41c9c60d9cb98822f89c5f"
             ],
             "markers": "platform_release >= '11.0'",
-            "version": "==4.2.1"
+            "version": "==4.2.2"
         },
         "pyobjc-framework-syncservices": {
             "hashes": [
-                "sha256:7efe762ee8dbcb140b4d39d9159125d305b8c57fd1b861e3d9db7762282412f9",
-                "sha256:93324be36514eb02684a985951583621cf3a3028960750d92a0dede3ffc2fb15",
-                "sha256:bbf37d922b094b2a4da54f262470b21cb26de174593626898d9f56c5cbb430f5",
-                "sha256:c76250624e7db64fdf8a6ef830cf31d69db60fdba6fbc9ca42342382bf721356",
-                "sha256:deb5cc02592e073a01a601e719c78617f38ae3769d16cf843cdc060bd63a6145",
-                "sha256:fb9d25065bc4976694c12bb9c3a73db5071ac6e728d66ee7c9d7c0f33bfe83c9"
+                "sha256:2aa84224bfe689d693b558614f1af7987b6a8473332bf5a2ffc7d0be0c259ddb",
+                "sha256:334bf45db72d5cc858a237a12ab95931145b77695d6a70bcc4b8700d3700b0c0",
+                "sha256:61c65f0f783c41a9bb9af9e5ab0880e669e7f240a017a232e6b985d57cc008d3",
+                "sha256:6429c6619cfffb3ba9622b548e296ee50e8c29ef3743ffc497c2be954720149a",
+                "sha256:64e57352fe28ec9822c6f60a0b44cf99ec8f63f5e02336d435cbd45a379ae341",
+                "sha256:76bfd66f73900f762f4824b72190d233961c66f94500b15dd3f10432e17f967c",
+                "sha256:c5c15dfffb395ae5ef69151781bb243b101548df88eb57e9d24e2a3128d38951",
+                "sha256:eb1384f80c1f21ae501b73d3e22cb4f1376952092b19e929d1f11ff72fca59d3"
             ],
-            "version": "==4.2.1"
+            "version": "==4.2.2"
         },
         "pyobjc-framework-systemconfiguration": {
             "hashes": [
-                "sha256:0e0b3968c1d1e73317bcce07fdcd9216a86d753b74047565b37a6a4e4285cb34",
-                "sha256:14b457375e49d413248b2423f9987af399a4ef65722d29bff665e7d27a10f8a8",
-                "sha256:20ba74da5afb7887bf4a521169fbfcb949ab1525b4453110f8107af43a615235",
-                "sha256:214c3fb45c3c235f1f58c0fc7e05e73f4bccbc5a48c639cefd02c340e5013c51",
-                "sha256:2de1d2d23dd0b8058be44706dc6082d5efa35c1e509d88462290b0f837761247",
-                "sha256:4eccc858e8f225c5a9e7d1d2f0e6af0305572e7f3a5588a291d38f56b7b27cc9"
+                "sha256:0e9d8ed5d0821b12c69ee0a548d7272fd9e25d1ba0facdd74b3821671cdec376",
+                "sha256:1a0111584d2c7448a4255a642b6cb54dc52123900ac5d9970cbb7f77af13ab48",
+                "sha256:59a7b002622f0666522d4ff2b41651c86115de2537accadb9c030f84c78f9c8e",
+                "sha256:649aed61a6700b4be413e00a88856cae3aa0a37250e083031d0feec2c9b4eec0",
+                "sha256:78ec4adba535b65125328153a82704d734fd070c7a0c4de533367380a0e2ea9d",
+                "sha256:8a89127e8fdd77eb3cbffd19e07fec7256c76b3ea837e43c39ef2d2a09679330",
+                "sha256:9788b91ccc2fa2ffd75a463db1aef02705640cca3048905be1e88ae8ac68d3ec",
+                "sha256:af1f25825974b148ed01ab095dd3796f07df6c575c52d802e37f908af5135096"
             ],
-            "version": "==4.2.1"
+            "version": "==4.2.2"
         },
         "pyobjc-framework-vision": {
             "hashes": [
-                "sha256:21dfc123536bd0d8cf384fa426545c19675cf7f333feebbf158a0fb8d388b943",
-                "sha256:329c38198c775f1a9cc65e59af1128022dfa93bc8b55e9c294799db9f6ed4349",
-                "sha256:71135da538898dea875d97d9c3642a9db08f738a96b85d7055710d5f04074331",
-                "sha256:b1c720a3f14267b50139aca89e415049e0de6e230a356502e622f85c10d1b415",
-                "sha256:c5d81b465345704ffdc3e97dcd997a1d7765797ce59ca4051bfb7ea6765ab3e8",
-                "sha256:e1acbed9a79c04eca40df527a44b0d0b99628a58cb8e609be8e5d677d0d8e8a7"
+                "sha256:1e8b6bbf3af68b6f8174f99f678925b23fcd21e4aa212b9e390fedf341683ed3",
+                "sha256:2387fd4ad5f270e0fd2b2d7e5ee221a5c32dc4064c15f9f8913ccb2a8ce8218a",
+                "sha256:307735e62bda74bb03ebf37a221e97c3bae1e70137294ac80113e57ca6a8627f",
+                "sha256:4b1c49e2fc6f1e38310f541b6537ab537238add2aaba8a8165ceb228d009f908",
+                "sha256:6e5d8309799a74925cea6695e72efbea347fd5a6d5c3683b2182870718aafe9c",
+                "sha256:ccdc48aeb10acfea33702018e69c115f4d61ca14a9ab52a3c502ca1ae782d5fd",
+                "sha256:cd50b6cd6c091828015729f77ca7a8a3878d70e0751a6719653ee7ca4b8fc17a",
+                "sha256:e827bc52846dd084bc30e155bbe7050c72e7f12f3a64cc3938b9b73f23183914"
             ],
             "markers": "platform_release >= '17.0'",
-            "version": "==4.2.1"
+            "version": "==4.2.2"
         },
         "pyobjc-framework-webkit": {
             "hashes": [
-                "sha256:1181c27ec01b0077c7ae13de33f9316377d374eb6d1f29f09b8217cc979234a9",
-                "sha256:16977279b6fcf60b0f4021f54cba45f6cb8fbb1b178d6290634b6ca34055707f",
-                "sha256:34e9223e0fc74be36099f41a998a7e024bb1f162411ce84f2380db013b7ab4df",
-                "sha256:442b849e64d78ec4f29b45f1b3c08f4456ab8c1106ac10ecb700286e8076b9de",
-                "sha256:5440be7b3b81fa90d4d81b017c9e7e5a0394ba2ddcc4bc55da10b53e0346e164",
-                "sha256:acc6e43ff194e40643c4687990115774f66f9968d2d45d7d89998b623bc6ed82"
+                "sha256:3d0f70c7580af86005b835bafd5682dfcf9264566ae9d173dda5852c071ad0fd",
+                "sha256:4a83f8e55de402821f2fc01858d5268b32ed9324f33d2bcd63868e886b80a09f",
+                "sha256:520ea14854584b44aace1b44dd74f5ced753e6eb85fcc921f69aa4fb603befd8",
+                "sha256:6b712f45bbe47691777291cc1068916a5dc32b656b38b920a88db8733bfdda03",
+                "sha256:8abcbae584683851ec93f3aa5f8f3d337b15579f0dc11fa081cd5d172ab79a7c",
+                "sha256:a194877beda2a5df59e5b083c888d830917ec11259f531e9907aba91425f9a4e",
+                "sha256:c3dd2d48901264bbc97dd2e3c3953916167ae12badf20238f00b250543180c2f",
+                "sha256:d5743eee6e8ef7f8da518c5e87b44d4ea689ec840cdc0d6e071459a6eee831fc"
             ],
-            "version": "==4.2.1"
+            "version": "==4.2.2"
         },
         "python-vlc": {
             "hashes": [
@@ -1125,22 +1188,6 @@
                 "sha256:832dc0e10feb1aa2c68dcc57dbb658f1c7e65b9b61af69048abc87a2db00a0eb"
             ],
             "version": "==1.11.0"
-        },
-        "sortedcontainers": {
-            "hashes": [
-                "sha256:2c9db81119d0285a26119554e1ce7332b846ff7f0d05c9a46e9490423685808a",
-                "sha256:87b80f909def3f73778a7c4572ae1d3615daad0c86fc01cb046b51c32bbf85c1"
-            ],
-            "version": "==2.0.2"
-        },
-        "trio": {
-            "hashes": [
-                "sha256:0496f575ed118eb382346a728971766d54b3a3e39e9825e94d4d513b0fe96145",
-                "sha256:8266525067dc6553592383bef1832556e6962daba765fa42a81880c5d9f4b785",
-                "sha256:fc5513551d22ec2be8bd05ddd56e9c3c377ac47c79a3866fa2d8710bfae4a0cb"
-            ],
-            "index": "pypi",
-            "version": "==0.4.0"
         },
         "urllib3": {
             "hashes": [

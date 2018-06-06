@@ -6,7 +6,6 @@ name = "pypi"
 [packages]
 python-vlc = "*"
 pyobjc = "*"
-trio = "*"
 pynput = "*"
 mutagen = "*"
 pylint = "*"

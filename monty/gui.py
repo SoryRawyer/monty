@@ -16,7 +16,7 @@ class PlayerGUI(tk.Frame):
         bindings: function bindings for different gui elements
     """
 
-    def __init__(self, master, bindings):
+    def __init__(self, master):
         super().__init__(master)
         self.mainframe = ttk.Frame(master, padding='3 3 12 12')
         self.mainframe.grid(column=0, row=0, sticky=(tk.N, tk.E, tk.S, tk.W))
@@ -46,12 +46,6 @@ class PlayerGUI(tk.Frame):
         #     self.text.bind('<Double-Button-1>', self.bindings['text'])
         self.selected_item = None
 
-    async def launch_gui(self):
-        """
-        launch_gui : start the mainloop
-        """
-        self.master.mainloop()
-
     def add_tracks_to_listbox(self, tracklist: list):
         """
         add_tracks_to_listbox : take the list of tracks and add them to the listbox
@@ -59,7 +53,7 @@ class PlayerGUI(tk.Frame):
         for track in tracklist:
             self.text.insert('end', track)
 
-    def bind_to(self, button, event, queue, override=False):
+    def bind_to(self, button, event, func, override=False):
         """
         bind : bind the given function to the given button
         """
@@ -69,9 +63,7 @@ class PlayerGUI(tk.Frame):
         elif button == 'text' and event == '<Double-Button-1>':
             # if this is the text button, then we need to pass the current selected
             # item to the callback
-            func = functools.partial(self.on_text_double_click, queue)
-        else:
-            func = lambda _: queue.put_nowait(1)
+            func = functools.partial(self.on_text_double_click, func)
         self.bindings[button] = (event, func)
         self.__getattribute__(button).bind(event, func)
 
@@ -87,11 +79,11 @@ class PlayerGUI(tk.Frame):
         """
         return self.text.selection_get()
 
-    def on_text_double_click(self, queue, _):
+    def on_text_double_click(self, func, _):
         """
         on_text_double_click : on text double click, call the function with the selected element
         """
-        queue.put_nowait(self.text.index(tk.ACTIVE))
+        func(self.text.index(tk.ACTIVE))
 
     @staticmethod
     def new(bindings=None):
@@ -101,7 +93,7 @@ class PlayerGUI(tk.Frame):
         root = tk.Tk()
         if not bindings:
             bindings = {}
-        gui = PlayerGUI(root, bindings)
+        gui = PlayerGUI(root)
         for button in bindings:
             event, func = bindings[button]
             gui.bind_to(button, event, func)

@@ -8,7 +8,6 @@ from typing import List
 from monty.cloud import CloudStorage
 from monty.metadata import Metadata
 
-# TODO: make this hold a list of metadata or cloud objects or something
 class TrackList(object):
     """
     TrackList : a list of songs and their locations
@@ -40,7 +39,8 @@ class TrackList(object):
         If there are no more songs to play, raise an exception
         update the current position to reflect the track change
         """
-        return self.skip_to_index(self.position + 1)
+        song = self.skip_to_index(self.position + 1)
+        return song
 
     def get_previous_song(self) -> str:
         """
@@ -48,7 +48,8 @@ class TrackList(object):
         If we're at the first track, rais an exception
         update the current position to reflect the track change
         """
-        return self.skip_to_index(self.position - 1)
+        song = self.skip_to_index(self.position - 1)
+        return song
 
     def get_current_song(self) -> str:
         """
@@ -56,7 +57,7 @@ class TrackList(object):
         """
         return self.song_metadata[self.position].get_local_path()
 
-    async def skip_to_index(self, index: int) -> str:
+    def skip_to_index(self, index: int) -> str:
         """
         skip_to_index : skip to a given index
         """
@@ -67,10 +68,10 @@ class TrackList(object):
         try:
             os.stat(current_track.get_local_path())
         except FileNotFoundError:
-            await self.cloud.get_recording(current_track.artist_id,
-                                           current_track.release_id,
-                                           current_track.recording_id,
-                                           current_track.file_format)
+            self.cloud.get_recording(current_track.artist_id,
+                                     current_track.release_id,
+                                     current_track.recording_id,
+                                     current_track.file_format)
         return current_track.get_local_path()
 
 

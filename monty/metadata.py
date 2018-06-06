@@ -3,8 +3,8 @@ metadata.py : get information about a file
 """
 
 import os
-import monty.config as config
 from mutagen import mp3, flac
+import monty.config as config
 
 class Metadata(object):
     """
