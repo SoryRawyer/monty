@@ -49,7 +49,7 @@ def main():
 
     def download_track(song_position):
         """
-        download_track : given an index, skip to that position in the tracklist
+        download_track : given an index, download the track at that position in the track list
         """
         # TODO: use threading to avoid blocking the gui on long-running background tasks
         track = track_list.song_metadata[song_position]
