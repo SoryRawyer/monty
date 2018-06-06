@@ -1,3 +1,4 @@
+from .cloud import CloudStorage
 from .db import Database
 from .gui import PlayerGUI
 from .keyboard import MediaKeyListener

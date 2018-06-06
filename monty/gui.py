@@ -2,7 +2,6 @@
 gui.py : gui for playing the music
 """
 
-import asyncio
 import functools
 import tkinter as tk
 from tkinter import ttk
@@ -34,6 +33,8 @@ class PlayerGUI(tk.Frame):
         # buttons for quitting, moving forward/back one song, and playing/pausing current song
         self.quit = ttk.Button(self.mainframe, text='QUIT', command=self.master.destroy)
         self.quit.grid(column=1, row=2)
+        self.download = ttk.Button(self.mainframe, text='download')
+        self.download.grid(column=0, row=2)
         self.previous_track = ttk.Button(self.mainframe, text='previous track')
         self.previous_track.grid(column=0, row=1)
         self.play_pause = ttk.Button(self.mainframe, text='play/pause')
@@ -60,7 +61,8 @@ class PlayerGUI(tk.Frame):
         if button in self.bindings and not override:
             error_msg = 'A binding already exists for {}'.format(button)
             raise BindingAlreadyExistsException(error_msg)
-        elif button == 'text' and event == '<Double-Button-1>':
+        elif ((button == 'text' and event == '<Double-Button-1>')
+              or (button == 'download' and event == '<Button-1>')):
             # if this is the text button, then we need to pass the current selected
             # item to the callback
             func = functools.partial(self.on_text_double_click, func)

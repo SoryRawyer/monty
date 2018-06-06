@@ -6,7 +6,7 @@ import logging
 import signal
 import sys
 
-from monty import Database, Player, PlayerGUI, TrackList
+from monty import Database, Player, PlayerGUI, TrackList, CloudStorage
 
 SH = logging.StreamHandler(sys.stdout)
 LOGGER = logging.getLogger(__name__)
@@ -16,6 +16,8 @@ def main():
     """
     main : play some songs
     """
+
+    client = CloudStorage()
 
     # A bunch of callback functions for keyboard/gui events
     def on_play_or_pause(_):
@@ -45,6 +47,17 @@ def main():
         """
         player.change_song(track_list.skip_to_index(song_position))
 
+    def download_track(song_position):
+        """
+        download_track : given an index, skip to that position in the tracklist
+        """
+        # TODO: use threading to avoid blocking the gui on long-running background tasks
+        track = track_list.song_metadata[song_position]
+        client.get_recording(track.artist_id,
+                             track.release_id,
+                             track.recording_id,
+                             track.file_format)
+
     def stop_everything(_, __):
         """
         stop_everything: shut everything down
@@ -67,6 +80,7 @@ def main():
         'next_track' : ('<Button-1>', on_next_track),
         'previous_track' : ('<Button-1>', on_previous_track),
         'text' : ('<Double-Button-1>', skip_to_arbitrary_song),
+        'download' : ('<Button-1>', download_track),
     }
     gui = PlayerGUI.new(gui_bindings)
     gui.add_tracks_to_listbox([track.get_display_string() for track in tracks])
