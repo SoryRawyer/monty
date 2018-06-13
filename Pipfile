@@ -12,6 +12,9 @@ pylint = "*"
 musicbrainzngs = "*"
 google-cloud-storage = "*"
 requests = "*"
+cookiecutter = "*"
+briefcase = "*"
+toga = "*"
 
 [dev-packages]
 pylint = "*"
