@@ -33,22 +33,22 @@ class TrackList(object):
         """
         self.song_metadata.insert(self.position, song)
 
-    def get_next_song(self) -> str:
+    async def get_next_song(self) -> str:
         """
         get_next_song : return the location of the next song file to play
         If there are no more songs to play, raise an exception
         update the current position to reflect the track change
         """
-        song = self.skip_to_index(self.position + 1)
+        song = await self.skip_to_index(self.position + 1)
         return song
 
-    def get_previous_song(self) -> str:
+    async def get_previous_song(self) -> str:
         """
         get_previous_song : return the location of the previous song in the track list
         If we're at the first track, rais an exception
         update the current position to reflect the track change
         """
-        song = self.skip_to_index(self.position - 1)
+        song = await self.skip_to_index(self.position - 1)
         return song
 
     def get_current_song(self) -> str:
@@ -57,7 +57,7 @@ class TrackList(object):
         """
         return self.song_metadata[self.position].get_local_path()
 
-    def skip_to_index(self, index: int) -> str:
+    async def skip_to_index(self, index: int) -> str:
         """
         skip_to_index : skip to a given index
         """
@@ -68,10 +68,10 @@ class TrackList(object):
         try:
             os.stat(current_track.get_local_path())
         except FileNotFoundError:
-            self.cloud.get_recording(current_track.artist_id,
-                                     current_track.release_id,
-                                     current_track.recording_id,
-                                     current_track.file_format)
+            await self.cloud.get_recording(current_track.artist_id,
+                                           current_track.release_id,
+                                           current_track.recording_id,
+                                           current_track.file_format)
         return current_track.get_local_path()
 
 

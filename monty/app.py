@@ -23,7 +23,7 @@ class MontyPlayer(toga.App):
             return self.table.selection.position
         return None
 
-    def on_play_or_pause(self, _):
+    async def on_play_or_pause(self, _):
         """
         on_play_or_pause : how to react when the play/pause media key is pressed
         """
@@ -31,38 +31,41 @@ class MontyPlayer(toga.App):
             self.player.pause()
         else:
             if self.table.selection and self.table.selection.position != self.track_list.position:
-                next_song = self.track_list.skip_to_index(self.table.selection.position)
+                next_song = await self.track_list.skip_to_index(self.table.selection.position)
                 self.player.change_song(next_song)
             self.player.play()
 
-    def on_next_track(self, _):
+    async def on_next_track(self, _):
         """
         on_next_track : how to react when the next track media key is pressed
         """
-        self.player.change_song(self.track_list.get_next_song())
+        next_song = await self.track_list.get_next_song()
+        self.player.change_song(next_song)
 
-    def on_previous_track(self, _):
+    async def on_previous_track(self, _):
         """
         on_previous_track : how to react when the previous track media key is pressed
         """
-        self.player.change_song(self.track_list.get_previous_song())
+        next_song = await self.track_list.get_previous_song()
+        self.player.change_song(next_song)
 
-    def skip_to_arbitrary_song(self, song_position: int):
+    async def skip_to_arbitrary_song(self, song_position: int):
         """
         skip_to_arbitrary_song : given an index, skip to that position in the tracklist
         """
-        self.player.change_song(self.track_list.skip_to_index(song_position))
+        next_song = await self.track_list.skip_to_index(song_position)
+        self.player.change_song(next_song)
 
-    def download_track(self, _):
+    async def download_track(self, _):
         """
         download_track : given an index, download the track at that position in the track list
         """
         song_position = self.get_selected_track_position()
         track = self.track_list.song_metadata[song_position]
-        self.cloud.get_recording(track.artist_id,
-                                  track.release_id,
-                                  track.recording_id,
-                                  track.file_format)
+        await self.cloud.get_recording(track.artist_id,
+                                       track.release_id,
+                                       track.recording_id,
+                                       track.file_format)
 
     def print_selection(self, _):
         """print_selection: for general debugging purposes"""
