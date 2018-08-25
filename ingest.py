@@ -3,7 +3,7 @@ ingest.py : ingest data and file it away under the monty system
 
 Arugments:
 - music_location : full path to music to be ingested
-- upload_bucket : backblaze bucket name to upload to
+- upload_bucket : google cloud bucket name to upload to
 
 store track in upload_bucket based on the following convention (all "id"s are musicbrainz ids):
     {artist-id}/{album-id}/{recording-id}.{file_format}
@@ -95,10 +95,17 @@ def copy_to_media_directory(metadata: List[dict]):
         dest = os.path.join(album_dir, dest_shortname)
         shutil.copyfile(src, dest)
 
-if __name__ == '__main__':
+
+def parse():
+    """
+    parse : parse input arguments
+    # TODO: add an --offline option to avoid network calls
+    """
     parser = argparse.ArgumentParser()
     parser.add_argument('music_location')
     parser.add_argument('upload_bucket')
     parser.add_argument('upload_prefix')
-    args = parser.parse_args()
-    main(args)
+    return parser.parse_args()
+
+if __name__ == '__main__':
+    main(parse())
