@@ -2,7 +2,7 @@
 __main__.py : run the monty gui
 """
 
-from monty.app import main
+from monty import main
 
 if __name__ == '__main__':
     try:
