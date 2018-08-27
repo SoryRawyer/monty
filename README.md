@@ -4,7 +4,7 @@ purpose: I'd like a way to play music outside of itunes. Spotify doesn't necessa
 
 to run: `$ python launch_player.py`
 
-right now, you need to "load" data into Monty. you can do this by running:
+right now, you need to "load" data into Monty. you can do this by running:  
 `$ ingest.py <directory> <upload-bucket> <upload-prefix>`
 where
 - `directory` is the local directory containing audio files you wish to upload

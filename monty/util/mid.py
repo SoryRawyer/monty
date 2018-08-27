@@ -19,6 +19,9 @@ def create_uuid_from_file(filename) -> str:
         md5.update(file_obj.read())
     return str(uuid.UUID(bytes=md5.digest()))
 
+def create_uuid_from_string(string):
+    return str(uuid.UUID(bytes=bytes(string)))
+
 
 if __name__ == '__main__':
     print(create_uuid_from_file(sys.argv[1]))
