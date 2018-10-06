@@ -12,7 +12,9 @@ from typing import Callable, List
 import musicbrainzngs as mb
 from mutagen import mp3, flac
 
-from monty.metadata import Metadata
+from monty.metadata import Metadata, FORMAT_PARSERS
+from monty.util import mid
+
 
 mb.set_useragent("application", "0.01", "http://example.com")
 
@@ -50,20 +52,42 @@ def get_musicbrainz_data() -> Callable[[dict], dict]:
         """
         # get artist and album id by searching for release groups with both artist and album name?
         # search for recording: filter results based on release and artist
-        search_string = '{} {}'.format(metadata['artist'], metadata['album'])
-        try:
-            release_group = mb.search_release_groups(search_string)
-        except mb.musicbrainz.ResponseError:
-            search_string = metadata['album']
-            release_group = mb.search_release_groups(search_string)
 
-        artist = release_group['release-group-list'][0]['artist-credit'][0]['artist']
-        release = release_group['release-group-list'][0]['release-list'][0]
-
-        if release['id'] in releases_with_tracks:
-            track = releases_with_tracks[release['id']][metadata.track_number - 1]
+        ids = {}
+        # get artist id, or make one if it's not available
+        artists = mb.search_artists(metadata.artist)
+        artist = [i for i in artists['artist-list'] if i['ext:score'] == 100]
+        if artist:
+            ids['artist'] = artist['id']
         else:
-            release_with_tracks = mb.get_release_by_id(release['id'], includes=['recordings'])
+            ids['artist'] = mid.create_uuid_from_string(metadata.artist)
+            ids['album'] = mid.create_uuid_from_string(metadata.album)
+            ids['track'] = mid.create_uuid_from_file(metadata.file_path)
+
+        if 'album' not in ids:
+            search_string = '{} {}'.format(metadata.artist, metadata.album)
+            try:
+                release_group = mb.search_release_groups(search_string)
+            except mb.musicbrainz.ResponseError:
+                search_string = metadata['album']
+                release_group = mb.search_release_groups(search_string)
+
+            releases = [
+                i for i in release_group['release-group-list']
+                if (i['ext:score'] == 100 and
+                    i['artist-credit'][0]['artist']['id'] == ids['artist'])
+            ]
+            if releases:
+                ids['album'] = release_group['release-group-list'][0]['release-list'][0]
+            else:
+                ids['album'] = mid.create_uuid_from_string(metadata['album'])
+                ids['track'] = mid.create_uuid_from_file(metadata.file_path)
+
+        # check to see if we already have track/album information for this album
+        if 'album_id' in releases_with_tracks:
+            ids['track'] = releases_with_tracks[ids['album']][metadata.track_number - 1]['recording']['id']
+        elif 'track' not in ids:
+            release_with_tracks = mb.get_release_by_id(ids['album'], includes=['recordings'])
             tracks = release_with_tracks['release']['medium-list'][0]['track-list']
             tracks.sort(key=lambda x: int(x['position']))
             releases_with_tracks[release['id']] = tracks
@@ -90,8 +114,14 @@ def get_metadata_for_directory(directory: str) -> List[dict]:
         for dirname in dirnames:
             get_metadata_for_directory(dirname)
         metadata += [Metadata(os.path.join(dirpath, filename))
-                     for filename in filenames]
+                     for filename in filenames if is_supported_file_format(filename)]
     return metadata
+
+
+def is_supported_file_format(filename):
+    _, ext = os.path.splitext(filename)
+    ext = ext.replace('.', '').lower()
+    return ext in FORMAT_PARSERS
 
 def get_artist_album_track_name(path: str) -> dict:
     """
