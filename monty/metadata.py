@@ -6,6 +6,11 @@ import os
 from mutagen import mp3, flac
 import monty.config as config
 
+FORMAT_PARSERS = {
+    'mp3' : mp3.EasyMP3,
+    'flac' : flac.FLAC,
+}
+
 class Metadata(object):
     """
     Metadata : return information about a track
@@ -29,17 +34,20 @@ class Metadata(object):
         set_metadata_from_file : fill out metadata fields based on input file path
         """
         _, extension = os.path.splitext(self.file_path)
-        if extension == '.mp3':
-            self._metadata = mp3.EasyMP3(self.file_path)
-        elif extension == '.flac':
-            self._metadata = flac.FLAC(self.file_path)
-        else:
+        extension = extension.replace('.', '').lower()
+        if extension not in FORMAT_PARSERS:
             raise FormatNotImplemented('Extension {} not supported'.format(extension))
+
+        parser = FORMAT_PARSERS[extension.replace('.', '').lower()]
+        self._metadata = parser(self.file_path)
 
         self.artist = self._metadata['artist'][0]
         self.album = self._metadata['album'][0]
         self.track_title = self._metadata['title'][0]
-        self.track_number = int(self._metadata['tracknumber'][0].split('/')[0])
+        if 'tracknumber' in self._metadata:
+            self.track_number = int(self._metadata['tracknumber'][0].split('/')[0])
+        else:
+            self.track_number = 0
         self.file_format = extension.replace('.', '')
 
     def set_format(self, file_format):

@@ -12,7 +12,7 @@ from typing import Callable, List
 import musicbrainzngs as mb
 from mutagen import mp3, flac
 
-from monty.metadata import Metadata
+from monty.metadata import Metadata, FORMAT_PARSERS
 from monty.util import mid
 
 mb.set_useragent("application", "0.01", "http://example.com")
@@ -54,17 +54,17 @@ def get_musicbrainz_data() -> Callable[[dict], dict]:
 
         ids = {}
         # get artist id, or make one if it's not available
-        artists = mb.search_artists(metadata['artist'])
+        artists = mb.search_artists(metadata.artist)
         artist = [i for i in artists['artist-list'] if i['ext:score'] == 100]
         if artist:
             ids['artist'] = artist['id']
         else:
-            ids['artist'] = mid.create_uuid_from_string(metadata['artist'])
-            ids['album'] = mid.create_uuid_from_string(metadata['album'])
+            ids['artist'] = mid.create_uuid_from_string(metadata.artist)
+            ids['album'] = mid.create_uuid_from_string(metadata.album)
             ids['track'] = mid.create_uuid_from_file(metadata.file_path)
 
         if 'album' not in ids:
-            search_string = '{} {}'.format(metadata['artist'], metadata['album'])
+            search_string = '{} {}'.format(metadata.artist, metadata.album)
             try:
                 release_group = mb.search_release_groups(search_string)
             except mb.musicbrainz.ResponseError:
@@ -113,8 +113,14 @@ def get_metadata_for_directory(directory: str) -> List[dict]:
         for dirname in dirnames:
             get_metadata_for_directory(dirname)
         metadata += [Metadata(os.path.join(dirpath, filename))
-                     for filename in filenames]
+                     for filename in filenames if is_supported_file_format(filename)]
     return metadata
+
+
+def is_supported_file_format(filename):
+    _, ext = os.path.splitext(filename)
+    ext = ext.replace('.', '').lower()
+    return ext in FORMAT_PARSERS
 
 def get_artist_album_track_name(path: str) -> dict:
     """
