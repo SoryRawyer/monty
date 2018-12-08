@@ -5,7 +5,7 @@ tracklist.py : a tracklist class for playing audio
 import os
 from typing import List
 
-from monty.cloud import CloudStorage
+from monty.cloud import get_remote_storage
 from monty.metadata import Metadata
 
 class TrackList(object):
@@ -18,7 +18,7 @@ class TrackList(object):
                                            'cannot be greater than the list of songs')
         self.song_metadata = song_metadata
         self.position = position
-        self.cloud = CloudStorage()
+        self.cloud = get_remote_storage()
 
     def enqueue_song(self, song):
         """

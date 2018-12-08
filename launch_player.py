@@ -6,7 +6,10 @@ import logging
 import signal
 import sys
 
-from monty import Database, Player, PlayerGUI, TrackList, CloudStorage
+import google
+
+from monty import Database, Player, PlayerGUI, TrackList
+from monty.cloud import get_remote_storage, NoStorageConnectionException
 
 SH = logging.StreamHandler(sys.stdout)
 LOGGER = logging.getLogger(__name__)
@@ -16,8 +19,7 @@ def main():
     """
     main : play some songs
     """
-
-    client = CloudStorage()
+    client = get_remote_storage()
 
     # A bunch of callback functions for keyboard/gui events
     def on_play_or_pause(_):
@@ -52,11 +54,15 @@ def main():
         download_track : given an index, download the track at that position in the track list
         """
         # TODO: use threading to avoid blocking the gui on long-running background tasks
+
         track = track_list.song_metadata[song_position]
-        client.get_recording(track.artist_id,
-                             track.release_id,
-                             track.recording_id,
-                             track.file_format)
+        try:
+            client.get_recording(track.artist_id,
+                                track.release_id,
+                                track.recording_id,
+                                track.file_format)
+        except NoStorageConnectionException:
+            gui.show_error_message('Unable to connect to the remote tunes. Sorry')
 
     def stop_everything(_, __):
         """
@@ -70,7 +76,7 @@ def main():
     tracks = list(db.generate_all_track_info())
     track_list = TrackList(tracks)
 
-    player = Player(track_list.get_current_song())
+    player = Player()
 
     signal.signal(signal.SIGTERM, stop_everything)
     signal.signal(signal.SIGINT, stop_everything)

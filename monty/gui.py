@@ -87,6 +87,12 @@ class PlayerGUI(tk.Frame):
         """
         func(self.text.index(tk.ACTIVE))
 
+    def show_error_message(self, message):
+        """
+        show_error_message : show a popup box with an error message
+        """
+        tkinter.messagebox.showinfo('bummer', message)
+
     @staticmethod
     def new(bindings=None):
         """

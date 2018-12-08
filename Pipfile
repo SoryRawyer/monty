@@ -5,16 +5,11 @@ name = "pypi"
 
 [packages]
 python-vlc = "*"
-pyobjc = "*"
-pynput = "*"
 mutagen = "*"
-pylint = "*"
 musicbrainzngs = "*"
 google-cloud-storage = "*"
 requests = "*"
-cookiecutter = "*"
-briefcase = "*"
-toga = "*"
+tkinter = "*"
 
 [dev-packages]
 pylint = "*"

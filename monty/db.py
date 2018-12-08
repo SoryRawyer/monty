@@ -10,7 +10,7 @@ import sqlite3
 from typing import List
 
 import monty.config as config
-from monty.cloud import CloudStorage
+from monty.cloud import get_remote_storage
 from monty.metadata import Metadata, FormatNotImplemented
 
 class Database(object):
@@ -37,8 +37,9 @@ class Database(object):
         self.db_location = config.DB_LOCATION
         if not os.path.isfile(self.db_location):
             # if the db doesn't exist, make it!
+            config.ensure_dir(config.DB_LOCATION)
             self._conn = sqlite3.connect(self.db_location)
-            storage = CloudStorage()
+            storage = get_remote_storage()
             storage.get_audio_index()
             self.init_db()
         else:
@@ -92,6 +93,10 @@ class Database(object):
         generate_all_track_info : create a generator for all track information
         """
         query = 'select * from audio_tracks order by artist, album, track_number'
+        try:
+            self._conn.execute(query)
+        except sqlite3.OperationalError:
+            return
         for i in self._conn.execute(query):
             metadatum = Metadata()
             metadatum.artist = i[0]
