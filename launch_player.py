@@ -55,7 +55,12 @@ def main():
         """
         # TODO: use threading to avoid blocking the gui on long-running background tasks
 
-        track = track_list.song_metadata[song_position]
+        try:
+            track = track_list.song_metadata[song_position]
+        except IndexError:
+            gui.show_error_message('No song selected')
+            return
+
         try:
             client.get_recording(track.artist_id,
                                 track.release_id,

@@ -5,6 +5,7 @@ gui.py : gui for playing the music
 import functools
 import tkinter as tk
 from tkinter import ttk
+from tkinter import messagebox
 
 class PlayerGUI(tk.Frame):
     """
@@ -91,7 +92,7 @@ class PlayerGUI(tk.Frame):
         """
         show_error_message : show a popup box with an error message
         """
-        tkinter.messagebox.showinfo('bummer', message)
+        messagebox.showinfo('bummer', message)
 
     @staticmethod
     def new(bindings=None):

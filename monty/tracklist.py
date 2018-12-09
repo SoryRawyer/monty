@@ -8,6 +8,21 @@ from typing import List
 from monty.cloud import get_remote_storage
 from monty.metadata import Metadata
 
+
+def _wrap_index_error(func):
+    """
+    _wrap_index_error : catch an IndexError and raise a
+    NoAvailableSongException instead
+    """
+    def wrapper():
+        try:
+            func()
+        except IndexError:
+            raise NoAvailableSongException
+
+    return wrapper
+
+
 class TrackList(object):
     """
     TrackList : a list of songs and their locations
@@ -51,6 +66,7 @@ class TrackList(object):
         song = await self.skip_to_index(self.position - 1)
         return song
 
+    @_wrap_index_error
     def get_current_song(self) -> str:
         """
         get_current_song : return the location of the song we're currently playing
