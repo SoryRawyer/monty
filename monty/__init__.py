@@ -1,6 +1,5 @@
 from .cloud import CloudStorage
 from .db import Database
-from .gui import PlayerGUI
 from .tracklist import TrackList
 from .playback import Player
 

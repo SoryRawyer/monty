@@ -8,7 +8,8 @@ import sys
 
 import google
 
-from monty import Database, Player, PlayerGUI, TrackList
+from gui import PlayerGUI
+from monty import Database, Player, TrackList
 from monty.cloud import get_remote_storage, NoStorageConnectionException
 
 SH = logging.StreamHandler(sys.stdout)

@@ -9,7 +9,6 @@ mutagen = "*"
 musicbrainzngs = "*"
 google-cloud-storage = "*"
 requests = "*"
-tkinter = "*"
 
 [dev-packages]
 pylint = "*"
