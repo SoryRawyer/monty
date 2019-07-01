@@ -15,6 +15,11 @@ where
 
 Once there's audio to play, running `$ python launch_player.py` will open up the audio player
 
-Still to do:
-- support tracks without musicbrainz data
-- osx and android support
+The GUI uses TKinter, but I'm thinking about moving to Kivy.
+
+The idea is that, since the gui doesn't support any import stuff at the moment, users would point the ingest script at some directory they want to pull into Monty. That script will:
+- look up the track(s) in musicbrainz
+  - I'm actually not sure if Monty will continue to process things that don't have musicbrainz data. I can't forget if that code ever landed in master or not. let me check real quick
+- something about uploading to google cloud, if possible
+- move files to a central monty location (by default I think this is `~/media/audio`)
+- add those files to an index, either in sqlite, google cloud, or both
